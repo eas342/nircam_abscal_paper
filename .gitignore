@@ -1,0 +1,15 @@
+*.log
+*.out
+*.bbl
+*.aux
+*.top
+*.synctex.gz
+*.blg
+*.tui
+*-mpgraph.mp
+*.DS_Store
+ms.pdf
+image_backups/*
+sync_bib.sh
+msNotes.bib
+*~
