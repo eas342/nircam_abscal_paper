@@ -112,6 +112,10 @@
 
 \begin{abstract}
 The James Webb Space Telescope (JWST) offers unprecedented sensitivity and stability for science.
+Several of the science areas, such as supernovae measurements for dark energy measurements will require high accuracy absolute calibration.
+We discuss a program to identify calibrators at the low end of the flux scale that will not saturate the NIRCam full frame mode.
+We obtain ground based photometry and spectroscopy of three clusters to find solar analog G2 V stars and a solar model spectrum to infer the fluxes in the NIRCam bands.
+Additionally, we discuss some of the NIRCam modes that can be used to tie JWST calibrations directly to primary calibrator stars.
 \end{abstract}
 
 %% Keywords should appear after the \end{abstract} command. The uncommented
@@ -151,6 +155,8 @@ The James Webb Space Telescope (JWST) offers unprecedented sensitivity and stabi
 The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration.
 
 \section{Pan-Starrs Photometry}
+
+We obtained $grizy$ Pan-Starrs photometry for all three clusters \citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot}.
 
 \section{UKIRT Photometry}
 
@@ -205,6 +211,16 @@ The luminosity class is next \texttt{l50} means V.
 We use the \texttt{libnor36} library, which appears to work with the "Roughtype 2" method for non-rectified data.
 The code runs into segmentation faults if attempting Roughtype 1 with the \texttt{libnor36} library.
 
+\section{Ways to Observe Really Bright Stars With NIRCam}
+
+There are several ways to improve saturation limits:
+\begin{itemize}
+\item Cut down the aperture size with a Lyot stop. These have 19\% throughput, but make the PSF shapes strange.
+\item Use a neutral density square in the coronagraph mask. The neutral density filters have an attenuation of around 10$^3$ or 7.5 mags. A color correction would have to be applied for the neutral density filter (since it is wavelength dependent) when transferring to an un-occulted region
+\item Use a long wavelength grism to spread out the light - this could be used in conjunction with a neutral density square
+\item Use a narrowband filter, such as F121N
+\item Use a small subarray - 64 $\times$ 64 is supported for science. There will be an engineering jitter monitoring test with an 8 $\times$ 8 subarray 
+\end{itemize}
 
 \section{Conclusions}
 
@@ -214,6 +230,8 @@ The James Webb Space Telescope will do unprecedented science with it's great cal
 %\acknowledgments
 
 Funding for the NIRCam team is provided by NASA Goddard Spaceflight Center. This research has made use of the WEBDA database, operated at the Department of Theoretical Physics and Astrophysics of the Masaryk University.
+Observations reported here were obtained at the MMT Observatory, a joint facility of the University of Arizona and the Smithsonian Institution.
+The Pan-STARRS1 Surveys (PS1) have been made possible through contributions of the Institute for Astronomy, the University of Hawaii, the Pan-STARRS Project Office, the Max-Planck Society and its participating institutes, the Max Planck Institute for Astronomy, Heidelberg and the Max Planck Institute for Extraterrestrial Physics, Garching, The Johns Hopkins University, Durham University, the University of Edinburgh, Queen's University Belfast, the Harvard-Smithsonian Center for Astrophysics, the Las Cumbres Observatory Global Telescope Network Incorporated, the National Central University of Taiwan, the Space Telescope Science Institute, the National Aeronautics and Space Administration under Grant No. NNX08AR22G issued through the Planetary Science Division of the NASA Science Mission Directorate, the National Science Foundation under Grant No. AST-1238877, the University of Maryland, and Eotvos Lorand University (ELTE) and the Los Alamos National Laboratory. 
 
 %If used, some data was collected from the Open Exoplanet Catalogue \citep{rein2012openExoCat}.
 
