@@ -157,6 +157,7 @@ The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need a
 \section{Pan-Starrs Photometry}
 
 We obtained $grizy$ Pan-Starrs photometry for all three clusters \citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot}.
+We also looked up the $g$ - $r$ colors
 
 \section{UKIRT Photometry}
 
@@ -221,6 +222,8 @@ There are several ways to improve saturation limits:
 \item Use a narrowband filter, such as F121N
 \item Use a small subarray - 64 $\times$ 64 is supported for science. There will be an engineering jitter monitoring test with an 8 $\times$ 8 subarray 
 \end{itemize}
+
+Sensitivity and saturation limits make use of \texttt{pysynphot} \citep{lim2015pysynphot} with Phoenix stellar models \citep{allard2012phoenix} ranging from 4.0 to 5.0 in log(g).
 
 \section{Conclusions}
 
