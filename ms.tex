@@ -51,6 +51,7 @@
 \usepackage[caption=false]{subfig}
 
 \usepackage{natbib}
+%\usepackage{pdflscape}
 \bibliographystyle{astroads}
 
 \newcommand{\vdag}{(v)^\dagger}
@@ -152,28 +153,7 @@ Additionally, we discuss some of the NIRCam modes that can be used to tie JWST c
 
 \section{Introduction}
 
-The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration.
-
-\section{Pan-Starrs Photometry}
-
-We obtained $grizy$ Pan-Starrs photometry for all three clusters \citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot}.
-We also looked up the $g$ - $r$ colors
-
-\section{UKIRT Photometry}
-
-\subsection{Tie-in to 2MASS Photometry}
-
-The stars within the clusters explored will be tied to the measurements of the Sun.
-\citet{rieke2008absIRcal} provide recommended adjustments to 2MASS photometry which match well with the Solar spectrum.
-We can use existing 2MASS measurements of stars within the UKIRT field of view as a reference for the UKIRT photometry.
-There are plenty of sources with 2MASS measurements.
-For NGC 2420, for example, there are 300-400 stars within the neighboring arrays and 800 near the cluster (many of which will be contaminated by crowding).
-
-\begin{figure}[!hbtp]
-\centering
-\includegraphics[width=.4\columnwidth]{aladin_ngc2420_wfcam_square.png}
-\caption{One of WFCam's 4 detectors near the cluster NGC 2420 which encompasses 315 objects from the 2MASS point source catalog.}\label{fig:wfcam3}
-\end{figure}
+The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration for many of its science goals.
 
 \section{Cluster Properties}
 
@@ -200,6 +180,29 @@ NGC 6811\tablenotemark{c}	& 0.05 			& 10.29 $\pm$ 0.14	& 0.04 $\pm$ 0.01 	& 1.0 
 \tablenotetext{c}{Parameters from \citet{molendaz2016spec6811}}
 \end{table}
 
+
+\section{Photometry}
+
+We obtained $grizy$ Pan-Starrs photometry for all three clusters \citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot}.
+We also looked up the $g$ - $r$ colors
+
+\section{UKIRT Photometry}
+
+\subsection{Tie-in to 2MASS Photometry}
+
+The stars within the clusters explored will be tied to the measurements of the Sun.
+\citet{rieke2008absIRcal} provide recommended adjustments to 2MASS photometry which match well with the Solar spectrum.
+We can use existing 2MASS measurements of stars within the UKIRT field of view as a reference for the UKIRT photometry.
+There are plenty of sources with 2MASS measurements.
+For NGC 2420, for example, there are 300-400 stars within the neighboring arrays and 800 near the cluster (many of which will be contaminated by crowding).
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=.4\columnwidth]{aladin_ngc2420_wfcam_square.png}
+\caption{One of WFCam's 4 detectors near the cluster NGC 2420 which encompasses 315 objects from the 2MASS point source catalog.}\label{fig:wfcam3}
+\end{figure}
+
+
 \section{Spectral Typing of Candidate Analogs}
 
 \subsection{Notes on using \texttt{mkclass}}
@@ -212,7 +215,39 @@ The luminosity class is next \texttt{l50} means V.
 We use the \texttt{libnor36} library, which appears to work with the "Roughtype 2" method for non-rectified data.
 The code runs into segmentation faults if attempting Roughtype 1 with the \texttt{libnor36} library.
 
-\section{Ways to Observe Really Bright Stars With NIRCam}
+\section{Transferring to Directly Calibrated Sources}
+
+In addition to observing the primary JWST standards for absolute calibration, it will be possible to observe stars with direct calibration.
+
+\begin{table}
+\centering
+\caption{Direct Calibrated Source to Deep Calibrator}\label{tab:clusterProp}
+\begin{tabular}{lrrrrrr}
+\hline \hline
+Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& Filter \\
+\hline \hline
+1		& Direct Calibrator\tablenotemark{a}	& G2 V 			& -1.49		& On	&	32$\times$32	& F466N	\\
+2		& Medium Calibrator				& G2 V			& 6  			& On  &	32$\times$32	& F466N    \\
+3		& Medium Calibrator				& G2 V			& 6  			& Off &	32$\times$32	& F466N    \\
+4		& Faint Calibrator				& G2 V			& 16 			& Off &	32$\times$32	& F466N    \\
+5		& Faint Calibrator				& G2 V			& 16 			& Off &	32$\times$32	& F444W    \\
+6		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Array  	& F444W    \\
+%         &                                      & 
+%
+%Parameter  				&  Step 1			& Step 2			& Step 3			& Step 4 			& Step 5		& Step 6 \\
+%\hline \hline
+%Source					& Direct Calibrator\tablenotemark{a}	& Medium Calibrator	& Medium Calibrator	& Faint Cluster Star	& Faint Cluster Star & Faint Cluster Star\\
+%Spectral Type				& G2 V			& G2 V			& G2 V			& G2 V			& G2 V	& G2 V \\
+%K magnitude				& -1.49			& 6				& 6				& 16				& 16		& 16 \\
+%Neutral Density Filter			& On				& On				& Off				& Off				& Off		& Off\\
+%Subbarray					& 32$\times$32		& 32$\times$32		& 32$\times$32		& 32$\times$32		& 32$\times$32	& Full Frame \\
+%Filter						& F466N			& F466N			& F466N			& F466 N			& F444W 	& F444W\\
+\hline
+\end{tabular}
+\tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, $\alpha$ Cen	 A or Vega.}
+\end{table}
+
+\subsection{Ways to Observe Really Bright Stars With NIRCam}
 
 There are several ways to improve saturation limits:
 \begin{itemize}
