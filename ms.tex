@@ -219,8 +219,8 @@ The code runs into segmentation faults if attempting Roughtype 1 with the \textt
 \section{Transferring to Directly Calibrated Sources}
 
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
-As an independent check on those transfers, NIRCam can be used to observe those directly calibrated sources and transfer from the brightest ($K \sim -1$) sources all the way to the faintest calibrators ($K \sim 16$)
-Observing these bright sources (which are bright naked eye stars!) with JWST's NIRCam can be achieved with a combination of narrowband filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
+As an independent check on those transfers, NIRCam can be used to observe those directly calibrated sources and transfer from the brightest ($K \sim -1$) sources all the way to the faintest calibrators ($K \sim 16$).
+Observing these bright sources (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of narrowband filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
 The same configuration can then be used on 
 
 \begin{table}
@@ -228,14 +228,14 @@ The same configuration can then be used on
 \caption{Conversion from Directly Calibrated Source to Deep Calibrator}\label{tab:clusterProp}
 \begin{tabular}{lrrrrrrr}
 \hline \hline
-Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& Filter  & t$_{exp}$\\
+Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& Filter  & t$_{exp} (s) $\\
 \hline \hline
-1		& Direct Calibrator\tablenotemark{a}	& A1 V- G2 		& -1.35		& On	&	32$\times$32	& F466N	& \\
+1		& Direct Calibrator\tablenotemark{a}	& A1 V- G2 V		& -1.35		& On	&	32$\times$32	& F466N	& 0.1 \\
 2		& Medium Calibrator				& G2 V			& 12  		& On  &	32$\times$32	& F466N  &  \\
 3		& Medium Calibrator				& G2 V			& 6  			& Off &	32$\times$32	& F466N  &  \\
 4		& Faint Calibrator				& G2 V			& 16 			& Off &	32$\times$32	& F466N  &  \\
-5		& Faint Calibrator				& G2 V			& 16 			& Off &	32$\times$32	& F444W  &  \\
-6		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Array  	& F444W  &  \\
+5		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame	& F466N  &  \\
+6		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame  	& F444W  &  \\
 \hline
 \end{tabular}
 \tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, Sirius, $\alpha$ Cen A or Vega.}
@@ -253,7 +253,7 @@ Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& Filter  &
 There are several ways to improve saturation limits:
 \begin{itemize}
 \item Cut down the aperture size with a Lyot stop. These have 19\% throughput, but make the PSF shapes strange.
-\item Use a neutral density square in the coronagraph mask. The neutral density filters have an attenuation of around 10$^3$ or 7.5 mags. A color correction would have to be applied for the neutral density filter (since it is wavelength dependent) when transferring to an un-occulted region
+\item Use a neutral density square in the coronagraph mask. The neutral density filters have an attenuation of around 10$^2.6$ or 6.5 mags. A color correction would have to be applied for the neutral density filter (since it is wavelength dependent) when transferring to an un-occulted region. Additionally, the Lyot stop that must be in place to use the neutral density filter has a throughput of 19\%, so the total improvement is 8.3 mags
 \item Use a long wavelength grism to spread out the light - this could be used in conjunction with a neutral density square
 \item Use a narrowband filter, such as F121N
 \item Use a small subarray - 64 $\times$ 64 is supported for science. There will be an engineering jitter monitoring test with an 8 $\times$ 8 subarray 
