@@ -154,6 +154,7 @@ Additionally, we discuss some of the NIRCam modes that can be used to tie JWST c
 \section{Introduction}
 
 The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration for many of its science goals.
+Many studies of dark energy make use of Type Ia Supernovae as standard candles and improvements to the absolute flux calibration are important for improving their luminosity distances.
 
 \section{Cluster Properties}
 
@@ -170,13 +171,13 @@ Cluster   					&  E(B-V) 			& Distance Mod 	& [Fe/H] 			& Age \\
           					&     				&    (m - M)$_V$	& 	dex 			& Gyr \\
 \hline \hline
 NGC 2420\tablenotemark{a}	& 0.04 $\pm$0.03	&  11.88 $\pm$ 0.27	& -0.05 $\pm$ 0.03	& 3 $\pm$ 1 \\
-NGC 2506\tablenotemark{b}	& 0.03 $\pm$0.04	&  				& 0.24 $\pm$ 0.06	& 2.3 $\pm$ 0.2 \\
+NGC 2506\tablenotemark{b}	& 0.058 $\pm$ 0.001	&  12.75 $\pm$ 0.10 	& -0.32 $\pm$ 0.03	& 1.85 $\pm$ 0.05 \\
 NGC 6811\tablenotemark{c}	& 0.05 $\pm$0.02	& 10.29 $\pm$ 0.14	& 0.04 $\pm$ 0.01 	& 1.0 $\pm$ 0.1 \\
 \hline
 \end{tabular}
 %\caption{G2V-type star saturation K band limits are shown for suggested sub-array sizes. The size affects the number of DHS that can be included, so the noise in the DHS spectra over 1.1 -- 1.9$\mu$m at the given saturation limit for a 1 hour transit is shown in column 4 at native R $\sim$ \DHSresApprox\ resolution.}\label{tab:SatSNRsubA}
 \tablenotetext{a}{All parameters from \citet{pancino2010chem2420}.}
-\tablenotetext{b}{Parameters from \citet{lee2012openClustphot}}
+\tablenotetext{b}{Parameters from \citet{anthonytwarog2016wiyn2506}. Error bars are formal standard errors of the mean, not necessarily capturing systematics.}
 \tablenotetext{c}{Parameters from \citet{molendaz2016spec6811}}
 \end{table}
 
@@ -270,8 +271,8 @@ Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& Filter  &
 
 \begin{figure}[!hbtp]
 \centering
-\includegraphics[width=.7\columnwidth]{sensitivity_ladder.pdf}
-\caption{Sensitivity ladder going from a narrowband, sub-array, neutral density filter observation of Sirius all the way to a wide band, full array, non-neutral density filter of a faint calibrator.}\label{fig:sensitityLadder}
+\includegraphics[width=.6\columnwidth]{flux_ladder.pdf}
+\caption{Sensitivity ladder going a sub-array, neutral density filter observation a MSX standard to a full array, non-neutral density filter of a faint calibrator.}\label{fig:sensitityLadder}
 \end{figure}
 
 \subsection{Ways to Observe Really Bright Stars With NIRCam}
