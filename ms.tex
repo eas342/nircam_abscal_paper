@@ -248,24 +248,30 @@ The code runs into segmentation faults if attempting Roughtype 1 with the \textt
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
 As an independent check on those transfers, NIRCam can be used to observe those directly calibrated sources and transfer from the brightest ($K \sim -1$) sources all the way to the faintest calibrators ($K \sim 16$).
 Observing these bright sources (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of narrowband filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
-The same configuration can then be used on 
+The same configuration can then be used on move to fainter sources.
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=.4\columnwidth]{msx_nircam_filt.pdf}
+\caption{NIRCam filters as compared to the MSX short wavelength filters from \citet{egan1999msxGuide}. F430M best matches the MSX filters.}\label{fig:NCFOV}
+\end{figure}
 
 \begin{table}
 \centering
 \caption{Conversion from Directly Calibrated Source to Deep Calibrator}\label{tab:clusterProp}
-\begin{tabular}{lrrrrrrr}
+\begin{tabular}{lrrrrrr}
 \hline \hline
-Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& Filter  & t$_{exp} (s) $\\
+Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& t$_{exp} (s) $\\
 \hline \hline
-1		& Direct Calibrator\tablenotemark{a}	& A1 V- G2 V		& -1.35		& On	&	32$\times$32	& F466N	& 0.1 \\
-2		& Medium Calibrator				& G2 V			& 12  		& On  &	32$\times$32	& F466N  &  \\
-3		& Medium Calibrator				& G2 V			& 6  			& Off &	32$\times$32	& F466N  &  \\
-4		& Faint Calibrator				& G2 V			& 16 			& Off &	32$\times$32	& F466N  &  \\
-5		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame	& F466N  &  \\
-6		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame  	& F444W  &  \\
+1		& MSX Calibrator\tablenotemark{a}	& A1 V to M0 III		& -3 to 0.1		& On	&	64$\times$64	&  0.1 \\
+2		& Bright JWST Calibrator			& G2 V			& 6	  		& On  &	32$\times$32	&   \\
+3		& Medium Calibrator				& G2 V			& 6  			& Off &	32$\times$32	&   \\
+4		& Faint Calibrator				& G2 V			& 16 			& Off &	32$\times$32	&   \\
+5		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame	&   \\
+6		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame  	&   \\
 \hline
 \end{tabular}
-\tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, Sirius, $\alpha$ Cen A or Vega.}
+\tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, (which include Sirius and Vega) or alternatively $\alpha$ Cen A.}
 \vspace{0.05in}
 \end{table}
 
@@ -285,6 +291,8 @@ There are several ways to improve saturation limits:
 \item Use a narrowband filter, such as F121N
 \item Use a small subarray - 64 $\times$ 64 is supported for science. There will be an engineering jitter monitoring test with an 8 $\times$ 8 subarray 
 \end{itemize}
+
+One could also defocus the stars with a weak lens, but the longer read times needed to capture the hexagon of the weak lens end up with saturation limits that are not as good as the coronagraph.
 
 Sensitivity and saturation limits make use of \texttt{pysynphot} \citep{lim2015pysynphot} with Phoenix stellar models \citep{allard2012phoenix} ranging from 4.0 to 5.0 in log(g).
 
