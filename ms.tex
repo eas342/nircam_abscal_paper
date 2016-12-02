@@ -94,7 +94,7 @@
 %% anywhere in the paper, not just in the front matter.
 %% As in the title, use \\ to force line breaks.
 
-\author{E. Schlawin, M. Rieke, G. Rieke, K. Misselt}
+\author{E. Schlawin, Jarron Leisenring, M. Rieke, G. Rieke, K. Misselt}
 \affil{Steward Observatory, Tucson AZ 85721}
 \email{eas342@email.arizona.edu}
 
@@ -295,6 +295,30 @@ There are several ways to improve saturation limits:
 One could also defocus the stars with a weak lens, but the longer read times needed to capture the hexagon of the weak lens end up with saturation limits that are not as good as the coronagraph.
 
 Sensitivity and saturation limits make use of \texttt{pysynphot} \citep{lim2015pysynphot} with Phoenix stellar models \citep{allard2012phoenix} ranging from 4.0 to 5.0 in log(g).
+
+\subsubsection{Complications with PSF}
+A Lyot pupil mask must be used when imaging through the neutral density squares since the wedges that redirect light through NIRCam's corographic masks and neutral density squares are co-located with the Lyot stop pupil masks.
+In addition to lowering the transmission by a factor of 0.19\%, the Lyot stops spread out the PSF as compared to direct imaging.
+Figure \ref{fig:psfComparison} shows example PSFs calculated with \texttt{webbpsf} \citep{perrin2012webbpsf}.
+Figure \ref{fig:psfDirect} shows the direct image PSF versus the the coronographic PSF (Figure \ref{fig:psfND}) both normalized to the peak pixel.
+
+When using the ND filter and Lyot stop, the aperture photometry must account for the large secondary peaks of the PSF.
+This can be accomplished with a large aperture covering all the secondary peaks assuming that the background levels are low and that there are no nearby sources.
+Alternatively, one could extract the flux from the core of the PSF.
+
+\begin{figure*}
+\centering
+\subfloat[Direct Imaging PSF]{
+	\includegraphics[width=0.45\textwidth]{psf_direct.pdf}
+	\label{fig:psfDirect}
+	}
+\subfloat[NGC 2506]{
+	\includegraphics[width=0.45\textwidth]{psf_ND.pdf}
+	\label{fig:psfND}
+	}
+	\caption{The direct imaging PSF and coronagraphic PSF which is modified by the Lyot stop from \texttt{webbpsf}. Both images are normalized by the peak pixel value and have arbitrary array positions. Aperture photometry of the sources imaged through the corograph will have to use a large aperture encompassing the 6 outer peaks or apply careful background subtraction. Both PSFs were calculated for NIRCam's long wavelength channel with a F444W filter.}
+	\label{fig:psfComparison}
+\end{figure*} 
 
 \section*{Acknowledgements}
 %\acknowledgments
