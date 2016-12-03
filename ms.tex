@@ -259,19 +259,19 @@ The same configuration can then be used on move to fainter sources.
 \begin{table}
 \centering
 \caption{Conversion from Directly Calibrated Source to Deep Calibrator}\label{tab:clusterProp}
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{lrrrrrrr}
 \hline \hline
-Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& t$_{exp} (s) $\\
+Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& Filter & t$_{exp} (s) $\\
 \hline \hline
-1		& MSX Calibrator\tablenotemark{a}	& A1 V to M0 III		& -3 to 0.1		& On	&	64$\times$64	&  0.1 \\
-2		& Bright JWST Calibrator			& G2 V			& 6	  		& On  &	32$\times$32	&   \\
-3		& Medium Calibrator				& G2 V			& 6  			& Off &	32$\times$32	&   \\
-4		& Faint Calibrator				& G2 V			& 16 			& Off &	32$\times$32	&   \\
-5		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame	&   \\
-6		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame  	&   \\
+1		& MSX Calibrator\tablenotemark{a}	& A1 V to M0 III		& -3 to 0.1		& On	&	64$\times$64	& F430M &  0.2 \\
+2		& Bright JWST Calibrator			& G2 V			& 6	  		& On &	64$\times$64	& F430M &  220 \\
+3		& Bright JWST Calibrator			& G2 V			& 6  			& Off &	64$\times$64	& F430M &  0.1 \\
+4		& Faint Calibrator				& G2 V			& 16 			& Off &	64$\times$64	& F430M &  94 \\
+5		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame	& F430M &  107 \\
+6		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame  	& F444W &  21 \\
 \hline
 \end{tabular}
-\tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, (which include Sirius and Vega) or alternatively $\alpha$ Cen A.}
+\tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, (which include Sirius and Vega) or alternatively $\alpha$ Cen A. The exposure times given are the times needed to reach at least SNR=200, rounded up to the next group up the ramp.}
 \vspace{0.05in}
 \end{table}
 
@@ -316,7 +316,7 @@ Alternatively, one could extract the flux from the core of the PSF.
 	\includegraphics[width=0.45\textwidth]{psf_ND.pdf}
 	\label{fig:psfND}
 	}
-	\caption{The direct imaging PSF and coronagraphic PSF which is modified by the Lyot stop from \texttt{webbpsf}. Both images are normalized by the peak pixel value and have arbitrary array positions. Aperture photometry of the sources imaged through the corograph will have to use a large aperture encompassing the 6 outer peaks or apply careful background subtraction. Both PSFs were calculated for NIRCam's long wavelength channel with a F444W filter.}
+	\caption{The direct imaging PSF and coronagraphic PSF which is modified by the Lyot stop from \texttt{webbpsf}. Both images are normalized by the peak pixel value and have arbitrary array positions. Aperture photometry of the sources imaged through the corograph will have to use a large aperture encompassing the 6 outer peaks or apply careful background subtraction. Both PSFs were calculated for NIRCam's long wavelength channel with a F430M filter.}
 	\label{fig:psfComparison}
 \end{figure*} 
 
