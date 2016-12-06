@@ -246,14 +246,19 @@ The code runs into segmentation faults if attempting Roughtype 1 with the \textt
 \section{Transferring to Directly Calibrated Sources}
 
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
-As an independent check on those transfers, NIRCam can be used to observe those directly calibrated sources and transfer from the brightest ($K \sim -1$) sources all the way to the faintest calibrators ($K \sim 16$).
-Observing these bright sources (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of narrowband filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
-The same configuration can then be used on move to fainter sources.
+As an independent check on those transfers, NIRCam can be used to observe those directly calibrated sources and transfer from the brightest ($K \sim -3$) sources all the way to the faintest calibrators ($K \sim 16$).
+Figure \ref{fig:msxNCfilterOverlap} shows the MSX filters B1 and B2 as compared to the NIRCam long wavelength filters with some overlap and that the F430M filter most closely matches the MSX bands.
+Figure \ref{fig:msxNCfilterOverlap} also shows model spectra from \citet{castelli2004models} for the MSX calibrator stars in \citet{price2004msxCal} near these bandpasses.
+The flux has been normalized for each star at 3.6~$\mu$m and then offset for clarity.
+
+Observing these bright sources (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of medium-band filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
+Using \texttt{webbpsf} and the throughputs in a program called \texttt{pynrc}, we calculate the saturation limits for 2 groups in RAPID mode and find a K-magnitude of saturation of -4.0 for an A1 V star like Sirius and -3.7 for an M3 III star like Gacrux.
+This means that the entire sample of stars from \citet{price2004msxCal} are observable in this coronagraphic neutral density mode.
 
 \begin{figure}[!hbtp]
 \centering
-\includegraphics[width=.4\columnwidth]{msx_nircam_filt.pdf}
-\caption{NIRCam filters as compared to the MSX short wavelength filters from \citet{egan1999msxGuide}. F430M best matches the MSX filters.}\label{fig:NCFOV}
+\includegraphics[width=.55\columnwidth]{msx_nircam_filt.pdf}
+\caption{NIRCam filter throughputs (top), MSX filter throughputs \citep{egan1999msxGuide} (middle) and model spectra of MSX calibrator stars (bottom). F430M best matches the MSX filters.}\label{fig:msxNCfilterOverlap}
 \end{figure}
 
 \begin{table}
