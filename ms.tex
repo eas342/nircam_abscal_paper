@@ -231,6 +231,7 @@ Only 10 stars fit within NIRCam's FOV.}\label{fig:NCFOV}
 \end{figure}
 
 \section{Spectral Typing of Candidate Analogs}
+The Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} was used to obtain spectra of candidate solar analogs in the clusters .
 
 \subsection{Notes on using \texttt{mkclass}}
 
@@ -243,27 +244,25 @@ We use the \texttt{libnor36} library, which appears to work with the "Roughtype 
 The code runs into segmentation faults if attempting Roughtype 1 with the \texttt{libnor36} library.
 
 \clearpage
+
 \section{Transferring to Directly Calibrated Sources}
 
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
 As an independent check on those transfers, NIRCam can be used to observe those directly calibrated sources and transfer from the brightest ($K \sim -3$) sources all the way to the faintest calibrators ($K \sim 16$).
-Figure \ref{fig:msxNCfilterOverlap} shows the MSX filters B1 and B2 as compared to the NIRCam long wavelength filters with some overlap and that the F430M filter most closely matches the MSX bands.
-Figure \ref{fig:msxNCfilterOverlap} also shows model spectra from \citet{castelli2004models} for the MSX calibrator stars in \citet{price2004msxCal} near these bandpasses.
-The flux has been normalized for each star at 3.6~$\mu$m and then offset for clarity.
+Figure \ref{fig:sensitivityLadder} shows a schematic of the steps.
+NIRCam can observe the the Midcourse Survey Experiment (MSX) calibrators \citep{price2004msxCal}, as discussed in Section \ref{sec:brightStarMode}.
+The same instrument configuration, source location would be used to transfer to a JWST standard.
 
-Observing these bright sources (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of medium-band filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
-Using \texttt{webbpsf} and the throughputs in a program called \texttt{pynrc}, we calculate the saturation limits for 2 groups in RAPID mode and find a K-magnitude of saturation of -4.0 for an A1 V star like Sirius and -3.7 for an M3 III star like Gacrux.
-This means that the entire sample of stars from \citet{price2004msxCal} are observable in this coronagraphic neutral density mode.
 
-\begin{figure}[!hbtp]
+\begin{figure}[!t]
 \centering
-\includegraphics[width=.55\columnwidth]{msx_nircam_filt.pdf}
-\caption{NIRCam filter throughputs (top), MSX filter throughputs \citep{egan1999msxGuide} (middle) and model spectra of MSX calibrator stars (bottom). F430M best matches the MSX filters.}\label{fig:msxNCfilterOverlap}
+\includegraphics[width=.6\columnwidth]{flux_ladder.pdf}
+\caption{Sensitivity ladder going a sub-array, neutral density filter observation a MSX standard to a full array, non-neutral density filter of a faint calibrator.}\label{fig:sensitivityLadder}
 \end{figure}
 
-\begin{table}
+\begin{table}[!b]
 \centering
-\caption{Conversion from Directly Calibrated Source to Deep Calibrator}\label{tab:clusterProp}
+\caption{Conversion from Directly Calibrated Source to Deep Calibrator}\label{tab:conversionSteps}
 \begin{tabular}{lrrrrrrr}
 \hline \hline
 Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& Filter & t$_{exp} (s) $\\
@@ -280,13 +279,9 @@ Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& Filter & 
 \vspace{0.05in}
 \end{table}
 
-\begin{figure}[!hbtp]
-\centering
-\includegraphics[width=.6\columnwidth]{flux_ladder.pdf}
-\caption{Sensitivity ladder going a sub-array, neutral density filter observation a MSX standard to a full array, non-neutral density filter of a faint calibrator.}\label{fig:sensitityLadder}
-\end{figure}
 
-\subsection{Ways to Observe Really Bright Stars With NIRCam}
+
+\subsection{Ways to Observe Really Bright Stars With NIRCam}\label{sec:brightStarMode}
 
 There are several ways to improve saturation limits:
 \begin{itemize}
@@ -300,6 +295,26 @@ There are several ways to improve saturation limits:
 One could also defocus the stars with a weak lens, but the longer read times needed to capture the hexagon of the weak lens end up with saturation limits that are not as good as the coronagraph.
 
 Sensitivity and saturation limits make use of \texttt{pysynphot} \citep{lim2015pysynphot} with Phoenix stellar models \citep{allard2012phoenix} ranging from 4.0 to 5.0 in log(g).
+
+\subsection{Tie-in to MSX}
+
+Figure \ref{fig:msxNCfilterOverlap} shows the MSX filters B1 and B2 as compared to the NIRCam long wavelength filters with some overlap and that the F430M filter is the best match with the MSX bands.
+Figure \ref{fig:msxNCfilterOverlap} also shows model spectra from \citet{castelli2004models} for the MSX calibrator stars in \citet{price2004msxCal} near these bandpasses.
+The flux has been normalized for each star at 3.6~$\mu$m and then offset for clarity
+We use the nearest match between the stellar types from the Simbad database and the suggested \citet{castelli2004models} parameters\footnote{http://www.stsci.edu/hst/observatory/crds/castelli\_kurucz\_atlas.html}.
+
+Observing these bright sources (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of medium-band filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
+Using \texttt{webbpsf} and the throughputs in a program called \texttt{pynrc}, we calculate the saturation limits for 2 groups in RAPID mode and find a K-magnitude of saturation of -4.0 for an A1 V star like Sirius and -3.7 for an M3 III star like Gacrux.
+This means that the entire sample of stars from \citet{price2004msxCal} are observable in this coronagraphic neutral density mode.
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=.55\columnwidth]{msx_nircam_filt.pdf}
+\caption{NIRCam filter throughputs (top), MSX filter throughputs \citep{egan1999msxGuide} (middle) and model spectra of MSX calibrator stars (bottom). F430M best matches the MSX filters.}\label{fig:msxNCfilterOverlap}
+\end{figure}
+
+
+
 
 \subsubsection{Complications with PSF}
 A Lyot pupil mask must be used when imaging through the neutral density squares since the wedges that redirect light through NIRCam's corographic masks and neutral density squares are co-located with the Lyot stop pupil masks.
@@ -330,6 +345,7 @@ Alternatively, one could extract the flux from the core of the PSF.
 
 Funding for the NIRCam team is provided by NASA Goddard Spaceflight Center. This research has made use of the WEBDA database, operated at the Department of Theoretical Physics and Astrophysics of the Masaryk University.
 Observations reported here were obtained at the MMT Observatory, a joint facility of the University of Arizona and the Smithsonian Institution.
+This paper uses data products produced by the OIR Telescope Data Center, supported by the Smithsonian Astrophysical Observatory.
 The Pan-STARRS1 Surveys (PS1) have been made possible through contributions of the Institute for Astronomy, the University of Hawaii, the Pan-STARRS Project Office, the Max-Planck Society and its participating institutes, the Max Planck Institute for Astronomy, Heidelberg and the Max Planck Institute for Extraterrestrial Physics, Garching, The Johns Hopkins University, Durham University, the University of Edinburgh, Queen's University Belfast, the Harvard-Smithsonian Center for Astrophysics, the Las Cumbres Observatory Global Telescope Network Incorporated, the National Central University of Taiwan, the Space Telescope Science Institute, the National Aeronautics and Space Administration under Grant No. NNX08AR22G issued through the Planetary Science Division of the NASA Science Mission Directorate, the National Science Foundation under Grant No. AST-1238877, the University of Maryland, and Eotvos Lorand University (ELTE) and the Los Alamos National Laboratory. 
 
 %If used, some data was collected from the Open Exoplanet Catalogue \citep{rein2012openExoCat}.
@@ -433,6 +449,12 @@ The Pan-STARRS1 Surveys (PS1) have been made possible through contributions of t
 
 \appendix
 
+\section{Notes to Self}
+
+\subsubsection{Backgrounds}
+
+Zodiacal background is expressed as a function of the minimum zodiacal background in \texttt{pynrc}.
+Average across the sky has zfact = 2.5.
 
 %% The reference list follows the main body and any appendices.
 %% Use LaTeX's thebibliography environment to mark up your reference list.
