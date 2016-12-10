@@ -245,13 +245,16 @@ The code runs into segmentation faults if attempting Roughtype 1 with the \textt
 
 \clearpage
 
-\section{Transferring to Directly Calibrated Sources}
+\section{Transferring to Directly Calibrated Sources - the NIRCam Flux Ladder}
 
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
 As an independent check on those transfers, NIRCam can be used to observe those directly calibrated sources and transfer from the brightest ($K \sim -3$) sources all the way to the faintest calibrators ($K \sim 16$).
-Figure \ref{fig:sensitivityLadder} shows a schematic of the steps.
-NIRCam can observe the the Midcourse Survey Experiment (MSX) calibrators \citep{price2004msxCal}, as discussed in Section \ref{sec:brightStarMode}.
-The same instrument configuration, source location would be used to transfer to a JWST standard.
+Figure \ref{fig:sensitivityLadder} shows a schematic of the steps beginning with Midcourse Survey Experiment (MSX) calibrators \citep{price2004msxCal}.
+
+The methodology of the flux ladder is that only one type of change is made in each step - either an instrument re-configuration is made on the same source or a new source is measured with the same instrument configuration.
+As listed in Table \ref{tab:conversionSteps}, the direct calibrator would be observed in a neutral density square, subarray and medium band filter while using the coronagraphic pupil.
+For the next step, this same instrument configuration will be used on a bright JWST standard, such as HD 37962 (G2 V, K=6.27).
+Getting sufficient signal to noise (S/N$\sim$200) on a faint calibrator such as P330E (G2 V, K=11.4) would require unfeasibly long integration times and more steps so the bright calibrators are preferred for steps 2 and 3.
 
 
 \begin{figure}[!t]
@@ -263,36 +266,42 @@ The same instrument configuration, source location would be used to transfer to 
 \begin{table}[!b]
 \centering
 \caption{Conversion from Directly Calibrated Source to Deep Calibrator}\label{tab:conversionSteps}
-\begin{tabular}{lrrrrrrr}
+\begin{tabular}{lrrrrrrrr}
 \hline \hline
-Step		& Source						& Spectral Type	& K Mag		& ND Filter		& Subarray	& Filter & t$_{exp} (s) $\\
+Step		& Source						& Spectral Type	& $K_\mathrm{src}$		& ND Square		& Subarray	& Filter & t$_\mathrm{exp} (s) $ &$K_\mathrm{sat}$\\
 \hline \hline
-1		& MSX Calibrator\tablenotemark{a}	& A1 V to M0 III		& -3 to 0.1		& On	&	64$\times$64	& F430M &  0.2 \\
-2		& Bright JWST Calibrator			& G2 V			& 6	  		& On &	64$\times$64	& F430M &  220 \\
-3		& Bright JWST Calibrator			& G2 V			& 6  			& Off &	64$\times$64	& F430M &  0.1 \\
-4		& Faint Calibrator				& G2 V			& 16 			& Off &	64$\times$64	& F430M &  94 \\
-5		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame	& F430M &  107 \\
-6		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame  	& F444W &  21 \\
+1		& MSX Calibrator\tablenotemark{a}	& A1 V to M0 III		& -3 to 0.1		& On	&	64$\times$64	& F430M &  0.2 & -4.0 \\
+2		& Bright JWST Calibrator			& G2 V			& 6.5	  		& On &	64$\times$64	& F430M &  220 & -4.0 \\
+3		& Bright JWST Calibrator			& G2 V			& 6.5  		& Off &	64$\times$64	& F430M &  0.1 & 6.2 \\
+4		& Faint Calibrator				& G2 V			& 16 			& Off &	64$\times$64	& F430M &  94 & 6.2 \\
+5		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame	& F430M &  107 & 12 \\
+6		& Faint Calibrator				& G2 V			& 16 			& Off &	Full Frame  	& F444W &  21 & 13.7 \\
 \hline
 \end{tabular}
-\tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, (which include Sirius and Vega) or alternatively $\alpha$ Cen A. The exposure times given are the times needed to reach at least SNR=200, rounded up to the next group up the ramp.}
+\tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, (which include Sirius and Vega) or alternatively $\alpha$ Cen A. The exposure times given are the times needed to reach at least SNR=200, rounded up to the next group up the ramp. The saturation limit is the 80\% well depth for 2 non-destructive reads up the ramp following a reset.}
 \vspace{0.05in}
 \end{table}
 
+The bright JWST calibrator can be used to convert from the ND filter with a coronagraphic pupil mask to direct imaging.
+This instrument configuration is now capable of observing faint calibrators (K$\sim$16) with only $\sim$ 100 sec of integration time.
+The final three steps would be to convert from subarray imaging to full frame imaging and change the filter, which would require a model for the stellar flux in these bands.
+Either a well-characterized white dwarf spectrum of a known standard or a faint G2 V standard from an open cluster would be good candidates for this transfer of filters.
 
+\subsection{Ways to Observe Bright Stars}\label{sec:brightStarMode}
 
-\subsection{Ways to Observe Really Bright Stars With NIRCam}\label{sec:brightStarMode}
-
-There are several ways to improve saturation limits:
+There are several ways to improve saturation limits with NIRCam:
 \begin{itemize}
-\item Cut down the aperture size with a Lyot stop. These have 19\% throughput, but make the PSF shapes strange.
-\item Use a neutral density square in the coronagraph mask. The neutral density filters have an attenuation of around 10$^3$ or 7.5 mags. A color correction would have to be applied for the neutral density filter (since it is wavelength dependent) when transferring to an un-occulted region. Additionally, the Lyot stop that must be in place to use the neutral density filter has a throughput of 19\%, so the total improvement is 8.8 mags
-\item Use a long wavelength grism to spread out the light - this could be used in conjunction with a neutral density square
+\item \textbf{Lyot Stop} Cut down the aperture size with a Lyot stop. These have 19\% throughput (1.8 mags). Additionally, this broadens the PSF - see Figure \ref{fig:psfComparison}.
+The broadening spreads light out by a similar factor (1.8 mags) for a total of 3.5 mags.
+\item \textbf{Neutral Density Square} The neutral density filters have an attenuation of around 10$^3$ or 7.5 mags. A color correction would have to be applied for the neutral density filter (since it is wavelength dependent) when transferring to an un-occulted region. Additionally, the Lyot stop that must be in place to use the neutral density filter so the total improvement is 11 mags over direct imaging.
+\item \textbf{Grisms} For long wavelength observations, one can use grism to spread out the light. This mode still has a saturation limit of $K$=4.6 to 3.5 for the F322W2  filter \citep{greene2016wfss}, which does not reach to the MSX standards. This could be potentially combined with the coronagraph, but both at once hasn't been explored much. One could potentially observe small pieces of the spectrum at a time with a subarray that moves along the spectrum, but this would likely be harder to implement.
+\item \textbf{DHS} The dispersed Hartmann Sensor (DHS) reduces the pupil throughput and spreads the light out to reach saturation limits of $K$=0.2 to 1.5 depending on spectral type \citep{schlawin2017dhs}. This would also have to be read out with a moving subarray to observe the MSX stars.
 \item Use a narrowband filter, such as F121N
 \item Use a small subarray - 64 $\times$ 64 is supported for science. There will be an engineering jitter monitoring test with an 8 $\times$ 8 subarray 
+\item \textbf{Weak Lens} The Weak Lenses spread light out over many pixels which can be helpful for bright stars. However, one needs to read out larger sized subarrays to encompass the entire hexagonal PSF so this somewhat cancels out.
 \end{itemize}
 
-One could also defocus the stars with a weak lens, but the longer read times needed to capture the hexagon of the weak lens end up with saturation limits that are not as good as the coronagraph.
+Of the many options here, the most feasible method is the neutral density square with the Lyot Coronagraphic pupil mask.
 
 Sensitivity and saturation limits make use of \texttt{pysynphot} \citep{lim2015pysynphot} with Phoenix stellar models \citep{allard2012phoenix} ranging from 4.0 to 5.0 in log(g).
 
