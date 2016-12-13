@@ -297,7 +297,7 @@ This step would not be direct link in the NIRCam flux ladder since it would requ
 
 \subsection{Ways to Observe Bright Stars}\label{sec:brightStarMode}
 
-There are several ways to improve saturation limits with NIRCam:
+There are several ways to improve saturation limits with NIRCam over direct imaging:
 \begin{itemize}
 \item \textbf{Lyot Stop} Cut down the aperture size with a Lyot stop. These have 19\% throughput (1.8 mags). Additionally, this broadens the PSF - see Figure \ref{fig:psfComparison}.
 The broadening spreads light out by a similar factor (1.8 mags) for a total of 3.5 mags.
@@ -312,14 +312,13 @@ Care must be taken with dithering to ensure that non-uniform optical depth of th
 \end{itemize}
 
 Of the many options here, the most feasible method is the neutral density square with the Lyot Coronagraphic pupil mask.
-
 Sensitivity and saturation limits make use of \texttt{pysynphot} \citep{lim2015pysynphot} with Phoenix stellar models \citep{allard2012phoenix} ranging from 4.0 to 5.0 in log(g).
 
 \subsection{Tie-in to MSX}
 
 Figure \ref{fig:msxNCfilterOverlap} shows the MSX filters B1 and B2 as compared to the NIRCam long wavelength filters with some overlap and that the F430M filter is the best match with the MSX bands.
 Figure \ref{fig:msxNCfilterOverlap} also shows model spectra from \citet{castelli2004models} for the MSX calibrator stars in \citet{price2004msxCal} near these bandpasses.
-The flux has been normalized for each star at 3.6~$\mu$m and then offset for clarity
+The flux has been normalized for each star at 3.6~$\mu$m and then offset for clarity.
 We use the nearest match between the stellar types from the Simbad database and the suggested \citet{castelli2004models} parameters\footnote{http://www.stsci.edu/hst/observatory/crds/castelli\_kurucz\_atlas.html}.
 
 Observing these bright sources (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of medium-band filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
@@ -331,9 +330,6 @@ This means that the entire sample of stars from \citet{price2004msxCal} are obse
 \includegraphics[width=.55\columnwidth]{msx_nircam_filt.pdf}
 \caption{NIRCam filter throughputs (top), MSX filter throughputs \citep{egan1999msxGuide} (middle) and model spectra of MSX calibrator stars (bottom). F430M best matches the MSX filters.}\label{fig:msxNCfilterOverlap}
 \end{figure}
-
-
-
 
 \subsubsection{Complications with PSF}
 A Lyot pupil mask must be used when imaging through the neutral density squares since the wedges that redirect light through NIRCam's corographic masks and neutral density squares are co-located with the Lyot stop pupil masks.
