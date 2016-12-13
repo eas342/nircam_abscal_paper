@@ -251,16 +251,13 @@ The primary JWST standards for absolute calibration have been tied to directly c
 As an independent check on those transfers, NIRCam can be used to observe those directly calibrated sources and transfer from the brightest ($K \sim -3$) sources all the way to the faintest calibrators ($K \sim 16$).
 Figure \ref{fig:sensitivityLadder} shows a schematic of the steps beginning with Midcourse Survey Experiment (MSX) calibrators \citep{price2004msxCal}.
 
-The methodology of the flux ladder is that only one type of change is made in each step - either an instrument re-configuration is made on the same source or a new source is measured with the same instrument configuration.
-As listed in Table \ref{tab:conversionSteps}, the direct calibrator would be observed in a neutral density square, subarray and medium band filter while using the coronagraphic pupil.
-For the next step, this same instrument configuration will be used on a bright JWST standard, such as HD 37962 (G2 V, K=6.27).
-Getting sufficient signal to noise (S/N$\sim$200) on a faint calibrator such as P330E (G2 V, K=11.4) would require unfeasibly long integration times and more steps so the bright calibrators are preferred for steps 2 and 3.
 
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=.6\columnwidth]{flux_ladder.pdf}
-\caption{Sensitivity ladder going a sub-array, neutral density filter observation a MSX standard to a full array, non-neutral density filter of a faint calibrator.}\label{fig:sensitivityLadder}
+\includegraphics[width=.55\columnwidth]{flux_ladder.pdf}
+\caption{Sensitivity ladder going a sub-array, neutral density filter observation a MSX standard to a full array, non-neutral density filter of a faint calibrator.
+An intermediate standard can be used to check the NIRCam transfers against other observatories and instruments.}\label{fig:sensitivityLadder}
 \end{figure}
 
 \begin{table}[!b]
@@ -282,10 +279,21 @@ Step		& Source						& Spectral Type	& $K_\mathrm{src}$		& ND Square		& Subarray	
 \vspace{0.05in}
 \end{table}
 
-The bright JWST calibrator can be used to convert from the ND filter with a coronagraphic pupil mask to direct imaging.
-This instrument configuration is now capable of observing faint calibrators (K$\sim$16) with only $\sim$ 100 sec of integration time.
-The final three steps would be to convert from subarray imaging to full frame imaging and change the filter, which would require a model for the stellar flux in these bands.
+The methodology of the flux ladder is that only one type of change is made in each step - either an instrument re-configuration is made on the same source or a new source is measured with the same instrument configuration.
+As listed in Table \ref{tab:conversionSteps}, the direct calibrator would be observed in a neutral density square, subarray and medium band filter while using the coronagraphic pupil.
+For the next step, this same instrument configuration will be used on a bright JWST standard, such as HD 37962 (G2 V, $K$=6.27).
+Getting sufficient signal to noise (S/N$\sim$200) on a faint calibrator such as P-330E (G2 V, $K$=11.4) would require unfeasibly long integration times and more steps so the bright calibrators are preferred for steps 2 and 3.
+
+This bright JWST standard would be used to transfer from the the ND filter with a coronagraphic pupil mask to direct imaging.
+This conversion step can independently be checked against other instruments' measurements of the bright JWST calibrator, such as by STIS with HST and also tied to other JWST calibrators.
+The next step would be to use the same direct image configuration and subarray size to observe a faint JWST calibrator around $K \sim$15.
+S/N ratios of 200 can be achieved in 94 seconds in this mode.
+This calibrator star would now be observable in full frame mode without saturation so the next step would be a conversion from subarray to full frame on the same source.
+To calibrate the wide band filters, such as F444W, one final step would be needed to go from the medium to wide band photometry using a model for the star.
 Either a well-characterized white dwarf spectrum of a known standard or a faint G2 V standard from an open cluster would be good candidates for this transfer of filters.
+
+Figure \ref{fig:sensitivityLadder} shows that an intermediate JWST standard such as P-330 E can be used to check transfers and detector linearity corrections.
+This step would not be direct link in the NIRCam flux ladder since it would require more transfers to achieve the end goal of full frame wide band imaging, but serves as another check on the transfers from bright to faint targets.
 
 \subsection{Ways to Observe Bright Stars}\label{sec:brightStarMode}
 
@@ -293,7 +301,9 @@ There are several ways to improve saturation limits with NIRCam:
 \begin{itemize}
 \item \textbf{Lyot Stop} Cut down the aperture size with a Lyot stop. These have 19\% throughput (1.8 mags). Additionally, this broadens the PSF - see Figure \ref{fig:psfComparison}.
 The broadening spreads light out by a similar factor (1.8 mags) for a total of 3.5 mags.
-\item \textbf{Neutral Density Square} The neutral density filters have an attenuation of around 10$^3$ or 7.5 mags. A color correction would have to be applied for the neutral density filter (since it is wavelength dependent) when transferring to an un-occulted region. Additionally, the Lyot stop that must be in place to use the neutral density filter so the total improvement is 11 mags over direct imaging.
+\item \textbf{Neutral Density Square} The neutral density filters have an attenuation of around 10$^3$ or 7.5 mags. A color correction would have to be applied for the neutral density filter (since it is wavelength dependent) when transferring to an un-occulted region.
+Additionally, the Lyot stop that must be in place to use the neutral density filter so the total improvement is 11 mags over direct imaging.
+Care must be taken with dithering to ensure that non-uniform optical depth of the neutral density filter doesn't affect the photometry.
 \item \textbf{Grisms} For long wavelength observations, one can use grism to spread out the light. This mode still has a saturation limit of $K$=4.6 to 3.5 for the F322W2  filter \citep{greene2016wfss}, which does not reach to the MSX standards. This could be potentially combined with the coronagraph, but both at once hasn't been explored much. One could potentially observe small pieces of the spectrum at a time with a subarray that moves along the spectrum, but this would likely be harder to implement.
 \item \textbf{DHS} The dispersed Hartmann Sensor (DHS) reduces the pupil throughput and spreads the light out to reach saturation limits of $K$=0.2 to 1.5 depending on spectral type \citep{schlawin2017dhs}. This would also have to be read out with a moving subarray to observe the MSX stars.
 \item Use a narrowband filter, such as F121N
