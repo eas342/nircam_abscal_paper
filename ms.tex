@@ -155,12 +155,64 @@ Additionally, we discuss some of the NIRCam modes that can be used to tie JWST c
 
 The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration for many of its science goals.
 Many studies of dark energy make use of Type Ia Supernovae as standard candles and improvements to the absolute flux calibration are important for improving their luminosity distances.
+JWST will have no standard calibration sources onboard so all calibration must be performed with astronomical sources.
+
+The JWST flux calibration effort has been described in \citet{gordon2009fluxplan1} and \citet{gordon2011fluxplan2}.
+It is still being developed and refined.
+Figure \ref{fig:JWStcalsWideF} shows several of the sources that will be used for flux calibration.
+These include three categories: 1) hot stars (white dwarf and OB stars) 2) G-stars (which are solar-like) and 3) A-type stars.
+The variety of spectra used in JWST calibration can mitigate against biases when models are used to convert flux in one filter to the expected flux in another filter.
+
+The original flux calibration effort has mainly bright stars ($K \lesssim 15$).
+Example spectra for these calibrators are shown in Figure \ref{fig:JWStcalsWideF} with saturation and sensitivity limits of NIRCam's wide filters.
+Many of these spectra will saturate the NIRCam detectors when used in full frame (shown as the middle parts of the black ``error bars'').
+Furthermore, there may be systematic errors when observing faint targets and low detector well depths.
+\textcolor{red}{[Have a detector person - Karl, Jarron or George read the rest of this paragraph:]}
+As an example of a systematic detector effect, consider charge traps within a detector.
+These traps would tend to decrease the measured number of electrons per second on the first exposure because they would trap electrons  that would not be read out by an amplifier.
+For bright sources, the effect of the traps would be smaller since they would quickly be a small fraction of the flux.
+For faint sources, however, the traps would be a larger fraction of the incoming electrons.
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=.6\columnwidth]{nircam_wide_filters.png}
+\caption{The NIRCam subarray saturation, full frame saturation and 10~$\sigma$ sensitivity limits for wide band imaging from \citet{gordon2011fluxplan2}. The three values are shown as upper, middle and lower limit error bars respectively. For comparison, three classes of JWST calibrators are shown: hot stars including white dwarfs (blue), A-type stars (green) and G-type stars (red). Additional faint calibrators are needed to extend the sample from \citet{gordon2011fluxplan2} towards the faint limits of NIRCam.}\label{fig:JWStcalsWideF}
+\end{figure}
+
+In this report, we discuss a NIRCam-led effort to identify and calibrate stars to add to the JWST sample on the fainter end around $K \approx 15$.
+We choose the method of \citet{rieke2008absIRcal}, which uses solar-like stars for flux calibration.
+The basic rationale is that the Solar spectrum is well measured across JWST's wavelengths \citep[0.6~$\mu$m to 29~$\mu$m][]{gardner2006SSRv} and has highly accurate models for its spectrum.
+When solar-like stars are identified, one can use these models to convert from one photometric or spectroscopic band to another.
+We identify solar-like stars in open clusters because it allows us to average over multiple stars and to cross-calibrate with bright references within the cluster.
+The color magnitude diagram of the cluster also allows us to identify solar like stars and aids in the corrections for extinction.
 
 \section{Cluster Properties}
+
+Our team examined open clusters from the WEBDA database\footnote{https://www.univie.ac.at/webda/webda.html} to find clusters most suitable for flux calibration with solar-like stars.
+The parameters under consideration were the the following:
+\begin{itemize}
+\item {\bf Age:} For the methods to work, the solar-mass stars must be on the main sequence. This means the age of the cluster must be between 0.2 Gyr (??) and 8 Gyr (??) using Dartmouth evolutionary models \citep{dotter2008dartmouth}.
+\item {\bf Extinction} Extinction should be as small as possible to minimize the effects of extinction correction to photometry. This generally means E(B-V) $\lesssim < 0.1$.
+\item {\bf Distance Modulus} The cluster must be distant enough to not saturate NIRCam's wide filters in full frame mode.
+\item {\bf Metallicity}
+\item {\bf Compactness}
+\item {\bf Ancillary data}
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=.4\columnwidth]{cluster_visibilty.pdf}
+\caption{Visibility windows for the three open clusters considered in this report.
+The planned commissioning period is shown with vertical blue dashed lines.}\label{fig:clusterVis}
+\end{figure}
+
 
 The WEBDA database had parameters that were significantly different from the literature.
 For example E(B-V) = 0.16 for NGC 6811 whereas \citet{molendaz2016spec6811} has E(B-V) = 0.05.
 We therefore did a literature search for the most recent available cluster parameters.
+Table \ref{tab:clusterProp} shows the properties gathered from the literature.
+The most up-to-date literature values indicate that all three clusters have low extinction with E(B-V) $<$ 0.1.
+Including uncertainties, the extinctions are actually all consistent with 0.06, but it should be noted that the NGC 2506 uncertainties are likely underestimated since their were derived from a standard error of the mean and may not include systematics.
 
 \begin{table}
 \centering
@@ -469,7 +521,7 @@ The Pan-STARRS1 Surveys (PS1) have been made possible through contributions of t
 \subsubsection{Backgrounds}
 
 Zodiacal background is expressed as a function of the minimum zodiacal background in \texttt{pynrc}.
-Average across the sky has zfact = 2.5.
+From the code documentation: average across the sky has zfact = 2.5.
 
 %% The reference list follows the main body and any appendices.
 %% Use LaTeX's thebibliography environment to mark up your reference list.
