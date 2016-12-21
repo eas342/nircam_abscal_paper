@@ -156,6 +156,7 @@ Additionally, we discuss some of the NIRCam modes that can be used to tie JWST c
 The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration for many of its science goals.
 Many studies of dark energy make use of Type Ia Supernovae as standard candles and improvements to the absolute flux calibration are important for improving their luminosity distances.
 JWST will have no standard calibration sources onboard so all calibration must be performed with astronomical sources.
+While there were internal lamps in original designs, the envelopes for the filaments did not make it through testing so the sources were removed.
 
 The JWST flux calibration effort has been described in \citet{gordon2009fluxplan1} and \citet{gordon2011fluxplan2}.
 It is still being developed and refined.
@@ -193,17 +194,22 @@ The parameters under consideration were the the following:
 \begin{itemize}
 \item {\bf Age:} For the methods to work, the solar-mass stars must be on the main sequence. If we require that a solar mass star have $T_{\rm eff}$ = 5780 +/- 100 K, the cluster would have to be between 0.3 Gyr and 10 Gyr using Dartmouth evolutionary models \citep{dotter2008dartmouth}. Furthermore, the age should be $\lesssim$7 Gyr to avoid main sequence turnoff of near-solar stars.
 \item {\bf Extinction} Extinction should be as small as possible to minimize the effects of extinction correction to photometry. Of the clusters found, E(B-V) $\lesssim < 0.1$.
-\item {\bf Distance Modulus} The cluster must be distant enough to not saturate NIRCam's wide filters in full frame mode. The most easily saturated filter for G stars is the F090W, which corresponds to a G2~V star of 15.9. This means the distance modulus should be 12.6 for a solar absolute K=3.28 \citep{binney1998book}.
-The longer wide band filters (F200W, F277W, F356W, and F444W) will not saturate for a distance modulus larger than 11.8.
-\textcolor{red}{Calculate with extinction!}
-\item {\bf Metallicity} Ideally, the cluster should have near-solar metallicity. NGC 2420 and NGC 6811 have -0.08 $<=$ [Fe/H] $<=$ 0.05. NGC 2506, is metal poor at [Fe/H]=-0.32.
+\item {\bf Distance Modulus} The cluster must be distant enough to not saturate NIRCam's wide filters in full frame mode. The most easily saturated filter for G stars is the F090W, which corresponds to a G2~V star of 15.9. This means the true distance modulus $(m - M)_0$ should be 12.6 for a solar absolute K=3.28 \citep{binney1998book}.
+The longer wavelength wide band filters (F200W, F277W, F356W, and F444W) will not saturate for a true distance modulus larger than 11.8.
+If one assumes an extinction of E(B-V) = 0.05 and a Galactic average extinction law \citep{cardelli1989}, the visual distance moduli $(m- M)_V$ should be an additional 0.1 mag.
+\item {\bf Metallicity} Ideally, the cluster should have near-solar metallicity so that the solar mass stars have solar luminosity and solar spectra. 
 \item {\bf Compactness} The cluster should be relatively compact compared to NIRCam's FOV (2'$\times$2' per module). We selected clusters $\lesssim 15\arcmin$
 \item {\bf Ancillary data} The clusters should have ancillary photometry from multiple observatories for cross-calibration. We preferred clusters with 2MASS, WISE and IRAC measurements.
-\item {\bf Visibility} The clusters should be spread out to ensure that at least one is visible during the commissioning period.
+\item {\bf Visibility} The clusters should be spread out in ecliptic longitude to ensure that at least one is visible during the commissioning period.
 \end{itemize}
 
 With all these considerations in play, we selected NGC 2420 as the best fit for the multiple criteria.
-NGC 2506 and NGC 6811 are next-best fits and have somewhat complimentary visibility windows, visible in Figure \ref{fig:clusterVis}.
+The only parameter that is not satisfied is the distance modulus, so additional sources or conversions are needed for the F070W, F090W, F115W and F150W filters.
+At the time NGC 2420 was selected, the JWST throughputs were smaller than the measured values so it saturated fewer filters.
+One way to calibrate these short wavelength, wide filters is to use subarrays.
+The subarray to full frame conversion can be checked with medium band filters.
+NGC 2506 and NGC 6811 are next-best fits and have somewhat complimentary visibility windows, visible in Figure \ref{fig:clusterVis}. NGC 2420 and NGC 6811 have -0.08 $<=$ [Fe/H] $<=$ 0.05.
+NGC 2506, is metal poor at [Fe/H]=-0.32, so corrections must be made for changes to G2 V spectra due to metallicity.
 
 \begin{figure}
 \centering
@@ -239,10 +245,10 @@ NGC 6811\tablenotemark{c}	& 0.05 $\pm$0.02	& 10.29 $\pm$ 0.14	& 0.04 $\pm$ 0.01 
 \tablenotetext{c}{Parameters from \citet{molendaz2016spec6811}}
 \end{table}
 
+\section{Pan-Starrs}
+\subsection{Pan-Starrs Photometry}
 
-\section{Pan-Starrs Photometry}
-
-We obtained $grizy$ Pan-Starrs photometry for all three clusters \citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot}.
+We obtained $grizy$ Pan-Starrs photometry\citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot} for all three clusters.
 We also looked up the $g$ - $r$ colors
 
 \begin{figure*}[!t]
@@ -264,7 +270,7 @@ We also looked up the $g$ - $r$ colors
 	\label{fig:cmdPS}
 \end{figure*} 
 
-\section{UKIRT Photometry}
+\subsection{UKIRT Photometry}
 
 \subsection{Tie-in to 2MASS Photometry}
 
@@ -291,15 +297,6 @@ Only 10 stars fit within NIRCam's FOV.}\label{fig:NCFOV}
 \section{Spectral Typing of Candidate Analogs}
 The Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} was used to obtain spectra of candidate solar analogs in the clusters .
 
-\subsection{Notes on using \texttt{mkclass}}
-
-\subsubsection{Code System}
-The library is organized into files like \texttt{t130l50p00.rbn}.
-The \texttt{t130} specifies 10 $\times$ the class coding system of O3 through M9 visible in the code \texttt{code3spt.c}.
-In this case, \texttt{t130} means code 13.0 and type B7.
-The luminosity class is next \texttt{l50} means V.
-We use the \texttt{libnor36} library, which appears to work with the "Roughtype 2" method for non-rectified data.
-The code runs into segmentation faults if attempting Roughtype 1 with the \texttt{libnor36} library.
 
 \clearpage
 
@@ -413,6 +410,11 @@ Alternatively, one could extract the flux from the core of the PSF.
 	\label{fig:psfComparison}
 \end{figure*} 
 
+\subsubsection{Complications with Flat Fielding}
+The ND filters are not uniform spatially.
+Correcting for any pinholes or blemishes in the ND square surface will likely dominate the error budget for the ND square absolute calibration.
+Accurate positioning can help align the source to the same location on the neutral density square and dithering can be used to check the surface irregularities.
+
 \section*{Acknowledgements}
 %\acknowledgments
 
@@ -524,6 +526,17 @@ The Pan-STARRS1 Surveys (PS1) have been made possible through contributions of t
 \appendix
 
 \section{Notes to Self}
+
+\subsection{Notes on using \texttt{mkclass}}
+
+\subsubsection{Code System}
+The library is organized into files like \texttt{t130l50p00.rbn}.
+The \texttt{t130} specifies 10 $\times$ the class coding system of O3 through M9 visible in the code \texttt{code3spt.c}.
+In this case, \texttt{t130} means code 13.0 and type B7.
+The luminosity class is next \texttt{l50} means V.
+We use the \texttt{libnor36} library, which appears to work with the "Roughtype 2" method for non-rectified data.
+The code runs into segmentation faults if attempting Roughtype 1 with the \texttt{libnor36} library.
+
 
 \subsubsection{Backgrounds}
 
