@@ -113,7 +113,7 @@
 
 \begin{abstract}
 The James Webb Space Telescope (JWST) offers unprecedented sensitivity and stability for science.
-Several of the science areas, such as supernovae measurements for dark energy measurements will require high accuracy absolute calibration.
+Several of the science areas, such as supernovae photometry for dark energy measurements will require high accuracy absolute calibration.
 We discuss a program to identify calibrators at the low end of the flux scale that will not saturate the NIRCam full frame mode.
 We obtain ground based photometry and spectroscopy of three clusters to find solar analog G2 V stars and a solar model spectrum to infer the fluxes in the NIRCam bands.
 Additionally, we discuss some of the NIRCam modes that can be used to tie JWST calibrations directly to primary calibrator stars.
@@ -160,7 +160,7 @@ While there were internal lamps in original designs, the envelopes for the filam
 
 The JWST flux calibration effort has been described in \citet{gordon2009fluxplan1} and \citet{gordon2011fluxplan2}.
 It is still being developed and refined.
-Figure \ref{fig:JWStcalsWideF} shows several of the sources that will be used for flux calibration.
+Figure \ref{fig:JWStcalsWideF} shows several of the sources that will likely be used for flux calibration.
 These include three categories: 1) hot stars (white dwarf and OB stars) 2) G-stars (which are solar-like) and 3) A-type stars.
 The variety of spectra used in JWST calibration can mitigate against biases when models are used to convert flux in one filter to the expected flux in another filter.
 
@@ -240,9 +240,9 @@ NGC 6811\tablenotemark{c}	& 0.05 $\pm$0.02	& 10.29 $\pm$ 0.14	& 0.04 $\pm$ 0.01 
 \hline
 \end{tabular}
 %\caption{G2V-type star saturation K band limits are shown for suggested sub-array sizes. The size affects the number of DHS that can be included, so the noise in the DHS spectra over 1.1 -- 1.9$\mu$m at the given saturation limit for a 1 hour transit is shown in column 4 at native R $\sim$ \DHSresApprox\ resolution.}\label{tab:SatSNRsubA}
-\tablenotetext{a}{All parameters from \citet{pancino2010chem2420}.}
-\tablenotetext{b}{Parameters from \citet{anthonytwarog2016wiyn2506}. Error bars are formal standard errors of the mean, not necessarily capturing systematics.}
-\tablenotetext{c}{Parameters from \citet{molendaz2016spec6811}}
+\tablenotetext{a}{NGC 2420 parameters from \citet{pancino2010chem2420}.}
+\tablenotetext{b}{NGC 2506 parameters from \citet{anthonytwarog2016wiyn2506}. Error bars are formal standard errors of the mean, not necessarily capturing systematics.}
+\tablenotetext{c}{NGC 6811 parameters from \citet{molendaz2016spec6811}}
 \end{table}
 
 \section{Pan-Starrs}
@@ -593,6 +593,10 @@ From the code documentation: average across the sky has zfact = 2.5.
 In these models solar B-V=0.65 for 1~M$_\odot$ at 4.25 Gyr.
 
 \subsection{Isochrones}
+
+As a check on the maximum age, I downloaded Dartmouth Isochrones \citep{dotter2008dartmouth} and plotted the color-magnitude diagram in Figure \ref{fig:isochrones}.
+At 7 Gyr, the main sequence turnoff begins affecting the selection of stars near solar B-V.
+Nearly all open clusters are young ($\lesssim$ 5 Gyr) so this really only affects just NGC 188.
 
 \begin{figure}[!hbtp]
 \centering
