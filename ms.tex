@@ -193,11 +193,12 @@ Our team examined open clusters from the WEBDA database\footnote{https://www.uni
 The parameters under consideration were the the following:
 \begin{itemize}
 \item {\bf Age:} For the methods to work, the solar-mass stars must be on the main sequence. If we require that a solar mass star have $T_{\rm eff}$ = 5780 +/- 100 K, the cluster would have to be between 0.3 Gyr and 10 Gyr using Dartmouth evolutionary models \citep{dotter2008dartmouth}. Furthermore, the age should be $\lesssim$7 Gyr to avoid main sequence turnoff of near-solar stars.
-\item {\bf Extinction} Extinction should be as small as possible to minimize the effects of extinction correction to photometry. Of the clusters found, E(B-V) $\lesssim < 0.1$.
+\item {\bf Extinction} Extinction should be as small as possible to minimize the effects of extinction correction to photometry. Of the clusters found, E(B-V) $\lesssim 0.1$.
 \item {\bf Distance Modulus} The cluster must be distant enough to not saturate NIRCam's wide filters in full frame mode. The most easily saturated filter for G stars is the F090W, which corresponds to a G2~V star of 15.9 in the $K$ band. This means the true distance modulus $(m - M)_0$ should be 12.6 for a solar absolute K=3.28 \citep{binney1998book}.
 The longer wavelength wide band filters (F200W, F277W, F356W, and F444W) will not saturate for a true distance modulus larger than 11.8.
-If one assumes an extinction of E(B-V) = 0.05 and a Galactic average extinction law \citep{cardelli1989}, the visual distance moduli $(m- M)_V$ should be an additional 0.14 mag.
-\item {\bf Metallicity} Ideally, the cluster should have near-solar metallicity so that the solar mass stars have solar luminosity and solar spectra. 
+If one assumes an extinction of E(B-V) = 0.05 and a Galactic average extinction law \citep{cardelli1989}, the visual distance modulus $(m- M)_V$ should be an additional 0.14 mag.
+Thus, to calibrate all filters, the visual distance modulus $(m- M)_V$ should be larger than 11.94.
+\item {\bf Metallicity} Ideally, the cluster should have near-solar metallicity so that the solar mass stars have a luminosity near 1 $L_\sun$ and a G2~V type spectrum.
 \item {\bf Compactness} The cluster should be relatively compact compared to NIRCam's FOV (2'$\times$2' per module). We selected clusters $\lesssim 15\arcmin$
 \item {\bf Ancillary data} The clusters should have ancillary photometry from multiple observatories for cross-calibration. We preferred clusters with 2MASS, WISE and IRAC measurements.
 \item {\bf Visibility} The clusters should be spread out in ecliptic longitude to ensure that at least one is visible during the commissioning period.
@@ -208,7 +209,7 @@ The only parameter that is not satisfied is the distance modulus, so additional 
 At the time NGC 2420 was selected, the JWST throughputs were smaller than the measured values so it saturated fewer filters.
 One way to calibrate these short wavelength, wide filters is to use subarrays.
 The subarray to full frame conversion can be checked with medium band filters.
-NGC 2506 and NGC 6811 are next-best fits and have somewhat complimentary visibility windows, visible in Figure \ref{fig:clusterVis}. NGC 2420 and NGC 6811 have -0.08 $<=$ [Fe/H] $<=$ 0.05.
+NGC 2506 and NGC 6811 are next-best fits and have somewhat complimentary visibility windows, shown in Figure \ref{fig:clusterVis}. NGC 2420 and NGC 6811 have -0.08 $\le$ [Fe/H] $\le$ 0.05.
 NGC 2506, is metal poor at [Fe/H]=-0.32, so corrections must be made for changes to G2 V spectra due to metallicity.
 
 \begin{figure}
@@ -218,8 +219,7 @@ NGC 2506, is metal poor at [Fe/H]=-0.32, so corrections must be made for changes
 The planned commissioning period is shown with vertical blue dashed lines.}\label{fig:clusterVis}
 \end{figure}
 
-
-The WEBDA database had parameters that were significantly different from the literature.
+After selecting the sources, we discovered that the WEBDA database had parameters that were significantly different from the literature for these individual clusters.
 For example E(B-V) = 0.16 for NGC 6811 whereas \citet{molendaz2016spec6811} has E(B-V) = 0.05.
 We therefore did a literature search for the most recent available cluster parameters.
 Table \ref{tab:clusterProp} shows the properties gathered from the literature.
