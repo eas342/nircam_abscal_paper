@@ -297,9 +297,9 @@ Only 10 stars fit within NIRCam's FOV.}\label{fig:NCFOV}
 \clearpage
 \section{Spectral Typing of Candidate Analogs}
 The Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} was used to obtain spectra of candidate solar analogs in the clusters .
-We processed the data with the standard IDL routine \texttt{hsred}\footnote{https://www.mmto.org/node/536}
+We processed the data with the standard IDL routine \texttt{HSRED}\footnote{https://www.mmto.org/node/536}
 
-We normalized the raw spectra output from \texttt{hsred} in order to pass it to a spectral rectification program \texttt{mkclass} \citep{gray2014classification}.
+We normalized the raw spectra output from \texttt{HSRED} in order to pass it to a spectral rectification program \texttt{mkclass} \citep{gray2014classification}.
 The first step in the normalization was to get an approximately normalized curve from the strongly curved spectrum shown in Figure \ref{fig:SpecRect}.
 We fit an 8th order polynomial in log space to the flux as a function of wavelength.
 It is important to do the fit in log-space because in linear space there are regions (near 3800 $\AA$) where the flux drops to low values and the fit can have zero crossings.
@@ -324,6 +324,15 @@ The two steps (with polynomial fits) and final resulting spectrum are shown for 
 \caption{{\it Left} NGC 2420 color magnitude diagram with G2 V stars identified from classification. {\it Right} Field of view with NIRCam footprint.}\label{fig:NCFOV}
 \end{figure}
 
+Figure \ref{fig:NCFOV} shows the photometry and positions of sources after 1 pass with Hectospec/MMT and Figure \ref{fig:NCFOV2ndrun} shows after a 2nd set of observations with Hectospec/MMT.
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=.49\columnwidth]{colormag_two_runs.pdf}
+\includegraphics[width=.49\columnwidth]{fov_ngc2420_two_runs.pdf}
+\caption{We observed additional stars with Hectospec on the MMT search for additional G2~V sources. This shows the same plot as Figure \ref{figNCFOV} after a second Hectospec fiber configuration.
+{\it Left} NGC 2420 color magnitude diagram with G2 V stars identified from classification. {\it Right} Field of view with NIRCam footprint.}\label{fig:NCFOV2ndrun}
+\end{figure}
 
 \clearpage
 
