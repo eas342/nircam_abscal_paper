@@ -296,14 +296,24 @@ Only 10 stars fit within NIRCam's FOV.}\label{fig:NCFOV}
 
 \clearpage
 \section{Spectral Typing of Candidate Analogs}
+
+\subsection{Hectospec Observations}
+We observed NGC~2420 with two fiber configurations in the Spring and Fall of 2016.
+We used the 600 gpm grating (1.9 - 2.2 $\AA$ resolution element) to match with existing spectral template libraries with 3.6 $\AA$ resolution.
+We selected the central wavelength to be 4800 $\AA$ which means that the wavelength coverage is about 3550 to 6050 $\AA$, which covers several import criteria for G-star classification many of which are concentrated between 4000 and 4400 $\AA$.
+We obtained exposure times from 1.2 to 2 hours.
+The minimum fiber separation $\sim$20$\arcsec$ required that we observe in two configurations to increase the density of stars for which we had spectral classification.
+During the observing run in the Fall of 2016, the 600 gpm (1.9 - 2.2 $\AA$ resolution element) grating had to be removed for fixing and so we were forced to observe NGC 2506 with the 270 gpm (4.5 - 5.2 $\AA$ resolution element).
+
 The Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} was used to obtain spectra of candidate solar analogs in the clusters .
-We processed the data with the standard IDL routine \texttt{HSRED}\footnote{https://www.mmto.org/node/536}
+We processed the data with the standard IDL routine \texttt{HSRED}\footnote{https://www.mmto.org/node/536}, which applies automatic bias and flat field corrections, spectral extraction and wavelength calibration.
+\texttt{HSRED} can apply flux calibration for F-type stars, but we elected to rectify the spectra 
 
 We normalized the raw spectra output from \texttt{HSRED} in order to pass it to a spectral rectification program \texttt{mkclass} \citep{gray2014classification}.
 The first step in the normalization was to get an approximately normalized curve from the strongly curved spectrum shown in Figure \ref{fig:SpecRect}.
 We fit an 8th order polynomial in log space to the flux as a function of wavelength.
-It is important to do the fit in log-space because in linear space there are regions (near 3800 $\AA$) where the flux drops to low values and the fit can have zero crossings.
-The resulting model (fit in linear space) results large negative values or NaNs when divided by the model, whereas the fit in log-space has no zero-crossings.
+It is important to do the fit in log-space because in linear space there are regions (near 3800 $\AA$) where the best-fit polynomial drops to low values and the fit can have zero crossings.
+If this polynomial model (fit in linear space) is used to rectify the spectrum, the rectified spectrum will have large negative values or NaNs when divided by the model, whereas the fit in log-space has no zero-crossings and reduced systematics at low fluxes.
 The polynomial fit is done piecewise in 3 equally spaced regions to take on small scale curvature.
 
 The second step in the spectral rectification process is to normalize by the pseudo continuum and remove any residual curvature.
@@ -314,7 +324,8 @@ The two steps (with polynomial fits) and final resulting spectrum are shown for 
 \begin{figure}[!hbtp]
 \centering
 \includegraphics[width=.7\columnwidth]{O_0738209_p2134_rectification.pdf}
-\caption{The spectral rectification process happens in two steps 1) take out the strong curvature with a piecewise polynomial in log flux space (top panel) and 2) fit the points above 1.0 with a new piecewise polynomial in linear flux space.}\label{fig:SpecRect}
+\caption{The spectral rectification process happens in two steps 1) take out the strong curvature with a piecewise polynomial in log flux space (top panel) and 2) fit the points above 1.0 with a new piecewise polynomial in linear flux space.
+The resulting spectrum is used for classification.}\label{fig:SpecRect}
 \end{figure}
 
 \begin{figure}[!hbtp]
@@ -333,9 +344,6 @@ Figure \ref{fig:NCFOV} shows the photometry and positions of sources after 1 pas
 \caption{We observed additional stars with Hectospec on the MMT search for additional G2~V sources. This shows the same plot as Figure \ref{fig:NCFOV} after a second Hectospec fiber configuration.
 {\it Left} NGC 2420 color magnitude diagram with G2 V stars identified from classification. {\it Right} Field of view with NIRCam footprint.}\label{fig:NCFOV2ndrun}
 \end{figure}
-
-During the observing run in the Fall of 2016, the 600 gpm (1.9 - 2.2 $\AA$ resolution element) grating had to be removed for fixing and so we were forced to observe NGC 2506 with the 270 gpm (4.5 - 5.2 $\AA$ resolution element).
-This 
 
 \clearpage
 
