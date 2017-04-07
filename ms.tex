@@ -85,7 +85,7 @@
 %% one line. However, you may use \\ to force a line break if
 %% you desire.
 
-\title{NIRCam Flux Calibration Plan}
+\title{NIRCam Faint and Bright Flux Calibration Plan}
 
 %% Use \author, \affil, and the \and command to format
 %% author and affiliation information.
@@ -116,7 +116,7 @@ The James Webb Space Telescope (JWST) offers unprecedented sensitivity and stabi
 Several of the science areas, such as supernovae photometry for dark energy measurements will require high accuracy absolute calibration.
 We discuss a program to identify calibrators at the low end of the flux scale that will not saturate the NIRCam full frame mode.
 We obtain ground based photometry and spectroscopy of three clusters to find solar analog G2 V stars and a solar model spectrum to infer the fluxes in the NIRCam bands.
-Additionally, we discuss some of the NIRCam modes that can be used to tie JWST calibrations directly to primary calibrator stars.
+Additionally, we discuss some of the NIRCam modes that can be used to tie JWST calibrations directly to bright stars which have been calibrated against emissive reference spheres with the Midcourse Space Experiment (MSX).
 \end{abstract}
 
 %% Keywords should appear after the \end{abstract} command. The uncommented
@@ -153,10 +153,10 @@ Additionally, we discuss some of the NIRCam modes that can be used to tie JWST c
 
 \section{Introduction}
 
-The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration for many of its science goals.
-Many studies of dark energy make use of Type Ia Supernovae as standard candles and improvements to the absolute flux calibration are important for improving their luminosity distances.
-JWST will have no standard calibration sources onboard so all calibration must be performed with astronomical sources.
-While there were internal lamps in original designs, the envelopes for the filaments did not make it through testing so the sources were removed.
+The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration to accomplish its science goals.
+One are where accurate flux calibration is especially important is dark energy science, which makes use of type Ia supernovae as standard candles.
+Absolute fluxes are especially important for improving type Ia supernova luminosity distances and thus the expansion history of the Universe.
+JWST will have no standard calibration sources onboard so all calibration must be performed with astronomical sources.\footnote{While NIRCam had internal lamps in original designs, the envelopes for the filaments broke during testing so the sources were removed.}
 
 The JWST flux calibration effort has been described in \citet{gordon2009fluxplan1} and \citet{gordon2011fluxplan2}.
 It is still being developed and refined.
@@ -436,7 +436,7 @@ The flux has been normalized for each star at 3.6~$\mu$m and then offset for cla
 We use the nearest match between the stellar types from the Simbad database and the suggested \citet{castelli2004models} parameters.\footnote{http://www.stsci.edu/hst/observatory/crds/castelli\_kurucz\_atlas.html}
 
 Observing these bright sources (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of medium-band filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
-Using \texttt{webbpsf} and the throughputs in a NIRCam program called \texttt{pynrc}, we calculate the saturation limits for 2 groups in RAPID mode and find a K-magnitude of saturation of -4.0 for an A1 V star like Sirius and -3.7 for an M3 III star like Gacrux.
+Using \texttt{webbpsf} and the throughputs in a NIRCam program called \texttt{pynrc}, we calculate the saturation limits for 2 groups in RAPID mode and find a K-magnitude of saturation of $-$4.0 for an A1 V type star (Sirius is A1 V with K=$-$1.35) and $-$3.7 for an M3 III (Gacrux is $-$3.12).
 This means that the entire sample of stars from \citet{price2004msxCal} are observable in this coronagraphic neutral density mode.
 
 \begin{figure}[!hbtp]
@@ -477,10 +477,11 @@ The dithers can be used to check the surface irregularities.
 
 \subsubsection{Clocking Issues for Small Subarrays}
 
-Marcia and Jarron have brought up this issue in a NIRCam STScI+External team telecon on on April 6, 2017. 
-There are either 2 or 3 extra (rows? pixels?) at the end of an integration due to a rounding error.
-So this could change the integration time for a 64$\times$64.
-This is a known bug in the ASIC micro-code.
+Marcia and Jarron have brought up this issue in a NIRCam STScI+External team telecon on on April 6, 2017.
+This is a known bug in the ASIC micro-code that can affect the integration times of small subarrays.
+There are sometimes unpredictable frames which will have an additional row time (so a 1/64) increase in frame time.
+This could potentially decrease the flux by 1.6\% so it is a concern for flux calibration, but it is also a rare occurrence, happening for 5 frames out of 8000.
+Multiple exposures and dither positions should help lessen this effect, especially if averaged with robust statistics.
 
 \section*{Acknowledgements}
 %\acknowledgments
