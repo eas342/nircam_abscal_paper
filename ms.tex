@@ -58,7 +58,7 @@
 \newcommand{\DHSres}{299 - 334}
 \newcommand{\DHSresApprox}{300}
 \newcommand{\DHSgap}{0.04}
-
+\newcommand{\degree}{^\circ}
 \newcommand{\SOSSrange}{0.6 - 2.5~$\mu$m}
 \newcommand{\SOSSrangeto}{0.6 to 2.5~$\mu$m}
 
@@ -248,9 +248,11 @@ NGC 6811\tablenotemark{c}	& 0.05 $\pm$0.02	& 10.29 $\pm$ 0.14	& 0.04 $\pm$ 0.01 
 \section{Pan-Starrs}
 \subsection{Pan-Starrs Photometry}
 
-We obtained $grizy$ Pan-Starrs photometry\citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot} for all three clusters.
-We also looked estimated the Pan-Starrs $g$ - $r$ colors from a Pickles G2~V spectrum using \texttt{pysynphot} \citep{lim2015pysynphot}, the measured extinction shown in Table \ref{tab:clusterProp} with a Milky Way Diffuse R(V)=3.1 \citet{cardelli1989} extinction law.
-Figure \ref{fig:cmdPS} shows the Pan-Starrs color magnitude diagram for the three clusters along with vertical bars with the expected solar $g$ - $r$ color for each cluster.
+We obtained $grizy$ Pan-Starrs photometry \citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot} for all three clusters.
+Additionally, we used \citet{janes2013keplerPhot} B and V photometry for NGC~6811 which is in the Kepler field because there were more faint source detections.
+We also estimated the Pan-Starrs $g$ - $r$ and B-V colors from a Pickles G2~V spectrum using \texttt{pysynphot} \citep{lim2015pysynphot}, the measured extinction shown in Table \ref{tab:clusterProp} with a Milky Way Diffuse R(V)=3.1 \citet{cardelli1989} extinction law.
+Figure \ref{fig:cmdPS} shows the Pan-Starrs and \citet{janes2013keplerPhot} color magnitude diagram for the three clusters along with vertical bars with the expected solar color for each cluster: $g-r$ =0.42, $g-r$ = 0.43 and B-V = 0.67 for NGC~2420, NGC~2506 and NGC~6811 respectively.
+Note that the initial selection of NGC~2420 stars ignored the small extinction and put a higher priority on stars bluer than solar.
 
 \begin{figure*}[!t]
 \centering
@@ -267,7 +269,11 @@ Figure \ref{fig:cmdPS} shows the Pan-Starrs color magnitude diagram for the thre
 	\includegraphics[width=0.5\textwidth]{sources_ngc6811.png}
 	\label{fig:cmdNGC6811}
 	}
-	\caption{Color-magnitudes of the 3 clusters.}
+	\caption{Color-magnitudes of the three clusters.
+	The main sequence in each cluster was fit with a polynomial and then three priority levels were chosen for follow-up spectroscopy.
+	The first priority targets were near-solar $g-r$ or B-V colors ($\pm 0.04, 0.03, 0.05$) that were within $\pm$4\arcmin\ of the cluster center (to concentrate in the NIRCam field of view).
+	The second priority were near-solar $g-r$ or B-V colors but with a wider field of view (1$\degree$) to include G2~V stars that could be observed with larger dithers.
+	Thirdly, any remaining main sequence stars that were within the 1$\degree$ hectospec field of view with reasonable signal to noise were selected to allow for errors in photometric color predictions and enable star cluster science at the main sequence turnoff point.}
 	\label{fig:cmdPS}
 \end{figure*} 
 
