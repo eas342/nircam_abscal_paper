@@ -249,7 +249,8 @@ NGC 6811\tablenotemark{c}	& 0.05 $\pm$0.02	& 10.29 $\pm$ 0.14	& 0.04 $\pm$ 0.01 
 \subsection{Pan-Starrs Photometry}
 
 We obtained $grizy$ Pan-Starrs photometry\citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot} for all three clusters.
-We also looked up the $g$ - $r$ colors
+We also looked estimated the Pan-Starrs $g$ - $r$ colors from a Pickles G2~V spectrum using \texttt{pysynphot} \citep{lim2015pysynphot}, the measured extinction shown in Table \ref{tab:clusterProp} with a Milky Way Diffuse R(V)=3.1 \citet{cardelli1989} extinction law.
+Figure \ref{fig:cmdPS} shows the Pan-Starrs color magnitude diagram for the three clusters along with vertical bars with the expected solar $g$ - $r$ color for each cluster.
 
 \begin{figure*}[!t]
 \centering
@@ -467,6 +468,13 @@ The ND filters are not uniform spatially.
 Correcting for any pinholes or blemishes in the ND square surface will likely dominate the error budget for the ND square absolute calibration.
 Positioning the sources consistently on the same pixel locations and using the same dither patterns will help with these errors.
 The dithers can be used to check the surface irregularities.
+
+\subsubsection{Clocking Issues for Small Subarrays}
+
+Marcia and Jarron have brought up this issue in a NIRCam STScI+External team telecon on on April 6, 2017. 
+There are either 2 or 3 extra (rows? pixels?) at the end of an integration due to a rounding error.
+So this could change the integration time for a 64$\times$64.
+This is a known bug in the ASIC micro-code.
 
 \section*{Acknowledgements}
 %\acknowledgments
