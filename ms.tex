@@ -160,19 +160,20 @@ JWST will have no standard calibration sources onboard so all calibration must b
 
 The JWST flux calibration effort has been described in \citet{gordon2009fluxplan1} and \citet{gordon2011fluxplan2}.
 It is still being developed and refined.
-Figure \ref{fig:JWStcalsWideF} shows several of the sources that will likely be used for flux calibration.
+Figure \ref{fig:JWSTcalsWideF} shows several of the sources that will likely be used for flux calibration.
 These include three categories: 1) hot stars (white dwarf and OB stars) 2) G-stars (which are solar-like) and 3) A-type stars.
 The variety of spectra used in JWST calibration can mitigate against biases when models are used to convert flux in one filter to the expected flux in another filter.
 
 The original flux calibration effort has mainly bright stars ($K \lesssim 15$).
-Example spectra for these calibrators are shown in Figure \ref{fig:JWStcalsWideF} with saturation and sensitivity limits of NIRCam's wide filters.
-Many of these spectra will saturate the NIRCam detectors when used in full frame (shown as the middle parts of the black ``error bars'').
+Example spectra for these calibrators are shown in Figure \ref{fig:JWSTcalsWideF} with saturation and sensitivity limits of NIRCam's wide filters.
+Many of these spectra will saturate the NIRCam detectors when used in full frame (shown as the middle parts of the black ``error bars'') for wide-band filters.
 Furthermore, there may be systematic errors when observing faint targets and low detector well depths.
 \textcolor{red}{[Have a detector person - Karl, Jarron or George read the rest of this paragraph:]}
 As an example of a systematic detector effect, consider charge traps within a detector.
 These traps would tend to decrease the measured number of electrons per second on the first exposure because they would trap electrons  that would not be read out by an amplifier.
 For bright sources, the effect of the traps would be smaller since they would quickly be a small fraction of the flux.
 For faint sources, however, the traps would be a larger fraction of the incoming electrons.
+Therefore, the charge traps (if not corrected for) would tend to decrease the flux of faint sources as compared to bright targets.
 
 \begin{figure}[!hbtp]
 \centering
@@ -182,8 +183,9 @@ For faint sources, however, the traps would be a larger fraction of the incoming
 The three values shown for each wideband filter are the subarray saturation (upper error limit), full frame saturation (middle circle) and 10~$\sigma$ sensitivity limit in one hour of imaging (lower error limit).
 Three classes of JWST calibrators are shown: hot stars including white dwarfs (blue), A-type stars (green) and G-type stars (red).
 Additional faint calibrators are needed to extend the sample from \citet{gordon2011fluxplan2} towards the faint limits of NIRCam.
+We discuss an effort to add G2~V type stars in open clusters to the calibration sample.
 Example G2~V \citet{castelli2004models} models are shown for stars expected in the three clusters NGC~6811, NGC~2420 and NGC~2506.
-}\label{fig:JWStcalsWideF}
+}\label{fig:JWSTcalsWideF}
 \end{figure}
 
 In this report, we discuss a NIRCam-led effort to identify and calibrate stars to add to the JWST sample on the fainter end around $K \approx 15$.
@@ -205,7 +207,8 @@ The longer wavelength wide band filters (F200W, F277W, F356W, and F444W) will no
 If one assumes an extinction of E(B-V) = 0.05 and a Galactic average extinction law \citep{cardelli1989}, the visual distance modulus $(m- M)_V$ should be an additional 0.14 mag.
 Thus, to calibrate all filters, the visual distance modulus $(m- M)_V$ should be larger than 11.94.
 \item {\bf Metallicity} Ideally, the cluster should have near-solar metallicity so that the solar mass stars have a luminosity near 1 $L_\sun$ and a G2~V type spectrum.
-\item {\bf Compactness} The cluster should be relatively compact compared to NIRCam's FOV (2'$\times$2' per module). We selected clusters $\lesssim 15\arcmin$
+\item {\bf Compactness} The cluster should be relatively compact compared to NIRCam's FOV (2'$\times$2' per module).
+We selected clusters with WEBDA diameters $\lesssim 15\arcmin$
 \item {\bf Ancillary data} The clusters should have ancillary photometry from multiple observatories for cross-calibration. We preferred clusters with 2MASS, WISE and IRAC measurements.
 \item {\bf Visibility} The clusters should be spread out in ecliptic longitude to ensure that at least one is visible during the commissioning period.
 \end{itemize}
@@ -215,7 +218,7 @@ The only parameter that is not satisfied is the distance modulus, so additional 
 At the time NGC 2420 was selected, the JWST throughputs were smaller than the measured values so it saturated fewer filters.
 One way to calibrate these short wavelength, wide filters is to use subarrays.
 The subarray to full frame conversion can be checked with medium band filters.
-NGC 2506 and NGC 6811 are next-best fits and have somewhat complimentary visibility windows, shown in Figure \ref{fig:clusterVis}. NGC 2420 and NGC 6811 have -0.08 $\le$ [Fe/H] $\le$ 0.05.
+NGC 2506 and NGC 6811 are next-best fits and have somewhat complimentary visibility windows, shown in Figure \ref{fig:clusterVis}. NGC 2420 and NGC 6811 have -0.05 $\le$ [Fe/H] $\le$ 0.04.
 NGC 2506, is metal poor at [Fe/H]=-0.32, so corrections must be made for changes to G2 V spectra due to metallicity.
 
 \begin{figure}
@@ -226,7 +229,7 @@ The planned commissioning period is shown with vertical blue dashed lines.}\labe
 \end{figure}
 
 After selecting the sources, we discovered that the WEBDA database had parameters that were significantly different from the literature for these individual clusters.
-For example E(B-V) = 0.16 for NGC 6811 whereas \citet{molendaz2016spec6811} has E(B-V) = 0.05.
+For example E(B-V)$_\mathrm{WEBDA}$ = 0.16 for NGC 6811 whereas \citet{molendaz2016spec6811} has E(B-V) = 0.05.
 We therefore did a literature search for the most recent available cluster parameters.
 Table \ref{tab:clusterProp} shows the properties gathered from the literature.
 The most up-to-date literature values indicate that all three clusters have low extinction with E(B-V) $<$ 0.1.
@@ -258,7 +261,7 @@ We obtained $grizy$ Pan-Starrs photometry \citep{magnier2013photLadder,schlafly2
 Additionally, we used \citet{janes2013keplerPhot} B and V photometry for NGC~6811 which is in the Kepler field because there were more faint source detections.
 We also estimated the Pan-Starrs $g$ - $r$ and B-V colors from a Pickles G2~V spectrum using \texttt{pysynphot} \citep{lim2015pysynphot}, the measured extinction shown in Table \ref{tab:clusterProp} with a Milky Way Diffuse R(V)=3.1 \citet{cardelli1989} extinction law.
 Figure \ref{fig:cmdPS} shows the Pan-Starrs and \citet{janes2013keplerPhot} color magnitude diagram for the three clusters along with vertical bars with the expected solar color for each cluster: $g-r$ =0.42, $g-r$ = 0.43 and B-V = 0.67 for NGC~2420, NGC~2506 and NGC~6811 respectively.
-Note that the initial selection of NGC~2420 stars ignored the small extinction and put a higher priority on stars bluer than solar.
+Note that the initial selection of NGC~2420 stars ignored the small extinction and put a higher priority on stars slightly bluer than solar.
 
 \begin{figure*}[!t]
 \centering
@@ -356,6 +359,28 @@ Figure \ref{fig:NCFOV} shows the photometry and positions of sources after 1 pas
 
 \clearpage
 
+\section{Faint White Dwarf Network}
+\citet{narayan2016wdnetwork} identified faint (V$\sim$18-19) DA white dwarfs for calibration of surveys such as with LSST, DECam, JWST and PanSTARRS.
+These sources are faint enough to avoid saturation with large aperture telescopes and have atmospheres largely characterizable with just two parameters T$_\mathrm{eff}$ and $\log(g)$.
+The fact that these DA dwarfs' atmospheres are dominated by hydrogen means that they are relatively simple to model at high resolution for calibrating photometric bandpasses.
+
+Figure \ref{fig:wideFiltWDCalspec} shows NIRCam sensitivity limits (10$\sigma$ in 1 hour), the CALSPEC database and representative G2~V stars identified in this paper which were already displayed in Figure \ref{fig:JWSTcalsWideF}.
+Additionally, four stars from \citet{narayan2016wdnetwork} are shown using the WD1657+343 white dwarf model (without extinction) as a placeholder.
+These WD stars nicely extend the sample of stars much deeper into the NIRCam sensitivity limit than previous targets.
+However, there is the possibility that the models for the stars in \citet{narayan2016wdnetwork} may not work effectively for the near-infrared.
+If there are small dust particles surrounding these white dwarfs, they could produce near-IR or mid-IR excesses.
+Additionally, there are few measurements into the infrared so extrapolation would be required.
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=.49\columnwidth]{calspec_and_new_clust_wd.pdf}
+\caption{The NIRCam saturation and sensitivities are shown as in Figure \ref{fig:JWSTcalsWideF}.
+This time, we show the CALSPEC stars, G2~V open cluster stars and placeholder spectra for WD stars from \citet{narayan2016wdnetwork}.
+The faint WD stars .}\label{fig:wideFiltWDCalspec}
+\end{figure}
+
+
+\clearpage
 \section{Transferring to Directly Calibrated Sources - the NIRCam Flux Ladder}
 
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
