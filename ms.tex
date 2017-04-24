@@ -315,7 +315,7 @@ We used the 600 gpm grating (1.9 - 2.2 $\AA$ resolution element) to match with e
 We selected the central wavelength to be 4800 $\AA$ which means that the wavelength coverage is about 3550 to 6050 $\AA$, which covers several import criteria for G-star classification many of which are concentrated between 4000 and 4400 $\AA$.
 We obtained exposure times of 1.7 hours (Spring 2016) and 2 hours (Fall 2016).
 The minimum fiber separation $\sim$20$\arcsec$ required that we observe in two configurations to increase the density of stars for which we had spectral classification.
-During the observing run in the Fall of 2016, the 600 gpm (1.9 - 2.2 $\AA$ resolution element) grating had to be removed for fixing and so we were forced to observe NGC 2506 with the 270 gpm (4.5 - 5.2 $\AA$ resolution element).
+During the observing run in the Fall of 2016, the 600 gpm (1.9 - 2.2 $\AA$ resolution element) grating had to be removed for repairs and so we were forced to observe NGC 2506 with the 270 gpm (4.5 - 5.2 $\AA$ resolution element).
 
 The Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} was used to obtain spectra of candidate solar analogs in the clusters .
 We processed the data with the standard IDL routine \texttt{HSRED}\footnote{https://www.mmto.org/node/536}, which applies automatic bias and flat field corrections, spectral extraction and wavelength calibration.
@@ -326,7 +326,7 @@ The first step in the normalization was to get an approximately normalized curve
 We fit an 8th order polynomial in log space to the flux as a function of wavelength.
 It is important to do the fit in log-space because in linear space there are regions (near 3800 $\AA$) where the best-fit polynomial drops to low values and the fit can have zero crossings.
 If this polynomial model (fit in linear space) is used to rectify the spectrum, the rectified spectrum will have large negative values or NaNs when divided by the model, whereas the fit in log-space has no zero-crossings and reduced systematics at low fluxes.
-The polynomial fit is done piecewise in 3 equally spaced regions to take on small scale curvature.
+The polynomial fit is done piecewise in 3 equally spaced regions in order to model small scale curvature.
 
 The second step in the spectral rectification process is to normalize by the pseudo continuum and remove any residual curvature.
 This is again fit with an 8th order polynomial in a piecewise fashion in three equally spaced wavelength chunks.
@@ -385,7 +385,7 @@ The faint WD stars extend much farther into the NIRCam sensitivity wells than th
 
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
 As an independent check on those transfers, NIRCam can be used to observe directly calibrated stars (such as the MSX calibrators \citep{price2004msxCal}) and step down in brightness to faint standards used in JWST calibration.
-Figure \ref{fig:sensitivityLadder} shows a schematic of the steps beginning with Midcourse Survey Experiment (MSX) calibrators (as bright as $K \sim -3$) to faint JWST standards ($K \sim 16$).
+Figure \ref{fig:sensitivityLadder} shows a schematic of the steps beginning with Midcourse Space Experiment (MSX) calibrators (as bright as $K \sim -3$) to faint JWST standards ($K \sim 16$).
 
 \begin{figure}[!t]
 \centering
@@ -409,7 +409,7 @@ Step		& Source						& Spectral Type	& $K_\mathrm{src}$		& ND Square		& Subarray	
 6		& Faint JWST Calibrator			& G2 V			& 16 			& Off &	Full Frame  	& F444W &  21 & 13.7 \\
 \hline
 \end{tabular}
-\tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, (which include Sirius and Vega) or alternatively $\alpha$ Cen A. The exposure times given are the times needed to reach at least SNR=200, rounded up to the next group up the ramp. The saturation limit is the 80\% well depth for 2 non-destructive reads up the ramp following a reset.}
+\tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, (which include Sirius and Vega) or alternatively $\alpha$ Cen A. The exposure times given are the times needed to reach at least SNR=200, rounded up to the next group up the ramp. The saturation limit is at 80\% well depth for 2 non-destructive reads up the ramp following a reset.}
 \vspace{0.05in}
 \end{table}
 
@@ -492,7 +492,7 @@ Alternatively, one could extract the flux from the core of the PSF.
 	\includegraphics[width=0.45\textwidth]{psf_ND.pdf}
 	\label{fig:psfND}
 	}
-	\caption{The \texttt{webbpsf} direct imaging PSF and coronagraphic PSF which is modified by the Lyot stop. Both images are normalized by the peak pixel value and have arbitrary array positions but the same height and width. Aperture photometry of the sources imaged through the coronograph will have to use a large aperture encompassing the 6 outer peaks or just use the central peak(s) and apply careful background subtraction. Both PSFs were calculated for NIRCam's long wavelength channel with a F430M filter.}
+	\caption{The \texttt{webbpsf} direct imaging PSF and coronagraphic PSF which is modified by the Lyot stop. Both images are normalized by the peak pixel value and have arbitrary array positions but the same height and width. Aperture photometry of the sources imaged through the coronograph will have to use a large aperture encompassing the 6 outer peaks or just use the central peak(s) and apply careful background subtraction. Both PSFs were calculated for NIRCam's long wavelength channel with a F430M filter.\vspace{0.05in}}
 	\label{fig:psfComparison}
 \end{figure*} 
 
@@ -505,10 +505,17 @@ The dithers can be used to check the surface irregularities.
 \subsubsection{Clocking Issues for Small Subarrays}
 
 Marcia and Jarron have brought up this issue in a NIRCam STScI+External team telecon on on April 6, 2017.
-This is a known bug in the ASIC micro-code that can affect the integration times of small subarrays.
-There are sometimes unpredictable frames which will have an additional row time (so a 1/64) increase in frame time.
-This could potentially decrease the flux by 1.6\% so it is a concern for flux calibration, but it is also a rare occurrence, happening for 5 frames out of 8000.
-Multiple exposures and dither positions should help lessen this effect, especially if averaged with robust statistics.
+Jarron explained further on April 24, 2017.
+This is a known bug in the ASIC micro-code that can affect the frame times of small subarrays.
+The bug creates extra line overheads on small subarrays.
+For example, for a 32$\times$32 subarray, there are sometimes 2 line overheads and sometimes 3 line overheads about $\sim$40/60 \% of the time.
+Tony Magoncelli has found a way to deterministically predict when these extra frame times will occur.
+However, JWST will not produce enough data in flight to deterministically predict when the extra frame times occur so you'd have to average many frames together.
+For a 64$\times$ 64 subarray, there are almost always 2 line overheads.
+At a rate of about 5/8000 frames of test data, there were 3 line overheads.
+So, in the worst case unlucky scenario with 64$\times$64 subarray data in RAPID mode with 2 groups up the ramp, there could be an extra 1/64 or 1.6 \% increase in the slope due to the ASIC micro code.
+Given that 64$\times$64 frame time is only 0.05 s long, you could easily include hundreds of frames to average out the frame time issue with almost no change in efficiency since JWST acquisition, exposure and dithering overheads would be a much larger fraction of the time.
+I would estimate this would have less than 0.01\% of an effect on flux calibration.
 
 \section*{Acknowledgements}
 %\acknowledgments
