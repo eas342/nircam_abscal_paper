@@ -323,20 +323,20 @@ We processed the data with the standard IDL routine \texttt{HSRED}\footnote{http
 
 We normalized the raw spectra output from \texttt{HSRED} in order to pass it to a spectral rectification program \texttt{mkclass} \citep{gray2014classification}.
 The first step in the normalization was to get an approximately normalized curve from the strongly curved spectrum shown in Figure \ref{fig:SpecRect}.
-We fit an 8th order polynomial in log space to the flux as a function of wavelength.
+We fit a cubic spline in log space to the flux as a function of wavelength.
+The fit is iterated 3 times with 2$\sigma$ outlier rejection to account for strong spectral lines and cosmic rays.
 It is important to do the fit in log-space because in linear space there are regions (near 3800 $\AA$) where the best-fit polynomial drops to low values and the fit can have zero crossings.
 If this polynomial model (fit in linear space) is used to rectify the spectrum, the rectified spectrum will have large negative values or NaNs when divided by the model, whereas the fit in log-space has no zero-crossings and reduced systematics at low fluxes.
-The polynomial fit is done piecewise in 3 equally spaced regions in order to model small scale curvature.
 
 The second step in the spectral rectification process is to normalize by the pseudo continuum and remove any residual curvature.
-This is again fit with an 8th order polynomial in a piecewise fashion in three equally spaced wavelength chunks.
-The modification for the second step is to do it in linear space (now that zero crossings will not occur) and also select only points greater than 1.0 to ensure they are continuum points.
-The two steps (with polynomial fits) and final resulting spectrum are shown for an example source in Figure \ref{fig:SpecRect}.
+This is again fit with a cubic spline with 3 iterations of outlier rejection.
+The modification for the second step is to do it in linear space (now that zero crossings will not occur) and also select only points greater than 0.95 to ensure they are continuum points.
+The two steps (with cubic spline fits) and final resulting spectrum are shown for an example source in Figure \ref{fig:SpecRect}.
 
 \begin{figure}[!hbtp]
 \centering
-\includegraphics[width=.7\columnwidth]{O_0738209_p2134_rectification.pdf}
-\caption{The spectral rectification process happens in two steps 1) take out the strong curvature with a piecewise polynomial in log flux space (top panel) and 2) fit the points above 1.0 with a new piecewise polynomial in linear flux space.
+\includegraphics[width=.7\columnwidth]{images/O_0738284_p2131_spec.pdf}
+\caption{The spectral rectification process happens in two steps 1) take out the strong curvature with a robust cubic spline in log flux space (top panel) and 2) fit the points above 0.95 with a cubic spline in linear flux space.
 The resulting spectrum is used for classification.}\label{fig:SpecRect}
 \end{figure}
 
