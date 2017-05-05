@@ -357,6 +357,14 @@ Figure \ref{fig:NCFOV} shows the photometry and positions of sources after 1 pas
 {\it Left} NGC 2420 color magnitude diagram with G2 V stars identified from classification. {\it Right} Field of view with NIRCam footprint.}\label{fig:NCFOV2ndrun}
 \end{figure}
 
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=.49\columnwidth]{colormag_two_runs.pdf}
+\includegraphics[width=.49\columnwidth]{images/colormagNGC_2420_spline_rect.pdf}
+\caption{\texttt{mkclass} is sensitive to the type of normalization I put into the rectified spectra. On the left, I used a piecewise 8th order polynomial. On the right side, I used a robust spline fit.
+The spline fit reduces some of the crazy giants identified as G5 V, but also identifies some stars with near-solar colors as G8 V.}\label{fig:splineVsPiecewiseCM}
+\end{figure}
+
 \clearpage
 
 \section{Faint White Dwarf Network}
