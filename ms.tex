@@ -316,6 +316,7 @@ We selected the central wavelength to be 4800 $\AA$ which means that the wavelen
 We obtained exposure times of 1.7 hours (Spring 2016) and 2 hours (Fall 2016).
 The minimum fiber separation $\sim$20$\arcsec$ required that we observe in two configurations to increase the density of stars for which we had spectral classification.
 During the observing run in the Fall of 2016, the 600 gpm (1.9 - 2.2 $\AA$ resolution element) grating had to be removed for repairs and so we were forced to observe NGC 2506 with the 270 gpm (4.5 - 5.2 $\AA$ resolution element).
+The spectral typing uncertainty grows with lower resolution.
 
 The Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} was used to obtain spectra of candidate solar analogs in the clusters .
 We processed the data with the standard IDL routine \texttt{HSRED}\footnote{https://www.mmto.org/node/536}, which applies automatic bias and flat field corrections, spectral extraction and wavelength calibration.
@@ -326,7 +327,7 @@ The first step in the normalization was to get an approximately normalized curve
 We fit a cubic spline in log space to the flux as a function of wavelength.
 The fit is iterated 3 times with 2$\sigma$ outlier rejection to account for strong spectral lines and cosmic rays.
 It is important to do the fit in log-space because in linear space there are regions (near 3800 $\AA$) where the best-fit polynomial drops to low values and the fit can have zero crossings.
-If this polynomial model (fit in linear space) is used to rectify the spectrum, the rectified spectrum will have large negative values or NaNs when divided by the model, whereas the fit in log-space has no zero-crossings and reduced systematics at low fluxes.
+If this cubic spline model (fit in linear space) is used to rectify the spectrum, the rectified spectrum will have large negative values or NaNs when divided by the model, whereas the fit in log-space has no zero-crossings and reduced systematics at low fluxes.
 
 The second step in the spectral rectification process is to normalize by the pseudo continuum and remove any residual curvature.
 This is again fit with a cubic spline with 3 iterations of outlier rejection.
@@ -337,7 +338,8 @@ The two steps (with cubic spline fits) and final resulting spectrum are shown fo
 \centering
 \includegraphics[width=.7\columnwidth]{images/O_0738284_p2131_spec.pdf}
 \caption{The spectral rectification process happens in two steps 1) take out the strong curvature with a robust cubic spline in log flux space (top panel) and 2) fit the points above 0.95 with a cubic spline in linear flux space.
-The resulting spectrum is used for classification.}\label{fig:SpecRect}
+The resulting spectrum is used for classification.
+In this example it is source RA 07:38:28.4 +21:31.}\label{fig:SpecRect}
 \end{figure}
 
 \begin{figure}[!hbtp]
