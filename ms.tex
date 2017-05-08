@@ -320,14 +320,15 @@ The spectral typing uncertainty grows with lower resolution.
 
 The Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} was used to obtain spectra of candidate solar analogs in the clusters .
 We processed the data with the standard IDL routine \texttt{HSRED}\footnote{https://www.mmto.org/node/536}, which applies automatic bias and flat field corrections, spectral extraction and wavelength calibration.
-\texttt{HSRED} can apply flux calibration for F-type stars, but we elected to rectify the spectra 
+\texttt{HSRED} can apply flux calibration for F-type stars, but we elected to rectify the spectra.
+Flux calibration is not crucial to spectral typing G-type stars since the spectrum is relatively flat in the optical (Chris Corbally, priv. communication).
 
 We normalized the raw spectra output from \texttt{HSRED} in order to pass it to a spectral rectification program \texttt{mkclass} \citep{gray2014classification}.
 The first step in the normalization was to get an approximately normalized curve from the strongly curved spectrum shown in Figure \ref{fig:SpecRect}.
 We fit a cubic spline in log space to the flux as a function of wavelength.
 The fit is iterated 3 times with 2$\sigma$ outlier rejection to account for strong spectral lines and cosmic rays.
 It is important to do the fit in log-space because in linear space there are regions (near 3800 $\AA$) where the best-fit polynomial drops to low values and the fit can have zero crossings.
-If this cubic spline model (fit in linear space) is used to rectify the spectrum, the rectified spectrum will have large negative values or NaNs when divided by the model, whereas the fit in log-space has no zero-crossings and reduced systematics at low fluxes.
+If this cubic spline model (fit in linear space) is used to rectify the spectrum, the rectified spectrum will have large negative values or NaNs when divided by the model, whereas the fit in log-space has no zero-crossings.
 
 The second step in the spectral rectification process is to normalize by the pseudo continuum and remove any residual curvature.
 This is again fit with a cubic spline with 3 iterations of outlier rejection.
@@ -337,35 +338,34 @@ The two steps (with cubic spline fits) and final resulting spectrum are shown fo
 \begin{figure}[!hbtp]
 \centering
 \includegraphics[width=.7\columnwidth]{images/O_0738284_p2131_spec.pdf}
-\caption{The spectral rectification process happens in two steps 1) take out the strong curvature with a robust cubic spline in log flux space (top panel) and 2) fit the points above 0.95 with a cubic spline in linear flux space.
+\caption{The Hectospec spectra are rectified in two steps 1) to take out the strong curvature with a robust cubic spline in log flux space (top panel) and 2) to fit the points above 0.95 with a cubic spline in linear flux space.
 The resulting spectrum is used for classification.
-In this example it is source RA 07:38:28.4 +21:31.}\label{fig:SpecRect}
+In this example for the source at 07:38:28.5 +21:31:39.7, spectral classification with \texttt{mkclass} eventually gives a spectral type of F8 IV.}\label{fig:SpecRect}
 \end{figure}
+
+\subsection{Spectral Classification}
+
+We used the automatic ``expert'' classification system \texttt{mkclass} \citep{gray2014classification} to classify the stars.
+This program is different from automated neural networks in that it directly uses the same methods as a human classifier does, rather than being trained on a specific set of data.
+The \texttt{mkclass} programs comes with a library of standards at 3.6$\AA$ resolution standards and 1.8$\AA$ standards.
+Our Hectospec data with the 600 gpm grating has a spectral resolution of 1.9 to 2.2$\AA$ so we convolve it with a Gaussian kernel to match the 3.6$\AA$ library.
+We use 3 iterations and ``roughtype'' 2.
 
 \begin{figure}[!hbtp]
 \centering
-\includegraphics[width=.49\columnwidth]{colormag.pdf}
-\includegraphics[width=.49\columnwidth]{fov_ngc2420_spTypes.pdf}
-\caption{{\it Left} NGC 2420 color magnitude diagram with G2 V stars identified from classification. {\it Right} Field of view with NIRCam footprint.}\label{fig:NCFOV}
+\includegraphics[width=.49\columnwidth]{colormagNGC_2420.pdf}
+\includegraphics[width=.49\columnwidth]{fovNGC_2420.pdf}
+\caption{{\it Left:} A color magnitude diagram from the Pan Starrs photometry with the sources that were observed with Hectospec and classified by \texttt{mkclass}.
+The G2~V sources line up with with the expected solar $g-r$ from a Pickles G2~V spectrum (red vertical line).
+{\it Right} The field of view of the Pan-Starrs photometry over-plotted with the same sources.
+Two rectangles are drawn to represent the field of view of the NIRCam module A and module B. Up to 3 G2~V sources may be observed simultaneously with NIRCam and more can be included with a dither pattern.
+The NIRISS field of view is similar to one of NIRCam's modules and could observe 2 G2~V sources at a time. }\label{fig:ngc2420ClassCM}
 \end{figure}
 
-Figure \ref{fig:NCFOV} shows the photometry and positions of sources after 1 pass with Hectospec/MMT and Figure \ref{fig:NCFOV2ndrun} shows after a 2nd set of observations with Hectospec/MMT.
-
-\begin{figure}[!hbtp]
-\centering
-\includegraphics[width=.49\columnwidth]{colormag_two_runs.pdf}
-\includegraphics[width=.49\columnwidth]{fov_ngc2420_two_runs.pdf}
-\caption{We observed additional stars with Hectospec on the MMT search for additional G2~V sources. This shows the same plot as Figure \ref{fig:NCFOV} after a second Hectospec fiber configuration.
-{\it Left} NGC 2420 color magnitude diagram with G2 V stars identified from classification. {\it Right} Field of view with NIRCam footprint.}\label{fig:NCFOV2ndrun}
-\end{figure}
-
-\begin{figure}[!hbtp]
-\centering
-\includegraphics[width=.49\columnwidth]{colormag_two_runs.pdf}
-\includegraphics[width=.49\columnwidth]{images/colormagNGC_2420_spline_rect.pdf}
-\caption{\texttt{mkclass} is sensitive to the type of normalization I put into the rectified spectra. On the left, I used a piecewise 8th order polynomial. On the right side, I used a robust spline fit.
-The spline fit reduces some of the crazy giants identified as G5 V, but also identifies some stars with near-solar colors as G8 V.}\label{fig:splineVsPiecewiseCM}
-\end{figure}
+Figure \ref{fig:ngc2420ClassCM} shows the spectral types output by \texttt{mkclass} in both color-magnitude space as well as the field of view with boxes to represent the NIRCam arrays for NGC~2420.
+A single pointing could include 3 G2~V sources and more can be covered with a dither pattern.
+In \ref{fig:ngc2420ClassCM} we compare the observed Pan-Starrs colors of the G2~V spectral type stars to a Pickles library spectrum.
+After applying a R(V)=3.1 \citet{cardelli1989} Milky Way Diffuse extinction law with E(B-V)=0.04, the Pickles spectrum lines up very closely (within 0.021) of the expected $g-r$=0.042.
 
 \clearpage
 
