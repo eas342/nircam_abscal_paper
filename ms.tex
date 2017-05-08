@@ -369,28 +369,6 @@ The spline fit reduces some of the crazy giants identified as G5 V, but also ide
 
 \clearpage
 
-\section{Faint White Dwarf Network}
-\citet{narayan2016wdnetwork} identified faint (V$\sim$18-19) DA white dwarfs for calibration of surveys such as with LSST, DECam, JWST and PanSTARRS.
-These sources are faint enough to avoid saturation with large aperture telescopes and have atmospheres largely characterizable with just two parameters T$_\mathrm{eff}$ and $\log(g)$.
-The fact that these DA dwarfs' atmospheres are dominated by hydrogen means that they are relatively simple to model at high resolution for calibrating photometric bandpasses.
-
-Figure \ref{fig:wideFiltWDCalspec} shows NIRCam sensitivity limits (10$\sigma$ in 1 hour), the CALSPEC database and representative G2~V stars identified in this paper which were already displayed in Figure \ref{fig:JWSTcalsWideF}.
-Additionally, four stars from \citet{narayan2016wdnetwork} are shown using the WD1657+343 white dwarf model (without extinction) as a placeholder.
-These WD stars nicely extend the sample of stars much deeper into the NIRCam sensitivity limit than previous targets.
-However, there is the possibility that the models for the stars in \citet{narayan2016wdnetwork} may not work effectively for the near-infrared.
-If there are small dust particles surrounding these white dwarfs, they could produce near-IR or mid-IR excesses.
-Additionally, there are few measurements into the infrared so extrapolation would be required.
-
-\begin{figure}[!hbtp]
-\centering
-\includegraphics[width=.49\columnwidth]{calspec_and_new_clust_wd.pdf}
-\caption{The NIRCam saturation and sensitivities are shown as in Figure \ref{fig:JWSTcalsWideF}.
-This time, we show the CALSPEC stars, G2~V open cluster stars and placeholder spectra for WD stars from \citet{narayan2016wdnetwork}.
-The faint WD stars extend much farther into the NIRCam sensitivity wells than the CALSPEC and solar analog stars.}\label{fig:wideFiltWDCalspec}
-\end{figure}
-
-
-\clearpage
 \section{Transferring to Directly Calibrated Sources - the NIRCam Flux Ladder}
 
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
@@ -668,70 +646,6 @@ The Pan-STARRS1 Surveys (PS1) have been made possible through contributions of t
 
 \clearpage
 \pagebreak
-
-\appendix
-
-\section{Notes to Self}
-
-\subsection{Notes on using \texttt{mkclass}}
-
-\subsubsection{Code System}
-The library is organized into files like \texttt{t130l50p00.rbn}.
-The \texttt{t130} specifies 10 $\times$ the class coding system of O3 through M9 visible in the code \texttt{code3spt.c}.
-In this case, \texttt{t130} means code 13.0 and type B7.
-The luminosity class is next \texttt{l50} means V.
-We use the \texttt{libnor36} library, which appears to work with the "Roughtype 2" method for non-rectified data.
-The code runs into segmentation faults if attempting Roughtype 1 with the \texttt{libnor36} library.
-
-
-\subsubsection{Backgrounds}
-
-Zodiacal background is expressed as a function of the minimum zodiacal background in \texttt{pynrc}.
-From the code documentation: average across the sky has zfact = 2.5.
-In these models solar B-V=0.65 for 1~M$_\odot$ at 4.25 Gyr.
-
-\subsection{Isochrones}
-
-As a check on the maximum age, I downloaded Dartmouth Isochrones \citep{dotter2008dartmouth} and plotted the color-magnitude diagram in Figure \ref{fig:isochrones}.
-At 7 Gyr, the main sequence turnoff begins affecting the selection of stars near solar B-V.
-Nearly all open clusters are young ($\lesssim$ 5 Gyr) so this really only affects just NGC 188 \citep[7.1 Gyr][]{elsanhoury2016ngc188}.
-
-\begin{figure}[!hbtp]
-\centering
-\includegraphics[width=.7\columnwidth]{hr_isochrones.pdf}
-\caption{The Dartmouth isochrones \citep{dotter2008dartmouth}, for [Fe/H]=0, show that the age of the cluster should be $\lesssim 7 $Gyr before main sequence turnoff should begin to affect the identification of solar analogs.
-The red vertical line represents solar B-V.}\label{fig:isochrones}
-\end{figure}
-
-\subsection{UKIRT Calibration}
-
-Our WFCAM data should be calibrated in a similar was as UKIDSS.
-Eiichi Egami says we can use the Viking Survey as an independent check on the UKIDSS flux calibration.
-
-\subsection{Sections to Expand in this Report}
-
-George has some requests for this report.
-Consider adding notes on calibration of two more instruments.
-The solar spectrum is very well measured at infrared wavelengths, so it may be the best one for interpolation from optical/NIR into Far IR.
-\begin{enumerate}
-	\item MIRI: For the shorter wavelength MIRI bands (say F560W and F770W) photometry, George would like to observe the NIRCam faint G2V stars in order to have a sample of stars that have a highly accurate solar model
-	\item NIRSpec: We'd also want to test calibration of NIRSpec w/ our solar G2 V stars.
-George recommends the IFU or slits as opposed to MSA because it's less sensitive to positional accuracy.
-Note that we would only get 1 G2V star at a time.
-Also, beware that no bright stars from the cluster contaminate the field. MSA shutters that are stuck open may introduce significant amounts of stray light.
-\end{enumerate}
-Note, that George has two concerns about white dwarfs:
-\begin{enumerate}
-	\item debris disks emission - they have found that magnetic field trapping of dust around A stars can cause excess emission.
-White dwarfs have strong magnetic fields and could also trap nano-grain dust.
-George and Andras will probably write a paper on white dwarf dust in Fall of 2017.
-	\item uncertainties in the IR - white dwarfs don't have a lot of measurements in the IR.
-How can we be sure the models are good in the infrared?
-\end{enumerate}
-Also, George has one idea with regards to subarray versus full frame imaging.
-Maybe we could a bright calibrator star (K$\sim$ 6) on the neutral density filter so that it doesn't saturate full frame.
-Then, observe the bright star in subarray and full frame to check the conversion from subarray to full frame for a given filter.
-Another idea would be to use a narrow-band filter to check the subarray/full frame conversion.
 
 %% Use the figure environment and \plotone or \plottwo to include
 %% figures and captions in your electronic submission.
