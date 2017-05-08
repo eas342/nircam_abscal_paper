@@ -367,6 +367,21 @@ A single pointing could include 3 G2~V sources and more can be covered with a di
 In \ref{fig:ngc2420ClassCM} we compare the observed Pan-Starrs colors of the G2~V spectral type stars to a Pickles library spectrum.
 After applying a R(V)=3.1 \citet{cardelli1989} Milky Way Diffuse extinction law with E(B-V)=0.04, the Pickles spectrum lines up very closely (within 0.021) of the expected $g-r$=0.042.
 
+\subsection{Visual Classification}
+
+As recommended by C. Corbally, the \texttt{mkclass} classifications of near-solar stars were checked by eye.
+A graphical user interface explorer was made to compare template classification spectra with the observed Hectospec spectra\footnote{https://github.com/eas342/mkclassfication\_viewer}.
+Figure \ref{fig:0738284p2133class} shows the Hectospec spectrum of a source at 07:38:28.4 +21:33 that \texttt{mkclass} identifies as G2~V.
+The line ratios of Ca I 4226~$\AA$, H$\delta$, H$\gamma$ and Fe I lines are most consistent with a G2 V type.
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=.95\columnwidth]{O_0738284_p2133_class_g2v.pdf}
+\caption{An example G2~V source found by \texttt{mkclass} (07:38:28.4 +21:33) is visually checked against spectral templates.
+Of particular importance for temperature classification are the Ca I 4226~$\AA$, H$\delta$, H$\gamma$ and Fe I lines highlighted above \citep{gray2009specClass}.
+Two standards (G2 V and G1.5 V) are shown for comparison.}\label{fig:0738284p2133class}
+\end{figure}
+
 \clearpage
 
 \section{Transferring to Directly Calibrated Sources - the NIRCam Flux Ladder}
