@@ -372,8 +372,10 @@ The spline fit reduces some of the crazy giants identified as G5 V, but also ide
 \section{Transferring to Directly Calibrated Sources - the NIRCam Flux Ladder}
 
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
-As an independent check on those transfers, NIRCam can be used to observe directly calibrated stars (such as the MSX calibrators \citep{price2004msxCal}) and step down in brightness to faint standards used in JWST calibration.
-Figure \ref{fig:sensitivityLadder} shows a schematic of the steps beginning with Midcourse Space Experiment (MSX) calibrators (as bright as $K \sim -3$) to faint JWST standards ($K \sim 16$).
+As an independent check on those transfers, NIRCam can be used to observe directly calibrated stars (such as the midcourse space experiment (MSX) calibrators \citep{price2004msxCal}) and step down in brightness to faint standards used in JWST calibration.
+The MSX ejected 1 cm radius reference spheres made of 6061-T6 aluminum alloy coated with Martin Black.
+Five of these spheres were ejected during the cryogenic lifetime of MSX's SPIRIT III sensor.
+These spheres were observed for about 1/3 of an orbital period and then at least one star was observed in the same data collection event.
 
 \begin{figure}[!t]
 \centering
@@ -401,6 +403,7 @@ Step		& Source						& Spectral Type	& $K_\mathrm{src}$		& ND Square		& Subarray	
 \vspace{0.05in}
 \end{table}
 
+Figure \ref{fig:sensitivityLadder} shows a schematic of the steps beginning with MSX calibrators (as bright as $K \sim -3$) to faint JWST standards ($K \sim 16$).
 The methodology of the flux ladder is that only one change is made per step - either an instrument re-configuration is made on the same source or a new source is measured with the same instrument configuration.
 As listed in Table \ref{tab:conversionSteps}, the direct calibrator would be observed in a neutral density square, subarray and medium band filter while using the coronagraphic pupil.
 For the next step, this same instrument configuration will be used on a bright JWST standard, such as HD 37962 (G2 V, $K$=6.27).
