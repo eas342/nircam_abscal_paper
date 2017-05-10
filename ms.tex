@@ -168,7 +168,6 @@ The original flux calibration effort has mainly bright stars ($K \lesssim 15$).
 Example spectra for these calibrators are shown in Figure \ref{fig:JWSTcalsWideF} with saturation and sensitivity limits of NIRCam's wide filters.
 Many of these spectra will saturate the NIRCam detectors when used in full frame (shown as the middle parts of the black ``error bars'') for wide-band filters.
 Furthermore, there may be systematic errors when observing faint targets and low detector well depths.
-\textcolor{red}{[Have a detector person - Karl, Jarron or George read the rest of this paragraph:]}
 As an example of a systematic detector effect, consider charge traps within a detector.
 These traps would tend to decrease the measured number of electrons per second on the first exposure because they would trap electrons  that would not be read out by an amplifier.
 For bright sources, the effect of the traps would be smaller since they would quickly be a small fraction of the flux.
@@ -227,6 +226,11 @@ NGC 2506, is metal poor at [Fe/H]=-0.32, so corrections must be made for changes
 \caption{Visibility windows for the three open clusters considered in this report.
 The planned commissioning period is shown with vertical blue dashed lines.}\label{fig:clusterVis}
 \end{figure}
+
+These clusters also allow for accurate calibration of MIRI imager with solar analogs.
+For example, a typical G2~V star in NGC~2420 can be measured in the MIRI F1000W filter with a signal to ratio of about 150 in 1000 seconds of integration.
+Although this integration time is considerably longer than for NIRCam imaging, they are still comparable to the 1800 second slew time charged in APT.
+Thus, it should require a smaller time allocation for a 1000 sec MIRI flux standard observation than two flux standards separated in the sky with NIRCam.
 
 After selecting the sources, we discovered that the WEBDA database had parameters that were significantly different from the literature for these individual clusters.
 For example E(B-V)$_\mathrm{WEBDA}$ = 0.16 for NGC 6811 whereas \citet{molendaz2016spec6811} has E(B-V) = 0.05.
@@ -306,19 +310,25 @@ For NGC 2420, for example, there are 300-400 stars within the neighboring arrays
 \caption{One of WFCam's 4 detectors near the cluster NGC 2420 which encompasses 315 objects from the 2MASS point source catalog.}\label{fig:wfcam3}
 \end{figure}
 
+These steps will be adequate to calibrate to within a few percent.
+To obtain the most accurate possible calibration to 2MASS requires that slight photometric offsets in the 2MASS catalog in different areas of the sky be identified and corrected.
+These offsets can be identified by looking of the behavior of 2MASS-W1 colors, selecting a subset of stars (e.g., between A and mid-G) that are particularly well behaved in this color (e.g., no strong absorptions).
+Once this step has been completed, it will still be necessary to tie the corrected 2MASS system into true absolute calibration. 
+
 \clearpage
 \section{Spectral Typing of Candidate Analogs}
 
 \subsection{Hectospec Observations}
+
+We used the Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} to obtain spectra of candidate solar analogs in the clusters.
 We observed NGC~2420 with two fiber configurations in the Spring and Fall of 2016.
 We used the 600 gpm grating (1.9 - 2.2 $\AA$ resolution element) to match with existing spectral template libraries with 3.6 $\AA$ resolution.
-We selected the central wavelength to be 4800 $\AA$ which means that the wavelength coverage is about 3550 to 6050 $\AA$, which covers several import criteria for G-star classification many of which are concentrated between 4000 and 4400 $\AA$.
+We selected the central wavelength to be 4800 $\AA$ which means that the wavelength coverage is about 3550 to 6050 $\AA$, which covers several import features for G-star classification many of which are concentrated between 4000 and 4400 $\AA$.
 We obtained exposure times of 1.7 hours (Spring 2016) and 2 hours (Fall 2016).
 The minimum fiber separation $\sim$20$\arcsec$ required that we observe in two configurations to increase the density of stars for which we had spectral classification.
 During the observing run in the Fall of 2016, the 600 gpm (1.9 - 2.2 $\AA$ resolution element) grating had to be removed for repairs and so we were forced to observe NGC 2506 with the 270 gpm (4.5 - 5.2 $\AA$ resolution element).
 The spectral typing uncertainty grows with lower resolution.
 
-The Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} was used to obtain spectra of candidate solar analogs in the clusters .
 We processed the data with the standard IDL routine \texttt{HSRED}\footnote{https://www.mmto.org/node/536}, which applies automatic bias and flat field corrections, spectral extraction and wavelength calibration.
 \texttt{HSRED} can apply flux calibration for F-type stars, but we elected to rectify the spectra.
 Flux calibration is not crucial to spectral typing G-type stars since the spectrum is relatively flat in the optical (Chris Corbally, priv. communication).
@@ -429,6 +439,8 @@ This conversion step can independently be checked against other instruments' mea
 The next step would be to use the same direct image configuration and subarray size to observe a faint JWST calibrator around $K \sim$15.
 S/N ratios of 200 can be achieved in 94 seconds in this mode.
 This calibrator star would now be observable in full frame mode without saturation so the next step would be a conversion from subarray to full frame on the same source.
+Since the solar analog flux standards identified in this program are in a cluster, there are many sources available for photometry.
+It may be advantageous to make an additional measurement to confirm the subarray to full frame conversion using a concentration of stars in a cluster over a range in magnitude.
 To calibrate the wide band filters, such as F444W, one final step would be needed to go from the medium to wide band photometry using a model for the star.
 Either a well-characterized white dwarf spectrum of a known standard or a faint G2 V standard from an open cluster would be good models for this transfer of filters.
 
@@ -442,16 +454,18 @@ There are several ways to improve saturation limits with NIRCam over direct imag
 \item \textbf{Lyot Stop} Cut down the aperture size with a Lyot stop. These have 19\% throughput (1.8 mags). Additionally, this broadens the PSF - see Figure \ref{fig:psfComparison}.
 The broadening spreads light out by a similar factor (contributing 1.8 mags to saturation limits) for a total of 3.5 mags.
 \item \textbf{Neutral Density Square} The neutral density filters have an attenuation of 10$^3$ or 7.5 mags. A color correction would have to be applied for the neutral density filter (since it is wavelength dependent) when transferring to an un-occulted region.
-Additionally, the Lyot stop that must be in place to use the neutral density filter so the total improvement on saturation limits is 11 mags over direct imaging.
+Additionally, the Lyot stop must be in place to use the neutral density filter so the total improvement on saturation limits is 11 mags over direct imaging.
 Care must be taken with dithering to ensure that non-uniform optical depth of the neutral density filter doesn't affect the photometry.
-\item \textbf{Grisms} For long wavelength NIRCam observations ($2.4~\mu$m$ > \lambda < 5~\mu$m), one can use a grism to spread out the light. This mode still has a saturation limit of $K$=4.6 to 3.5 for the F322W2  filter and 2048$\times$64 subarray \citep{greene2016wfss}, which does not reach to the MSX standards. This could be potentially combined with the coronagraphic pupil, but this combination has been tested or explored in detail. One could potentially observe small pieces of the spectrum at a time with a subarray that are all combined to create a spectrum, but this would add time and may be difficult to implement.
+\item \textbf{Grisms} For long wavelength NIRCam observations ($2.4~\mu$m$ > \lambda < 5~\mu$m), one can use a grism to spread out the light. This mode still has a saturation limit of $K$=4.6 to 3.5 for the F322W2  filter and 2048$\times$64 subarray \citep{greene2016wfss}, which does not reach to the MSX standards.
+This could be potentially combined with the coronagraphic pupil, but this combination has not been tested or explored in detail.
+One could potentially observe small pieces of the spectrum at a time with a subarray that are all combined to create a spectrum, but this would add time and may be difficult to implement.
 \item \textbf{DHS} For short wavelength NIRCam spectra ($1.0~\mu$m$ > \lambda < 2.0~\mu$m), one can use the Dispersed Hartmann Sensor. The dispersed Hartmann Sensor (DHS) reduces the pupil throughput and spreads the light out to reach saturation limits of $K$=0.2 to 1.5 depending on spectral type \citep{schlawin2017dhs} for a 2048$\times$64 subarray.
 This is not bright enough to observe the MSX calibrators.
 As with the long wavelength grisms, one would have to read small subarrays (e.g. 64$\times$64) to get to brighter limits.
 If one stitched together a spectrum from these subarrays along the spectrum, this could theoretically be used on all MSX stars.
-However, the time to build up 32 pieces
+However, as with the grism mode above, there would be significant changes and additions to the flight software to implement a mode that would build a spectrum out of 32 different subarrays.
 \item \textbf{Extra Small Subarrays} There will be an engineering jitter monitoring test with an 8 $\times$ 8 subarray.
-There may be complications with calculating accurate integration times in this mode because any uncertainty's affecting a frame time could be a significant fraction of the $\sim$ 2 ms frame time.
+There may be complications with calculating accurate integration times in this mode because any uncertainties affecting a frame time could be a significant fraction of the $\sim$ 2 ms frame time.
 The background annulus would be limited for such small subarrays.
 \item \textbf{Weak Lens} The Weak Lenses spread light out over many pixels which can be helpful for bright stars. However, one needs to read out larger sized subarrays to encompass the entire hexagonal PSF so this somewhat cancels out the effect of spreading the light out over many pixels.
 For a very narrowband filter such as F212N, the K-band saturation limit for a weak lens observation with a 128$\times$128 subarray is 0.9 mag for a G2V star, which does not quite reach the MSX calibrators.
@@ -462,21 +476,15 @@ Sensitivity and saturation limits make use of \texttt{pysynphot} \citep{lim2015p
 
 \subsection{Tie-in to MSX}
 
-Figure \ref{fig:msxNCfilterOverlap} shows the MSX filters B1 and B2 as compared to the NIRCam long wavelength filters -- we only include filters that have some overlap.
-The F430M filter is the best match with the MSX bands.
-Figure \ref{fig:msxNCfilterOverlap} also shows model spectra from \citet{castelli2004models} for the MSX calibrator stars in \citet{price2004msxCal} near these bandpasses.
-The flux has been normalized for each star at 3.6~$\mu$m and then offset for clarity.
-We use the nearest match between the stellar types from the Simbad database and the suggested \citet{castelli2004models} parameters.\footnote{http://www.stsci.edu/hst/observatory/crds/castelli\_kurucz\_atlas.html}
-
-Observing these bright sources (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of medium-band filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
+Observing the MSX flux standards (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of medium-band filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
 Using \texttt{webbpsf} and the throughputs in a NIRCam program called \texttt{pynrc}, we calculate the saturation limits for 2 groups in RAPID mode and find a K-magnitude of saturation of $-$4.0 for an A1 V type star (Sirius is A1 V with K=$-$1.35) and $-$3.7 for an M3 III (Gacrux is $-$3.12).
 This means that the entire sample of stars from \citet{price2004msxCal} are observable in this coronagraphic neutral density mode.
 
-\begin{figure}[!hbtp]
-\centering
-\includegraphics[width=.55\columnwidth]{msx_nircam_filt.pdf}
-\caption{NIRCam filter throughputs (top), MSX filter throughputs \citep{egan1999msxGuide} (middle) and model spectra of MSX calibrator stars (bottom). F430M best matches the MSX filters.}\label{fig:msxNCfilterOverlap}
-\end{figure}
+\subsection{Checking the subarray}
+The solar analog P330-E is a commonly used standard because of its similarity to the sun.
+P330-E fits as an offshoot of the flux calibration ladder in Figure \ref{fig:sensitivityLadder} as ``Intermediate JWST Standard.'' 
+This standard is too bright for full frame NIRCam imaging in wide filters, but it is worth noting that the narrowband filters such as F212N can be used in full frame just at the limit of saturation.
+This may serve as a useful conversion check between subarray and full frame imaging.
 
 \subsubsection{Complications with PSF}
 A Lyot pupil mask must be used when imaging through the neutral density squares since the wedges that redirect light through NIRCam's coronagraphic masks and neutral density squares are co-located with the Lyot stop pupil masks.
