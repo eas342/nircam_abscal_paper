@@ -156,7 +156,7 @@ Additionally, we discuss some of the NIRCam modes that can be used to tie JWST c
 The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration to accomplish its science goals.
 One area where accurate flux calibration is especially important is dark energy science, which makes use of type Ia supernovae as standard candles.
 Absolute fluxes are especially important for improving type Ia supernova luminosity distances and thus the expansion history of the Universe.
-JWST will have no standard calibration sources onboard so all calibration must be performed with astronomical sources.\footnote{While NIRCam had internal lamps in original designs, the envelopes for the filaments broke during testing so the sources were removed.}
+JWST will have no standard calibration sources onboard so all calibration must be performed with astronomical sources.
 
 The JWST flux calibration effort has been described in \citet{gordon2009fluxplan1} and \citet{gordon2011fluxplan2}.
 It is still being developed and refined.
@@ -204,7 +204,7 @@ The parameters under consideration were the the following:
 \item {\bf Distance Modulus} The cluster must be distant enough to not saturate NIRCam's wide filters in full frame mode. The most easily saturated filter for G stars is the F090W, which corresponds to a G2~V star of 15.9 in the $K$ band. This means the true distance modulus $(m - M)_0$ should be 12.6 for a solar absolute K=3.28 \citep{binney1998book}.
 The longer wavelength wide band filters (F200W, F277W, F356W, and F444W) will not saturate for a true distance modulus larger than 11.8.
 If one assumes an extinction of E(B-V) = 0.05 and a Galactic average extinction law \citep{cardelli1989}, the visual distance modulus $(m- M)_V$ should be an additional 0.14 mag.
-Thus, to calibrate all filters, the visual distance modulus $(m- M)_V$ should be larger than 11.94.
+Thus, to calibrate all wide band filters in full frame mode, the visual distance modulus $(m- M)_V$ should be larger than 11.94.
 \item {\bf Metallicity} Ideally, the cluster should have near-solar metallicity so that the solar mass stars have a luminosity near 1 $L_\sun$ and a G2~V type spectrum.
 \item {\bf Compactness} The cluster should be relatively compact compared to NIRCam's FOV (2'$\times$2' per module).
 We selected clusters with WEBDA diameters $\lesssim 15\arcmin$
@@ -294,7 +294,7 @@ Note that the initial selection of NGC~2420 stars ignored the small extinction a
 
 We observed all three clusters with WFCAM on the UKIRT telescope.
 This is the same instrument, pipeline and telescope for the UKIDSS survey.
-As recommended by the pipeline team, we used aperture photometry number 3 (1\arcsec\ radius) for the fluxes in the J, H and K bands.
+As recommended by the UKIRT pipeline team (Mike Irwin, private communication), we used aperture photometry number 3 (1\arcsec\ radius) for the fluxes in the J, H and K bands.
 
 \subsection{Tie-in to 2MASS Photometry}
 
@@ -359,13 +359,13 @@ We used the automatic ``expert'' classification system \texttt{mkclass} \citep{g
 This program is different from automated neural networks in that it directly uses the same methods as a human classifier does, rather than being trained on a specific set of data.
 The \texttt{mkclass} programs comes with a library of standards at 3.6$\AA$ resolution standards and 1.8$\AA$ standards.
 Our Hectospec data with the 600 gpm grating has a spectral resolution of 1.9 to 2.2$\AA$ so we convolve it with a Gaussian kernel to match the 3.6$\AA$ library.
-We use 3 iterations and ``roughtype'' 2.
+We use 3 iterations, the \texttt{mkclass} default.
 
 \begin{figure}[!hbtp]
 \centering
 \includegraphics[width=.49\columnwidth]{colormagNGC_2420.pdf}
 \includegraphics[width=.49\columnwidth]{fovNGC_2420.pdf}
-\caption{{\it Left:} A color magnitude diagram from the Pan Starrs photometry with the sources that were observed with Hectospec and classified by \texttt{mkclass}.
+\caption{{\it Left:} A color magnitude diagram from the Pan Starrs photometry of NGC~2420 with the sources that were observed with Hectospec and classified by \texttt{mkclass}.
 The G2~V sources line up with with the expected solar $g-r$ from a Pickles G2~V spectrum (red vertical line).
 {\it Right} The field of view of the Pan-Starrs photometry over-plotted with the same sources.
 Two rectangles are drawn to represent the field of view of the NIRCam module A and module B. Up to 3 G2~V sources may be observed simultaneously with NIRCam and more can be included with a dither pattern.
@@ -398,7 +398,7 @@ Two standards (G2 V and G1.5 V) are shown for comparison.}\label{fig:0738284p213
 
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
 As an independent check on those transfers, NIRCam can be used to observe directly calibrated stars (such as the midcourse space experiment (MSX) calibrators \citep{price2004msxCal}) and step down in brightness to faint standards used in JWST calibration.
-The MSX ejected 1 cm radius reference spheres made of 6061-T6 aluminum alloy coated with Martin Black.
+The MSX ejected 1 cm radius reference spheres made of 6061-T6 aluminum alloy coated with Martin Black, for which the thermal and emissive properties were well understood.
 Five of these spheres were ejected during the cryogenic lifetime of MSX's SPIRIT III sensor.
 These spheres were observed for about 1/3 of an orbital period and then at least one star was observed in the same data collection event.
 
@@ -429,17 +429,10 @@ Step		& Source						& Spectral Type	& $K_\mathrm{src}$		& ND Square		& Subarray	
 \end{table}
 
 Figure \ref{fig:sensitivityLadder} shows a schematic of the steps beginning with MSX calibrators (as bright as $K \sim -3$) to faint JWST standards ($K \sim 16$).
-The methodology of the flux ladder is that only one change is made per step - either an instrument re-configuration is made on the same source or a new source is measured with the same instrument configuration.
+The methodology of the flux ladder is that only one change is made per step - either an instrument re-configuration is made on the same source (a horizontal move) or a new source is measured with the same instrument configuration (a vertical move).
 As listed in Table \ref{tab:conversionSteps}, the direct calibrator would be observed in a neutral density square, subarray and medium band filter while using the coronagraphic pupil.
 For the next step, this same instrument configuration will be used on a bright JWST standard, such as HD 37962 (G2 V, $K$=6.27).
 Getting sufficient signal to noise (S/N$\gtrsim$200) on an intermediate JWST calibrator such as P-330E (G2 V, $K$=11.4) with the neutral density square in place would require long integration times so the bright calibrators are preferred for steps 2 and 3.
-
-However, if sufficient time is available for calibration, it is possible to convert from an MSX standard to an intermediate JWST standard in one step.
-To begin, the F212N filter could be selected in the filter wheel to observe a bright MSX star with the neutral density filter and Lyot pupil mask.
-The same setup could be arranged on P330-E and observed for 7.5 hours to achieve a SNR=200.
-If the F212N filter is used to observe P330-E with a full frame mode, it just barely is observable with 2 groups in RAPID mode before reaching full well saturation.
-The advantage with this single step from subarray neutral density filters to full frame direct imaging is that it is fewer steps.
-The disadvantage is that there would be a large disparity in detector well depth between the vertical and horizontal steps on this ladder.
 
 This bright JWST standard would be used to transfer from the ND filter with a coronagraphic pupil mask to direct imaging.
 This conversion step can independently be checked against other instruments' measurements of the bright JWST calibrator, such as by STIS with HST.
@@ -447,12 +440,24 @@ The next step would be to use the same direct image configuration and subarray s
 S/N ratios of 200 can be achieved in 94 seconds in this mode.
 This calibrator star would now be observable in full frame mode without saturation so the next step would be a conversion from subarray to full frame on the same source.
 Since the solar analog flux standards identified in this program are in a cluster, there are many sources available for photometry.
-It may be advantageous to make an additional measurement to confirm the subarray to full frame conversion using a concentration of stars in a cluster over a range in magnitude.
+It may be useful to make additional measurements to confirm the subarray to full frame conversion using a concentration of stars in a cluster over a range in magnitude.
 To calibrate the wide band filters, such as F444W, one final step would be needed to go from the medium to wide band photometry using a model for the star.
 Either a well-characterized white dwarf spectrum of a known standard or a faint G2 V standard from an open cluster would be good models for this transfer of filters.
 
+\subsection{Using intermediate Standards to Check the Flux Ladder}
+
 Figure \ref{fig:sensitivityLadder} shows that an intermediate JWST standard such as P-330 E can be used to check transfers and detector linearity corrections.
-This step would not be a ``rung'' in the NIRCam flux ladder since it would require more transfers to achieve the last step of full frame wide band imaging, but serves as another check on the transfers from bright to faint targets.
+The solar analog P330-E is a commonly used standard because of its similarity to the sun.
+This step would not be an essential ``rung'' in the NIRCam flux ladder (since it involves more steps) but a useful check on other transfers.
+
+However, if sufficient time is available for calibration, it is possible to convert from an MSX standard to full frame imaging in a narrowband mode in one step by using an intermediate JWST standard.
+To begin, the F212N filter could be selected in the filter wheel to observe a bright MSX star with the neutral density filter and Lyot pupil mask.
+The same setup could be arranged on P330-E and observed for 7.5 hours to achieve a SNR=200.
+If the F212N filter is used to image P330-E with a full frame direct imaging mode, it is just barely is observable with 2 groups in RAPID mode before reaching full well saturation.
+The F212N filter is chosen since there are few stellar absorption lines in this filter.
+The advantage with this single transfer from an MSX standard to a full frame P330-E image is that it fewer steps than the ladder described above.
+The disadvantage is that there would be a large disparity in detector well depth between the vertical and horizontal steps on this ladder.
+If flux calibration time is available, this alternative flux ladder or simply the ``offshoot'' would serve as a check on the conversion from faint to bright targets.
 
 \subsection{Ways to Observe Bright Stars}\label{sec:brightStarMode}
 
@@ -475,27 +480,21 @@ However, as with the grism mode above, there would be significant changes and ad
 There may be complications with calculating accurate integration times in this mode because any uncertainties affecting a frame time could be a significant fraction of the $\sim$ 2 ms frame time.
 The background annulus would be limited for such small subarrays.
 \item \textbf{Weak Lens} The Weak Lenses spread light out over many pixels which can be helpful for bright stars. However, one needs to read out larger sized subarrays to encompass the entire hexagonal PSF so this somewhat cancels out the effect of spreading the light out over many pixels.
-For a very narrowband filter such as F212N, the K-band saturation limit for a weak lens observation with a 128$\times$128 subarray is 0.9 mag for a G2V star, which does not quite reach the MSX calibrators.
+For a very narrowband filter such as F212N, the K-band saturation limit for a weak lens observation with a 128$\times$128 subarray is 0.9 mag (Vega mag) for a G2V star, which does not quite reach the MSX calibrators.
 \end{itemize}
 
 Of the many options here, the most feasible method is the neutral density square with the Lyot Coronagraphic pupil mask.
 Sensitivity and saturation limits make use of \texttt{pysynphot} \citep{lim2015pysynphot} with either Phoenix stellar models \citep{allard2012phoenix} or \citet{castelli2004models} models.
 
-\subsection{Tie-in to MSX}
+\subsection{Observing MSX Stars}
 
 Observing the MSX flux standards (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of medium-band filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
-Using \texttt{webbpsf} and the throughputs in a NIRCam program called \texttt{pynrc}, we calculate the saturation limits for 2 groups in RAPID mode and find a K-magnitude of saturation of $-$4.0 for an A1 V type star (Sirius is A1 V with K=$-$1.35) and $-$3.7 for an M3 III (Gacrux is $-$3.12).
+Using \texttt{webbpsf} and the throughputs in a NIRCam program called \texttt{pynrc}\footnote{https://github.com/JarronL/pynrc.git}, we calculate the saturation limits for 2 groups in RAPID mode and find a K-magnitude of saturation of $-$4.0 for an A1 V type star (Sirius is A1 V with K=$-$1.35) and $-$3.7 for an M3 III (Gacrux is $-$3.12).
 This means that the entire sample of stars from \citet{price2004msxCal} are observable in this coronagraphic neutral density mode.
-
-\subsection{Checking the subarray}
-The solar analog P330-E is a commonly used standard because of its similarity to the sun.
-P330-E fits as an offshoot of the flux calibration ladder in Figure \ref{fig:sensitivityLadder} as ``Intermediate JWST Standard.'' 
-This standard is too bright for full frame NIRCam imaging in wide filters, but it is worth noting that the narrowband filters such as F212N can be used in full frame just at the limit of saturation.
-This may serve as a useful conversion check between subarray and full frame imaging.
 
 \subsubsection{Complications with PSF}
 A Lyot pupil mask must be used when imaging through the neutral density squares since the wedges that redirect light through NIRCam's coronagraphic masks and neutral density squares are co-located with the Lyot stop pupil masks.
-In addition to lowering the transmission by a factor of 0.19\%, the Lyot stops spread out the PSF as compared to direct imaging.
+In addition to lowering the transmission by a factor of 19\%, the Lyot stops spread out the PSF as compared to direct imaging.
 Figure \ref{fig:psfComparison} shows example PSFs calculated with \texttt{webbpsf} \citep{perrin2012webbpsf}.
 Figure \ref{fig:psfDirect} shows the direct image PSF versus the the coronagraphic PSF (Figure \ref{fig:psfND}), both normalized to the peak pixel.
 
