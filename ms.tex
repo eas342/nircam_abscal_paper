@@ -418,7 +418,7 @@ An intermediate standard (shown with green connecting arrows) can be used to che
 Step		& Source						& Spectral Type	& $K_\mathrm{src}$		& ND Square		& Subarray	& Filter & t$_\mathrm{exp} (s) $ &$K_\mathrm{sat}$\\
 \hline \hline
 1		& MSX Calibrator\tablenotemark{a}	& A1 V to M0 III		& -3 to 0.1		& On	&	64$\times$64	& F430M &  0.2 & -4.0 \\
-2		& Bright JWST Calibrator			& G2 V			& 6.5	  		& On &	64$\times$64	& F430M &  220 & -4.0 \\
+2		& Bright JWST Calibrator			& A0 V, G2 V		& 6.5	  		& On &	64$\times$64	& F430M &  220 & -4.0 \\
 3		& Bright JWST Calibrator			& G2 V			& 6.5  		& Off &	64$\times$64	& F430M &  0.1 & 6.2 \\
 4		& Faint JWST Calibrator			& G2 V			& 16 			& Off &	64$\times$64	& F430M &  94 & 6.2 \\
 5		& Faint JWST Calibrator			& G2 V			& 16 			& Off &	Full Frame	& F430M &  107 & 12 \\
@@ -427,6 +427,25 @@ Step		& Source						& Spectral Type	& $K_\mathrm{src}$		& ND Square		& Subarray	
 \end{tabular}
 \tablenotetext{a}{Any directly calibrated bright source such as the MSX calibrators \citep{price2004msxCal}, (which include Sirius and Vega) or alternatively $\alpha$ Cen A. The exposure times given are the times needed to reach at least SNR=200, rounded up to the next group up the ramp. The saturation limit is at 80\% well depth for 2 non-destructive reads up the ramp following a reset.}
 \vspace{0.05in}
+\end{table}
+
+\begin{table}[!b]
+\centering
+\caption{Example Stars for Each Calibrator Step.}\label{tab:stepStars}
+\begin{tabular}{lrrr}
+\hline \hline
+Step	(s)	& Source						& Spectral Type	& $K_\mathrm{src}$\tablenotemark{a}	\\
+\hline \hline
+1		& $\alpha$ Cen (Sirius)			& A1 V 			& -1.35		\\
+1		& $\gamma$ Dra (Eltanin)			& K5 III 			& -1.35		\\
+1		& $\alpha$ Lyr (Vega)			& A0 V 			& 0.13		\\
+2 - 3		& HD 37962					& G2 V			& 6.27	  	\\
+2 - 3		& HD 38949					& G1 V			& 6.44	  	\\
+4 - 6		& 07:38:17.1 +21:36:22 (NGC 2420)	& G2 V			& 15.6 		\\
+\hline
+\end{tabular}
+\tablenotetext{a}{NOTE, these magnitudes from Simbad may have up to 5\% systematics for steps 1-3..}
+\vspace{0.05in} f
 \end{table}
 
 Figure \ref{fig:sensitivityLadder} shows a schematic of the steps beginning with MSX calibrators (as bright as $K \sim -3$) to faint JWST standards ($K \sim 16$).
@@ -467,7 +486,8 @@ If flux calibration time is available, this alternative flux ladder or simply th
 \caption{Schematic of an alternative sensitivity ladder to Figure \ref{fig:sensitivityLadder}.
 This ladder would use the intermediate-brightness JWST standard P330-E (G2~V type) to transfer from an MSX star to full frame imaging in a narrowband filter.
 The observing time needed for step 2 is considerable, but if allocated (7.5 hr to get SNR=200), this provides a way to calibrate full frame imaging with fewer transfers than the 6 step method above.
-The disadvantage of this method is that each step involves a large disparity in well depths.}\label{fig:sensitivityLadderP330E}
+The disadvantage of this method is that each step involves a large disparity in well depths.
+The steps are labeled B1 through B3 do distinguish between these and steps 1-6 in Figure \ref{fig:sensitivityLadder}.}\label{fig:sensitivityLadderP330E}
 \end{figure}
 
 \subsection{Ways to Observe Bright Stars}\label{sec:brightStarMode}
