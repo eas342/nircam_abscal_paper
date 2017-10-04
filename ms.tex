@@ -203,8 +203,8 @@ The parameters under consideration were the the following:
 \item {\bf Extinction} Extinction should be as small as possible to minimize the effects of extinction correction to photometry. Of the clusters found, E(B-V) $\lesssim 0.1$.
 \item {\bf Distance Modulus} The cluster must be distant enough to not saturate NIRCam's wide filters in full frame mode. The most easily saturated filter for G stars is the F090W, which corresponds to a G2~V star of 15.9 in the $K$ band. This means the true distance modulus $(m - M)_0$ should be 12.6 for a solar absolute K=3.28 \citep{binney1998book}.
 The longer wavelength wide band filters (F200W, F277W, F356W, and F444W) will not saturate for a true distance modulus larger than 11.8.
-If one assumes an extinction of E(B-V) = 0.05 and a Galactic average extinction law \citep{cardelli1989}, the visual distance modulus $(m- M)_V$ should be an additional 0.14 mag.
-Thus, to calibrate all wide band filters in full frame mode, the visual distance modulus $(m- M)_V$ should be larger than 11.94.
+If one assumes an extinction of E(B-V) = 0.05 and a Galactic average extinction law \citep{cardelli1989}, the visual distance modulus $(m- M)_V$ should be an additional 0.15 mag.
+Thus, to calibrate all wide band filters in full frame mode, the visual distance modulus $(m- M)_V$ should be larger than 11.95.
 \item {\bf Metallicity} Ideally, the cluster should have near-solar metallicity so that the solar mass stars have a luminosity near 1 $L_\sun$ and a G2~V type spectrum.
 \item {\bf Compactness} The cluster should be relatively compact compared to NIRCam's FOV (2'$\times$2' per module).
 We selected clusters with WEBDA diameters $\lesssim 15\arcmin$
@@ -242,20 +242,21 @@ Including uncertainties, the extinctions are actually all consistent with 0.06, 
 \begin{table}
 \centering
 \caption{Cluster Parameters}\label{tab:clusterProp}
-\begin{tabular}{lrrrc}
+\begin{tabular}{lrrrrc}
 \hline \hline
-Cluster   					&  E(B-V) 			& Distance Mod 	& [Fe/H] 			& Age \\
-          					&     				&    (m - M)$_V$	& 	dex 			& Gyr \\
+Cluster   					&  E(B-V) 			& Distance Mod 	& [Fe/H] 			& Age 		& Distance\\
+          					&     				&    (m - M)$_V$	& 	dex 			& Gyr 		& kpc	\\
 \hline \hline
-NGC 2420\tablenotemark{a}	& 0.04 $\pm$0.03	&  11.88 $\pm$ 0.27	& -0.05 $\pm$ 0.03	& 3 $\pm$ 1 \\
-NGC 2506\tablenotemark{b}	& 0.058 $\pm$ 0.001	&  12.75 $\pm$ 0.10 	& -0.32 $\pm$ 0.03	& 1.85 $\pm$ 0.05 \\
-NGC 6811\tablenotemark{c}	& 0.05 $\pm$0.02	& 10.29 $\pm$ 0.14	& 0.04 $\pm$ 0.01 	& 1.0 $\pm$ 0.1 \\
+NGC 2420\tablenotemark{b}	& 0.04 $\pm$0.03	&  11.88 $\pm$ 0.27	& -0.05 $\pm$ 0.03	& 3 $\pm$ 1 	& 2.2 $\pm$ 0.3 \\
+NGC 2506\tablenotemark{c}	& 0.058 $\pm$ 0.001	&  12.75 $\pm$ 0.10 	& -0.32 $\pm$ 0.03	& 1.85 $\pm$ 0.05 & 3.3 $\pm$ 0.2 \\
+NGC 6811\tablenotemark{d}	& 0.05 $\pm$0.02	& 10.29 $\pm$ 0.14	& 0.04 $\pm$ 0.01 	& 1.0 $\pm$ 0.1 & 1.1 $\pm$ 0.1 \\
 \hline
 \end{tabular}
 %\caption{G2V-type star saturation K band limits are shown for suggested sub-array sizes. The size affects the number of DHS that can be included, so the noise in the DHS spectra over 1.1 -- 1.9$\mu$m at the given saturation limit for a 1 hour transit is shown in column 4 at native R $\sim$ \DHSresApprox\ resolution.}\label{tab:SatSNRsubA}
-\tablenotetext{a}{NGC 2420 parameters from \citet{pancino2010chem2420}.}
-\tablenotetext{b}{NGC 2506 parameters from \citet{anthonytwarog2016wiyn2506}. Error bars are formal standard errors of the mean, not necessarily capturing systematics.}
-\tablenotetext{c}{NGC 6811 parameters from \citet{molendaz2016spec6811}}
+\tablenotetext{a}{Distance calculated by taking the visual distance modulus $(m-M)_V$ and subtracting the expected extinction for a Galactic average extinction law \citep{cardelli1989}.}
+\tablenotetext{b}{NGC 2420 parameters from \citet{pancino2010chem2420}.}
+\tablenotetext{c}{NGC 2506 parameters from \citet{anthonytwarog2016wiyn2506}. Error bars are formal standard errors of the mean, not necessarily capturing systematics.}
+\tablenotetext{d}{NGC 6811 parameters from \citet{molendaz2016spec6811}}
 \end{table}
 
 \section{Pan-Starrs}
@@ -463,6 +464,9 @@ Since the solar analog flux standards identified in this program are in a cluste
 It may be useful to make additional measurements to confirm the subarray to full frame conversion using a concentration of stars in a cluster over a range in magnitude.
 To calibrate the wide band filters, such as F444W, one final step would be needed to go from the medium to wide band photometry using a model for the star.
 Either a well-characterized white dwarf spectrum of a known standard or a faint G2 V standard from an open cluster would be good models for this transfer of filters.
+
+
+Table \ref{tab:conversionStep} shows the saturation limits for each mode as well as the 
 
 \subsection{Using Intermediate Standards to Check the Flux Ladder}
 
@@ -677,7 +681,31 @@ The Pan-STARRS1 Surveys (PS1) have been made possible through contributions of t
 %% The equation counter will reset when it encounters the \appendix
 %% command and will number appendix equations (A1), (A2), etc.
 
+\appendix
 
+\section{Relative Spectral Response Passbands}
+
+There are 2 kinds of spectral response that can be used to perform synthetic photometr.
+Here we note the difference between then.
+
+\subsection{QE-Based Passband}
+The QE-based passbands can be used to calculate synthetic photometry.
+
+\begin{equation}
+T_{int} = \int{f_\lambda \lambda R_{QE} d\lambda} 
+\end{equation}
+where $f_\lambda$ is the specific flux, $\lambda$ is wavelength and $R_{QE}$ is the quantum-efficiency based passband \citep[e.g][]{bessel2000fundamentalPhot}.
+
+\subsection{Photon Based Passbands}
+The photon-counting RSRs are designed to be integrated directly over stellar spectra.
+\begin{equation}
+T_{int} = \int{f_\lambda R_{\lambda} d\lambda} 
+\end{equation}
+where $R_{\lambda}$ is the photon-counting passband \citep[e.g][]{cohen2003}.
+
+\section{Additional Notes}
+
+Christopher W - points out we should look at the APOGEE data. I see there's overlap for NGC 2420.
 
 %% The reference list follows the main body and any appendices.
 %% Use LaTeX's thebibliography environment to mark up your reference list.
