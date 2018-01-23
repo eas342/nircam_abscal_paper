@@ -272,7 +272,7 @@ Note that the initial selection of NGC~2420 stars ignored the small extinction a
 \centering
 \subfloat[NGC 2420]{
 	\includegraphics[width=0.5\textwidth]{sources_ngc2420.png}
-	\label{fig:cmdNGC6811}
+	\label{fig:cmdNGC2420}
 	}
 \subfloat[NGC 2506]{
 	\includegraphics[width=0.5\textwidth]{sources_ngc2506.png}
@@ -398,7 +398,7 @@ Two standards (G2 V and G1.5 V) are shown for comparison.}\label{fig:0738284p213
 \section{Transferring to Directly Calibrated Sources - the NIRCam Flux Ladder}
 
 The primary JWST standards for absolute calibration have been tied to directly calibrated photometric sources through transfers, such as with HST's STIS instrument.
-As an independent check on those transfers, NIRCam can be used to observe directly calibrated stars (such as the midcourse space experiment (MSX) calibrators \citep{price2004msxCal}) and step down in brightness to faint standards used in JWST calibration.
+As an independent check on those transfers, NIRCam can be used to observe directly calibrated stars (such as the midcourse space experiment (MSX) calibrators \citep{price2004msxCal}, listed in Table \ref{tab:msxStars}) and step down in brightness to faint standards used in JWST calibration.
 The MSX ejected 1 cm radius reference spheres made of 6061-T6 aluminum alloy coated with Martin Black, for which the thermal and emissive properties were well understood.
 Five of these spheres were ejected during the cryogenic lifetime of MSX's SPIRIT III sensor.
 These spheres were observed for about 1/3 of an orbital period and then at least one star was observed in the same data collection event as the reference sphere.
@@ -446,8 +446,29 @@ Step	(s)	& Source						& Spectral Type	& $K_\mathrm{src}$\tablenotemark{a}	\\
 \hline
 \end{tabular}
 \tablenotetext{a}{NOTE, these magnitudes from Simbad may have up to 5\% systematics for steps 1-3..}
-\vspace{0.05in} f
+\vspace{0.05in}
 \end{table}
+
+\begin{table}
+\centering
+\caption{MSX Calibrator Stars and Fluxes.}\label{tab:msxStars}
+\begin{tabular}{cccccc}
+Star Name & Common Name & Spectral Type & K mag\tablenotemark{a} & B$_1$  & B$_2$ \\
+      & &  & & 10$^{-15}$ W/cm$^{-2}$ & 10$^{-15}$ W/cm$^{-2}$ \\
+\hline \hline
+$\alpha$ Boo & Arcturus & K1.5 III & -2.91 & 56.0 $\pm$ 0.4 & 87.3 $\pm$ 0.5 \\
+$\alpha$ Tau & Aldebaran & K5+ III & -3.04 & 47.6 $\pm$ 0.3 & 74.2 $\pm$ 0.4 \\
+$\alpha$ Lyr & Vega & A0 V & 0.13 & 3.33 $\pm$ 0.04 & 5.34 $\pm$ 0.05 \\
+$\beta$ Gem & Pollux & K0 III & -1.11 & 9.55 $\pm$ 0.08 & 15.0 $\pm$ 0.1 \\
+$\gamma$ Dra & Eltanin & K5 III & -1.35 & 11.2 $\pm$ 0.1 & 17.3 $\pm$ 0.2 \\
+$\gamma$ Cru & Gacrux & M3.4 III & -3.12 & 63.1 $\pm$ 0.6 & 98.2 $\pm$ 0.9 \\
+$\beta$ And & Mirach & M0 III & -1.87 & 18.3 $\pm$ 0.3 & 30.0 $\pm$ 0.5 \\
+$\alpha$ Cma & Sirius & A1 V & -1.35 & 11.8 $\pm$ 0.1\tablenotemark{b}& 18.9 $\pm$ 0.2\tablenotemark{b} \\
+\end{tabular}
+\tablenotetext{a}{K Magnitudes from Simbad}
+\tablenotetext{b}{Scaling the Vega fluxes by the assigned -1.36 Vega Magnitude of Sirius using Table 3 in \citet{price2004msxCal}.}
+\end{table}
+
 
 Figure \ref{fig:sensitivityLadder} shows a schematic of the steps beginning with MSX calibrators (as bright as $K \sim -3$) to faint JWST standards ($K \sim 16$).
 The methodology of the flux ladder is that only one change is made per step - either an instrument re-configuration is made on the same source (a horizontal move) or a new source is measured with the same instrument configuration (a vertical move).
@@ -465,8 +486,7 @@ It may be useful to make additional measurements to confirm the subarray to full
 To calibrate the wide band filters, such as F444W, one final step would be needed to go from the medium to wide band photometry using a model for the star.
 Either a well-characterized white dwarf spectrum of a known standard or a faint G2 V standard from an open cluster would be good models for this transfer of filters.
 
-
-Table \ref{tab:conversionStep} shows the saturation limits for each mode as well as the 
+Table \ref{tab:conversionSteps} shows the saturation limits for each mode as well as the time needed to achieve a SNR of 200.
 
 \subsection{Using Intermediate Standards to Check the Flux Ladder}
 
@@ -526,6 +546,18 @@ Sensitivity and saturation limits make use of \texttt{pysynphot} \citep{lim2015p
 Observing the MSX flux standards (which are bright naked eye stars) with JWST's NIRCam can be achieved with a combination of medium-band filters, small subarray sizes, a Lyot stop pupil mask (19\% transmission) and a neutral density (ND) filter.
 Using \texttt{webbpsf} and the throughputs in a NIRCam program called \texttt{pynrc}\footnote{https://github.com/JarronL/pynrc.git}, we calculate the saturation limits for 2 groups in RAPID mode and find a K-magnitude of saturation of $-$4.0 for an A1 V type star (Sirius is A1 V with K=$-$1.35) and $-$3.7 for an M3 III (Gacrux is $-$3.12).
 This means that the entire sample of stars from \citet{price2004msxCal} are observable in this coronagraphic neutral density mode.
+There are some difficulties and potential pitfalls when attempting a multi-step ladder, so we describe these below.
+
+\subsubsection{Implementation}
+The APT science nor engineering template permit dithered subarray imaging with a 64$\times$64 subarray through a neutral density filter.
+This prohibits executing Step 1 in Cycle 1 observing.
+It is possible that in Cycle 2, more modes will be implemented including dithered subarray 64$\times$64 subarray imaging with a neutral density filter in place.
+
+\subsubsection{Difficulty in Obtaining Accuracy}
+The goal of the flux calibration effort is to achieve 1\% absolute flux calibration so the it is important to keep this mind.
+The sum total error of all the steps of the NIRCam flux ladder must contribute less than 1\% so if the 6 errors are independent, the each must incur less than 0.4\% error.
+In the pessimistic case that the errors are correlated, each step should have less than 0.17\%.
+So, a signal to noise of 600 would be desired for each step on the ladder.
 
 \subsubsection{Complications with PSF}
 A Lyot pupil mask must be used when imaging through the neutral density squares since the wedges that redirect light through NIRCam's coronagraphic masks and neutral density squares are co-located with the Lyot stop pupil masks.
@@ -557,20 +589,22 @@ Correcting for any pinholes or blemishes in the ND square surface will likely do
 Positioning the sources consistently on the same pixel locations and using the same dither patterns will help with these errors.
 The dithers can be used to check the surface irregularities.
 
-\subsubsection{Clocking Issues for Small Subarrays}
+\subsubsection{Clocking Issues for Small Subarrays - now resolved}
 
-Marcia and Jarron have brought up this issue in a NIRCam STScI+External team telecon on on April 6, 2017.
+Marcia and Jarron previously brought up up this issue in a NIRCam STScI+External team telecon on on April 6, 2017.
 Jarron explained further on April 24, 2017.
-This is a known bug in the ASIC micro-code that can affect the frame times of small subarrays.
+This was a known bug in the ASIC micro-code that can affect the frame times of small subarrays.
 The bug creates extra line overheads on small subarrays.
 For example, for a 32$\times$32 subarray, there are sometimes 2 line overheads and sometimes 3 line overheads about $\sim$40/60 \% of the time.
 Tony Magoncelli has found a way to deterministically predict when these extra frame times will occur.
-However, JWST will not produce enough data in flight to deterministically predict when the extra frame times occur so you'd have to average many frames together.
+However, JWST did not produce enough data in flight to deterministically predict when the extra frame times occur so you'd have to average many frames together.
 For a 64$\times$ 64 subarray, there are almost always 2 line overheads.
 At a rate of about 5/8000 frames of test data, there were 3 line overheads.
 So, in the worst case unlucky scenario with 64$\times$64 subarray data in RAPID mode with 2 groups up the ramp, there could be an extra 1/64 or 1.6 \% increase in the slope due to the ASIC micro code.
 Given that 64$\times$64 frame time is only 0.05 s long, you could easily include hundreds of frames to average out the frame time issue with almost no change in efficiency since JWST acquisition, exposure and dithering overheads would be a much larger fraction of the time.
-I would estimate this would have less than 0.01\% of an effect on flux calibration.
+Thus, this would have less than 0.01\% of an effect on flux calibration.
+Fortunately, the ASIC microcode was updated to fix this problem so there is no deterministic predictable timing for all subarrays, which was confirmed by Jarron Leisenring.
+
 
 \section*{Acknowledgements}
 %\acknowledgments
