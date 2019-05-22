@@ -114,9 +114,11 @@
 \begin{abstract}
 The James Webb Space Telescope (JWST) offers unprecedented sensitivity and stability for science.
 Several of the science areas, such as supernovae photometry for dark energy measurements will require high accuracy absolute calibration.
-We discuss a program to identify calibrators at the low end of the flux scale that will not saturate the NIRCam full frame mode.
-We obtained ground based photometry and spectroscopy of three clusters to find solar analog G2 V stars and a solar model spectrum to infer the fluxes in the NIRCam bands.
-Additionally, we discuss some of the NIRCam modes that can be used to tie JWST calibrations directly to bright stars which have been calibrated against emissive reference spheres with the Midcourse Space Experiment (MSX).
+We discuss a program to identify solar analog calibrators at the low end of the flux scale that will not saturate wide-band NIRCam imaging in full frame mode.
+We find that solar analog stars in NGC~2420 and NGC~2506 have the best properties for calibration in terms of extinction, age, distance and metallicity.
+We include a catalog of sources and absolutely calibrated photometry in the $g$, $r$, $i$, $z$, $J$, $H$, $K$ and IRAC1 3.6 $\mu$m bands.
+We also provide a catalog of solar analog candidates that are selected from optical spectroscopy that will serve as faint calibrator sources for JWST imaging.
+These faint calibrators serve wide band full frame imaging of current and future ground-based imagers.
 \end{abstract}
 
 %% Keywords should appear after the \end{abstract} command. The uncommented
@@ -156,20 +158,17 @@ Additionally, we discuss some of the NIRCam modes that can be used to tie JWST c
 The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration to accomplish its science goals.
 One area where accurate flux calibration is especially important is dark energy science, which makes use of type Ia supernovae as standard candles.
 Absolute fluxes are especially important for improving type Ia supernova luminosity distances and thus the expansion history of the Universe \citep[e.g.][]{narayan2016wdnetwork,betoule2014cosmologySN}.
-For exoplanet host stars in the era of Gaia distances, absolutely calibrated photometry is used to make precision measurements of stellar radii, which in turn give high precision planet radii.
 For exoplanet host stars in the era of Gaia distances, absolutely calibrated photometry is used to make precision measurements of stellar radii, which in turn give high precision planet radii \citep[e.g.][]{stassun2017gaiaRadiiMasses}.
 JWST will have no standard calibration sources onboard so all calibration must be performed with astronomical sources.
 
 The JWST flux calibration effort has been described in \citet{gordon2009fluxplan1} and \citet{gordon2011fluxplan2}.
-It is still being developed and refined.
-Figure \ref{fig:JWSTcalsWideF} shows several of the sources that will likely be used for flux calibration.
+Figure \ref{fig:JWSTcalsWideF} shows several of the sources that are planned as targets for flux calibration.
 These include three categories: 1) hot stars (white dwarf and OB stars) 2) G-stars (which are solar-like) and 3) A-type stars.
 The variety of spectra used in JWST calibration can mitigate against biases when models are used to convert flux in one filter to the expected flux in another filter.
 
 The original flux calibration effort has mainly bright stars ($K \lesssim 15$).
 Example spectra for these calibrators are shown in Figure \ref{fig:JWSTcalsWideF} with saturation and sensitivity limits of NIRCam's wide filters.
 Many of these spectra will saturate the NIRCam detectors when used in full frame (shown as the middle parts of the black ``error bars'') for wide-band filters.
-The 
 Furthermore, there may be systematic errors when observing faint targets and low detector well depths.
 As an example of a systematic detector effect, consider charge traps within a detector.
 These traps would tend to decrease the measured number of electrons per second on the first exposure because they would trap electrons  that would not be read out by an amplifier.
@@ -190,8 +189,8 @@ Example G2~V \citet{castelli2004models} models are shown for stars expected in t
 }\label{fig:JWSTcalsWideF}
 \end{figure}
 
-In this report, we discuss a NIRCam-led effort to identify and calibrate stars to add to the JWST sample on the fainter end around $K \approx 15$.
-We choose the method of \citet{rieke2008absIRcal}, which uses solar-like stars for flux calibration.
+In this paper, we discuss a JWST Flux Calibration Working Group effort to identify and calibrate stars to add to the JWST sample on the fainter end at $K \approx 15.4$ to $K \approx 16.3$.
+We use the solar analog method \citep{rieke2008absIRcal,johnson1965solarAnalogMethod,megessier1995solarAnalogCal} for flux calibration.
 The basic rationale is that the Solar spectrum is well measured across JWST's wavelengths \citep[0.6~$\mu$m to 29~$\mu$m][]{gardner2006SSRv} and has highly accurate models for its spectrum.
 When solar-like stars are identified, one can use these models to convert from one photometric or spectroscopic band to another.
 We identify solar-like stars in open clusters because it allows us to average over multiple stars and to cross-calibrate with bright references within the cluster.
@@ -557,6 +556,8 @@ where $R_{\lambda}$ is the photon-counting passband \citep[e.g][]{cohen2003}.
 \section{Additional Notes}
 
 Christopher W - points out we should look at the APOGEE data. I see there's overlap for NGC 2420.
+BD = Bonner Durchmusterung catalog
+GSPC = Guide Star Photometric Catalog (e.g. GSPC P330-E)
 
 %% The reference list follows the main body and any appendices.
 %% Use LaTeX's thebibliography environment to mark up your reference list.
