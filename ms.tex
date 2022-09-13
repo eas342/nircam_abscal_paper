@@ -64,7 +64,7 @@
 
 %% You can insert a short comment on the title page using the command below.
 
-\slugcomment{\textcolor{red}{NOTE, this is a work in progress}}
+\slugcomment{\textcolor{red}{NOTE, this is will be morphed into a paper appendix}}
 
 %% If you wish, you may supply running head information, although
 %% this information may be modified by the editorial offices.
@@ -113,12 +113,14 @@
 
 \begin{abstract}
 The James Webb Space Telescope (JWST) offers unprecedented sensitivity and stability for science.
-Several of the science areas, such as supernovae photometry for dark energy measurements will require high accuracy absolute calibration.
-We discuss a program to identify solar analog calibrators at the low end of the flux scale that will not saturate wide-band NIRCam imaging in full frame mode.
-We find that solar analog stars in NGC~2420 and NGC~2506 have the best properties for calibration in terms of extinction, age, distance and metallicity.
-We include a catalog of sources and absolutely calibrated photometry in the $g$, $r$, $i$, $z$, $J$, $H$, $K$ and IRAC1 3.6 $\mu$m bands.
-We also provide a catalog of solar analog candidates that are selected from optical spectroscopy that will serve as faint calibrator sources for JWST imaging.
-These faint calibrators serve wide band full frame imaging of current and future ground-based imagers.
+Most science areas in astronomy require flux calibration in order to convert brightness measurements into physical flux units.
+We discuss a program to identify solar analog calibrators at the low end of the flux scale that will not saturate most wide-band NIRCam imaging in full frame mode and that can also be used with other Science Instruments for faint calibration.
+We identified two star clusters: NGC~2420 and NGC~2506 to be the best balance of extinction, age, distance and metallicity, where solar type stars can be used for calibration.
+We use NGC~2506 for Cycle 1 JWST flux calibration due to its faintness, which saturates the fewest number of modes.
+We include a catalog of sources and absolutely calibrated photometry in the $K$ band using the WFCAM instrument on UKIRT.
+%$g$, $r$, $i$, $z$, $J$, $H$, $K$ and IRAC1 3.6 $\mu$m bands.
+We provide a small catalog of solar type stars within 1 spectral type of G2V from ground-based optical spectroscopy.
+These faint calibrators serve wide band full frame imaging of JWST as well as future ground-based imagers.
 \end{abstract}
 
 %% Keywords should appear after the \end{abstract} command. The uncommented
@@ -155,13 +157,13 @@ These faint calibrators serve wide band full frame imaging of current and future
 
 \section{Introduction}
 
-The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration to accomplish its science goals.
+The James Webb Space Telescope \citep[JWST; e.g.][]{gardner2006SSRv} will need absolute calibration to accomplish its science goals with a calibration program outlined in \citet{gordon2022absFlux1}.
 One area where accurate flux calibration is especially important is dark energy science, which makes use of type Ia supernovae as standard candles.
 Absolute fluxes are especially important for improving type Ia supernova luminosity distances and thus the expansion history of the Universe \citep[e.g.][]{narayan2016wdnetwork,betoule2014cosmologySN}.
 For exoplanet host stars in the era of Gaia distances, absolutely calibrated photometry is used to make precision measurements of stellar radii, which in turn give high precision planet radii \citep[e.g.][]{stassun2017gaiaRadiiMasses}.
 JWST will have no standard calibration sources onboard so all calibration must be performed with astronomical sources.
 
-The JWST flux calibration effort has been described in \citet{gordon2009fluxplan1} and \citet{gordon2011fluxplan2}.
+The JWST flux calibration effort has been described in \citet{gordon2009fluxplan1}, \citet{gordon2011fluxplan2} and \citet{gordon2022absFlux1}.
 Figure \ref{fig:JWSTcalsWideF} shows several of the sources that are planned as targets for flux calibration.
 These include three categories: 1) hot stars (white dwarf and OB stars) 2) G-stars (which are solar-like) and 3) A-type stars.
 The variety of spectra used in JWST calibration can mitigate against biases when models are used to convert flux in one filter to the expected flux in another filter.
@@ -192,7 +194,7 @@ Example G2~V \citet{castelli2004models} models are shown for stars expected in t
 
 In this paper, we discuss a JWST Flux Calibration Working Group effort to identify and calibrate stars to add to the JWST sample on the fainter end at $K \approx 15.4$ to $K \approx 16.3$.
 We use the solar analog method \citep{rieke2008absIRcal,johnson1965solarAnalogMethod,megessier1995solarAnalogCal} for flux calibration.
-The basic rationale is that the Solar spectrum is well measured across JWST's wavelengths \citep[0.6~$\mu$m to 29~$\mu$m][]{gardner2006SSRv} and has highly accurate models for its spectrum.
+The basic rationale is that the Solar spectrum is well measured across JWST's wavelengths \citep[0.6~$\mu$m to 29~$\mu$m][]{gardner2006SSRv} and has highly accurate models for its spectrum \citep[e.g.][]{gueymard2018solarSpectrum}.
 When solar-like stars are identified, one can use these models to convert from one photometric or spectroscopic band to another.
 We identify solar-like stars in open clusters because it allows us to average over multiple stars and to cross-calibrate with bright references within the cluster.
 The color magnitude diagram of the cluster also allows us to identify solar like stars and aids in the corrections for extinction.
@@ -205,8 +207,8 @@ The parameters under consideration were the the following:
 \item {\bf Age:} For the methods to work, the solar-mass stars must be on the main sequence. If we require that a solar mass star have $T_{\rm eff}$ = 5780 +/- 100 K, the cluster would have to be between 0.3 Gyr and 10 Gyr using Dartmouth evolutionary models \citep{dotter2008dartmouth}. Furthermore, the age should be $\lesssim$7 Gyr to avoid main sequence turnoff of F-type stars that have similar colors to solar analogs.
 \item {\bf Extinction} Extinction should be as small as possible to minimize the effects of extinction correction to photometry. Of the clusters found, E(B-V) $\lesssim 0.1$.
 \item {\bf Distance Modulus} The clusters should be distant enough that they do not saturate NIRCam or NIRISS wide-band imaging in full frame mode. The most easily saturated wide band filter for G stars is the F090W, which corresponds to a G2~V star of 15.9 in the $K$ band.
-While the F150W2 ``double-wide'' filter is more easily saturated than F090W, this is filter is unlikely to be used on faint Galaxies because (someone from deep field prog remind me?).
-This means the true distance modulus $(m - M)_0$ should be 12.6 for a solar absolute K=3.28 \citep{binney1998book}.
+While the F150W2 ``double-wide'' filter is more easily saturated than F090W, this is filter is not used as widely in extragalactic surveys, where the wide filters are preferred for photometric redshift \citep[e.g.][]{williams2018JWSTMockCatalog}.
+This means the true distance modulus $(m - M)_0$ should be 12.6 for a solar absolute K=3.27 \citep{willmer2018solarMagnitude}.
 The longer wavelength wide band filters (F200W, F277W, F356W, and F444W) will not saturate for a true distance modulus larger than 11.8.
 If one assumes an extinction of E(B-V) = 0.05 and a Galactic average extinction law \citep{cardelli1989}, the visual distance modulus $(m- M)_V$ should be an additional 0.15 mag.
 Thus, to calibrate all wide band filters longer than F200W in full frame mode, the visual distance modulus $(m- M)_V$ should be larger than 11.95.
@@ -217,20 +219,21 @@ We selected clusters with WEBDA diameters $\lesssim 15\arcmin$
 \item {\bf Visibility} The clusters should be spread out in ecliptic longitude to ensure that at least one is visible during the commissioning period.
 \end{itemize}
 
+No cluster could meet all criteria but some had a balance of desirable properties.
 With all these considerations in play, we selected NGC 2420 and NGC 2506 as the best fit for the multiple criteria.
 The only parameter that is not satisfied by NGC 2420 is the distance modulus, so additional sources or conversions are needed for the F070W, F090W, F115W and F150W filters.
 At the time NGC 2420 was selected, the JWST throughputs were smaller than the measured values so it saturated fewer filters.
 One way to calibrate these short wavelength, wide filters is to use subarrays.
 The subarray to full frame conversion can be checked with medium band filters.
-NGC 2506 is the next-best fits and have somewhat complimentary visibility windows, shown in Figure \ref{fig:clusterVis}. NGC 2420 and NGC 6811 have -0.05 $\le$ [Fe/H] $\le$ 0.04.
+NGC 2420 has -0.05 $\le$ [Fe/H] $\le$ 0.04.
 NGC 2506, is metal poor at [Fe/H]=-0.32, so corrections must be made for changes to G2 V spectra due to metallicity.
 
-\begin{figure}
-\centering
-\includegraphics[width=.4\columnwidth]{cluster_visibilty.pdf}
-\caption{Visibility windows for the three open clusters considered in this report.
-The planned commissioning period is shown with vertical blue dashed lines.}\label{fig:clusterVis}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[width=.4\columnwidth]{cluster_visibilty.pdf}
+%\caption{Visibility windows for the three open clusters considered in this report.
+%The planned commissioning period is shown with vertical blue dashed lines.}\label{fig:clusterVis}
+%\end{figure}
 
 These clusters also allow for accurate calibration of MIRI imager with solar analogs.
 For example, a typical G2~V star in NGC~2420 can be measured in the MIRI F1000W filter with a signal to ratio of about 150 in 1000 seconds of integration.
@@ -238,11 +241,10 @@ Although this integration time is considerably longer than for NIRCam imaging, t
 Thus, it should require a smaller time allocation for a 1000 sec MIRI flux standard observation than two flux standards separated in the sky with NIRCam.
 
 After selecting the sources, we discovered that the WEBDA database had parameters that were significantly different from the literature for these individual clusters.
-For example E(B-V)$_\mathrm{WEBDA}$ = 0.16 for NGC 6811 whereas \citet{molendaz2016spec6811} has E(B-V) = 0.05.
+%For example E(B-V)$_\mathrm{WEBDA}$ = 0.16 for NGC 6811 whereas \citet{molendaz2016spec6811} has E(B-V) = 0.05.
 We therefore did a literature search for the most recent available cluster parameters.
 Table \ref{tab:clusterProp} shows the properties gathered from the literature.
-The most up-to-date literature values indicate that all three clusters have low extinction with E(B-V) $<$ 0.1.
-Including uncertainties, the extinctions are actually all consistent with 0.06, but it should be noted that the NGC 2506 uncertainties are likely underestimated since their were derived from a standard error of the mean and may not include systematics.
+Recent literature values indicate that both clusters have low extinction with E(B-V) $<$ 0.1.
 
 \begin{table}
 \centering
@@ -253,25 +255,30 @@ Cluster   					&  E(B-V) 			& Distance Mod 	& [Fe/H] 			& Age 		& Distance\\
           					&     				&    (m - M)$_V$	& 	dex 			& Gyr 		& kpc	\\
 \hline \hline
 NGC 2420\tablenotemark{b}	& 0.04 $\pm$0.03	&  11.88 $\pm$ 0.27	& -0.05 $\pm$ 0.03	& 3 $\pm$ 1 	& 2.2 $\pm$ 0.3 \\
-NGC 2506\tablenotemark{c}	& 0.058 $\pm$ 0.001	&  12.75 $\pm$ 0.10 	& -0.32 $\pm$ 0.03	& 1.85 $\pm$ 0.05 & 3.3 $\pm$ 0.2 \\
-NGC 6811\tablenotemark{d}	& 0.05 $\pm$0.02	& 10.29 $\pm$ 0.14	& 0.04 $\pm$ 0.01 	& 1.0 $\pm$ 0.1 & 1.1 $\pm$ 0.1 \\
+NGC 2506\tablenotemark{c}	& 0.080 $\pm$ 0.006	&  12.71\tablenotemark{a}	 	& -0.36 $\pm$ 0.10			& 2.01 $\pm$ 0.10 & 3.101 $\pm$ 0.017 \\
+%NGC 6811\tablenotemark{d}	& 0.05 $\pm$0.02	& 10.29 $\pm$ 0.14	& 0.04 $\pm$ 0.01 	& 1.0 $\pm$ 0.1 & 1.1 $\pm$ 0.1 \\
 \hline
 \end{tabular}
 %\caption{G2V-type star saturation K band limits are shown for suggested sub-array sizes. The size affects the number of DHS that can be included, so the noise in the DHS spectra over 1.1 -- 1.9$\mu$m at the given saturation limit for a 1 hour transit is shown in column 4 at native R $\sim$ \DHSresApprox\ resolution.}\label{tab:SatSNRsubA}
-\tablenotetext{a}{Distance calculated by taking the visual distance modulus $(m-M)_V$ and subtracting the expected extinction for a Galactic average extinction law \citep{cardelli1989}.}
+\tablenotetext{a}{Distance calculated by taking the visual distance modulus $(m-M)_V$ and subtracting the expected extinction for a Galactic average extinction law  \citep{cardelli1989} applied to a 5800 K star.}
 \tablenotetext{b}{NGC 2420 parameters from \citet{pancino2010chem2420}.}
-\tablenotetext{c}{NGC 2506 parameters from \citet{anthonytwarog2016wiyn2506}. Error bars are formal standard errors of the mean, not necessarily capturing systematics.}
+\tablenotetext{c}{NGC 2506 parameters from \citet{knudstrup2020ngc2506properties}}
 \tablenotetext{d}{NGC 6811 parameters from \citet{molendaz2016spec6811}}
 \end{table}
 
-\section{Pan-Starrs}
-\subsection{Pan-Starrs Photometry}
+\section{Photometry}\label{sec:photometry}
+\subsection{Pan-Starrs Photometry}\label{sec:panStarsPhot}
 
-We obtained $grizy$ Pan-Starrs photometry \citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot} for all three clusters.
-Additionally, we used \citet{janes2013keplerPhot} B and V photometry for NGC~6811 which is in the Kepler field because there were more faint source detections.
+We obtained $grizy$ Pan-Starrs photometry \citep{magnier2013photLadder,schlafly2012photcal,tonry2012panstarrsPhot} for all both clusters.
 We also estimated the Pan-Starrs $g$ - $r$ and B-V colors from a Pickles G2~V spectrum using \texttt{pysynphot} \citep{lim2015pysynphot}, the measured extinction shown in Table \ref{tab:clusterProp} with a Milky Way Diffuse R(V)=3.1 \citet{cardelli1989} extinction law.
-Figure \ref{fig:cmdPS} shows the Pan-Starrs and \citet{janes2013keplerPhot} color magnitude diagram for the three clusters along with vertical bars with the expected solar color for each cluster: $g-r$ =0.42, $g-r$ = 0.43 and B-V = 0.67 for NGC~2420, NGC~2506 and NGC~6811 respectively.
-Note that the initial selection of NGC~2420 stars ignored the small extinction and put a higher priority on stars slightly bluer than solar.
+Figure \ref{fig:cmdPS} shows the Pan-Starrs and \citet{janes2013keplerPhot} color magnitude diagram for the three clusters along with vertical bars with the expected solar color for each cluster: $g-r$ =0.42 and $g-r$ = 0.43 for NGC~2420 and NGC~2506 respectively.
+We identified main sequence stars by fitting an iterative sigma clipped 5th polynomial to the color as a function of magnitude.
+We then included all points within 0.04 mag and 0.03 mag from the polynomial as main sequence stars for NGC~2420 and NGC~2506, respectively.
+
+We created 3 levels of priority in assigning slit fibers (MMT Hectospec, NGC~2420) or slit masks (Keck LRIS~NGC 2506).
+The highest priority targets were the ones with $g-r > 0.3$ and $g-r \le0.45$ for NGC~2420 and $g-r > 0.38$ and $g-r \le 0.48$ for NGC~2506.
+We also prioritized targets within  $2 \times 4\arcmin $ for NGC~2420 and $9.5 \times 9.5\arcmin $ for NGC~2506 (based on the LRIS field of view).
+These priority levels preferred fiber or mask selection of stars within a small field of view most close to a G2V spectrum.
 
 \begin{figure*}[!t]
 \centering
@@ -284,13 +291,13 @@ Note that the initial selection of NGC~2420 stars ignored the small extinction a
 	\label{fig:cmdNGC2506}
 	}
 \\
-\subfloat[NGC 6811]{
-	\includegraphics[width=0.5\textwidth]{sources_ngc6811.png}
-	\label{fig:cmdNGC6811}
-	}
-	\caption{Color-magnitudes of the three clusters.
+%\subfloat[NGC 6811]{
+%	\includegraphics[width=0.5\textwidth]{sources_ngc6811.png}
+%	\label{fig:cmdNGC6811}
+%	}
+	\caption{Color-magnitudes of the two clusters.
 	The main sequence in each cluster was fit with a polynomial and then three priority levels were chosen for follow-up spectroscopy.
-	The first priority targets were near-solar $g-r$ or B-V colors ($\pm 0.04, 0.03, 0.05$) that were within $\pm$4\arcmin\ of the cluster center (to concentrate in the NIRCam field of view).
+	The first priority targets were near-solar $g-r = 0.42-0.43$ or ($\pm 0.04, 0.03$ for NGC~2420 and NGC~2506, respectively) that were within $\pm$4\arcmin\ of the cluster center (to concentrate in the Science Instrument field of view).
 	The second priority were near-solar $g-r$ or B-V colors but with a wider field of view (1$\degree$) to include G2~V stars that could be observed with larger dithers.
 	Thirdly, any remaining main sequence stars that were within the 1$\degree$ hectospec field of view with reasonable signal to noise were selected to allow for errors in photometric color predictions and enable star cluster science at the main sequence turnoff point.}
 	\label{fig:cmdPS}
@@ -298,35 +305,43 @@ Note that the initial selection of NGC~2420 stars ignored the small extinction a
 
 \subsection{UKIRT Photometry}
 
-We observed all three clusters with WFCAM on the UKIRT telescope.
-This is the same instrument, pipeline and telescope for the UKIDSS survey.
+We observed both clusters with WFCAM on the UKIRT telescope in queue mode on October 11,25, 26, November 11 and December 29, 2016 (UTC).
+This is the same instrument, pipeline and telescope for the UKIDSS survey for the infrared $JHK$ bands.
+The data were processed automatically by the CASU IR Reduction Software (CIRDS) version 1.202 \citep{irwin2004vistaDataFlowWFCAM}, which created photometric catalogs for every detector array.
+We focused primarily on the one detector centered on the cluster.
 As recommended by the UKIRT pipeline team (Mike Irwin, private communication), we used aperture photometry number 3 (1\arcsec\ radius) for the fluxes in the J, H and K bands.
 
 \subsection{Tie-in to 2MASS Photometry}
 
-The stars within the clusters explored will be tied to the measurements of the Sun.
-\citet{rieke2008absIRcal} provide recommended adjustments to 2MASS photometry which match well with the Solar spectrum.
-We can use existing 2MASS measurements of stars within the UKIRT field of view as a reference for the UKIRT photometry.
-There are plenty of sources with 2MASS measurements.
-For NGC 2420, for example, there are 300-400 stars within the neighboring arrays and 800 near the cluster (many of which will be contaminated by crowding).
+We identified over 1000 WFCAM sources in common with the 2MASS survey \citep{skrutskie06}.
+We used these overlapping stars to check for offsets between the 2MASS survey on the WFCAM photometry, as shown in Figure \ref{fig:ukirtVs2MASS}.
+Fainter than $K=14$ gets into the low signal to noise regime for 2MASS, whereas $K<11.5$ approaches saturation with WFCAM, so the stars between those ranges are the most useful on cross-checking photometry.
+We find an offset of UKIRT K - 2MASS K = 0.007 if using all 2MASS and WFCAM points with $11.5 < K \le 14$.
+
 
 \begin{figure}[!hbtp]
 \centering
-\includegraphics[width=.4\columnwidth]{aladin_ngc2420_wfcam_square.png}
-\caption{One of WFCam's 4 detectors near the cluster NGC 2420 which encompasses 315 objects from the 2MASS point source catalog.}\label{fig:wfcam3}
+\includegraphics[width=.9\columnwidth]{ukirt_2mass_NGC_2506.pdf}
+\caption{A comparison of UKIRT and 2MASS photometry for cross-matched sources.}\label{fig:ukirtVs2MASS}
 \end{figure}
+%
+%Straight Horzontal Lines
+%Median UKIRT J - 2MASS J = -0.0090
+%from  1356 points
+%Median UKIRT H - 2MASS H = 0.0130
+%from  1320 points
+%Median UKIRT K - 2MASS K = 0.0255
+%from  1084 points
 
-These steps will be adequate to calibrate to within a few percent.
-To obtain the most accurate possible calibration to 2MASS requires that slight photometric offsets in the 2MASS catalog in different areas of the sky be identified and corrected.
-These offsets can be identified by looking of the behavior of 2MASS-W1 colors, selecting a subset of stars (e.g., between A and mid-G) that are particularly well behaved in this color (e.g., no strong absorptions).
-Once this step has been completed, it will still be necessary to tie the corrected 2MASS system into true absolute calibration. 
+%Median of all crossmatched points with K $>$ 12 and $| UKIRT - 2MASS | < 0.2$.
+
 
 \clearpage
 \section{Spectral Typing of Candidate Analogs}
 
-\subsection{Hectospec Observations}
+\subsection{Hectospec Observations}\label{sec:hectoObs}
 
-We used the Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} to obtain spectra of candidate solar analogs in the clusters.
+We used the Hectospec instrument on the MMT \citep{fabricant2005hectospec,mink2007hectoFibers} to obtain spectra of candidate solar analogs in NGC~2420.
 We observed NGC~2420 with two fiber configurations in the Spring and Fall of 2016.
 We used the 600 gpm grating (1.9 - 2.2 $\AA$ resolution element) to match with existing spectral template libraries with 3.6 $\AA$ resolution.
 We selected the central wavelength to be 4800 $\AA$ which means that the wavelength coverage is about 3550 to 6050 $\AA$, which covers several import features for G-star classification many of which are concentrated between 4000 and 4400 $\AA$.
@@ -359,12 +374,35 @@ The resulting spectrum is used for classification.
 In this example for the source at 07:38:28.5 +21:31:39.7, spectral classification with \texttt{mkclass} eventually gives a spectral type of F8 IV.}\label{fig:SpecRect}
 \end{figure}
 
+\subsection{Keck LRIS Observations}\label{sec:keckLRIS}
+We observed NGC~2506 on December 6, 2018 with Keck LRIS using custom slit masks, with target priority outlined in Section \ref{sec:panStarsPhot}.
+We designed masks with slit widths of 0.7\arcsec $\times$ 5\arcsec, which matched well to the seeing on December 6, 2018 near 0.7\arcsec.
+We used the D560 dichroic and 600/4000 grating to collect blue spectra from 330 nm to 560 nm, which includes the temperature sensitive absorption lines from 400 to 450 nm.
+The slit and grating combination resulted in a resolution of $\sim$0.3 nm for our slit widths or smaller in the case of good seeing.
+The LRIS red arm was not used for spectral typing.
+We took dome flats and HgNeArCdZnKrXe  arc lamp exposures for wavelength calibration and direct observations of NGC~2506 field for source identification and alignment.
+
+We used the \texttt{pypeit} pipeline to extract spectra of all sources \citep{prochaska2020pypeit}.
+Some additional adjustments were needed to find spectral types of the stars.
+A -35 km/s velocity (wavelength) adjustment correction was needed to shift all spectra to match the stellar templates from the \texttt{mkclass} \citep{gray2014classification} library.
+As with the Hectospec data described in Section \ref{sec:hectoObs}, we rectify the spectra by fitting to a third order spline with a 2$\sigma$ iterative clipping rejection and 4 splin knots.
+
+Figure \ref{fig:SpecRectLRIS} shows the rectified spectra for one of the slit masks with several temperature-sensitive lines highlighted.
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=.7\columnwidth]{all_spec_good_wavecal_2019-02-06-07_combined_spec_maskAnR1_rectified.pdf}
+\caption{Rectified LRIS spectra of Solar Analog candidates are shown for one slit mask.}\label{fig:SpecRectLRIS}
+\end{figure}
+
+\clearpage
 \subsection{Spectral Classification}
 
 We used the automatic ``expert'' classification system \texttt{mkclass} \citep{gray2014classification} to classify the stars.
 This program is different from automated neural networks in that it directly uses the same methods as a human classifier does, rather than being trained on a specific set of data.
 The \texttt{mkclass} programs comes with a library of standards at 3.6$\AA$ resolution standards and 1.8$\AA$ standards.
 Our Hectospec data with the 600 gpm grating has a spectral resolution of 1.9 to 2.2$\AA$ so we convolve it with a Gaussian kernel to match the 3.6$\AA$ library.
+Our Keck LRIS data have a spectral resolution near 0.3$\AA$, so we use the 0.22$\AA$ spectral template library.
 We use 3 iterations, the \texttt{mkclass} default.
 
 \begin{figure}[!hbtp]
@@ -383,12 +421,14 @@ A single pointing could include 3 G2~V sources and more can be covered with a di
 In \ref{fig:ngc2420ClassCM} we compare the observed Pan-Starrs colors of the G2~V spectral type stars to a Pickles library spectrum.
 After applying a R(V)=3.1 \citet{cardelli1989} Milky Way Diffuse extinction law with E(B-V)=0.04, the Pickles spectrum lines up very closely (within 0.021) of the expected $g-r$=0.042.
 
+We show the final color magnitudes for NGC~2420 and NGC~2506 in Figure \ref{fig:finalCandidatesCM} after selection of spectroscopically confirmed near-G2V $pm$ 1 temperature class for targets that are within a compact field of view.
+
 \subsection{Visual Classification}
 
-As recommended by C. Corbally, the \texttt{mkclass} classifications of near-solar stars were checked by eye.
+The \texttt{mkclass} classifications of near-solar stars were checked by eye, which is a helpful verification for \texttt{mkclass} (Chris Corbally, private communication).
 A graphical user interface explorer was made to compare template classification spectra with the observed Hectospec spectra\footnote{https://github.com/eas342/mkclassfication\_viewer}.
 Figure \ref{fig:0738284p2133class} shows the Hectospec spectrum of a source at 07:38:28.4 +21:33 that \texttt{mkclass} identifies as G2~V.
-The line ratios of Ca I 4226~$\AA$, H$\delta$, H$\gamma$ and Fe I lines are most consistent with a G2 V type.
+The line ratios of Ca I 4226~$\AA$, H$\delta$, H$\gamma$ and Fe I lines are most consistent with a G2 V type, within 1 temperature class.
 
 \begin{figure}[!hbtp]
 \centering
@@ -407,18 +447,18 @@ Two standards (G2 V and G1.5 V) are shown for comparison.}\label{fig:0738284p213
 	\label{fig:cmdNGC2420nearG2V}
 	}
 \subfloat[NGC 2506]{
-	\includegraphics[width=0.5\textwidth]{colormag_NGC_2506_near_G2_V.pdf}
+	\includegraphics[width=0.5\textwidth]{colormag_NGC_2506_near_G2_V_g-r.pdf}
 	\label{fig:cmdNGC2506nearG2V}
 	}
-\\
-\subfloat[NGC 6811]{
-	\includegraphics[width=0.5\textwidth]{colormag_NGC_6811_near_G2_V.pdf}
-	\label{fig:cmdNGC6811nearG2V}
-	}
-	\caption{Color-magnitudes of the three clusters with the near-solar stars identified from spectra.
-	}
-	\label{fig:cmdPSnearG2V}
-\end{figure*} 
+%\\
+%\subfloat[NGC 6811]{
+%	\includegraphics[width=0.5\textwidth]{colormag_NGC_6811_near_G2_V.pdf}
+%	\label{fig:cmdNGC6811nearG2V}
+%	}
+%	\caption{Color-magnitudes of the three clusters with the near-solar stars identified from spectra.
+%	}
+%	\label{fig:cmdPSnearG2V}
+\end{figure*}\label{fig:finalCandidatesCM}
 
 
 \clearpage
@@ -426,7 +466,7 @@ Two standards (G2 V and G1.5 V) are shown for comparison.}\label{fig:0738284p213
 \section*{Acknowledgements}
 %\acknowledgments
 
-Thanks to Daniel Kiminki and John Stauffer for the selection of open clusters for this work and for finding targets based on initial data.
+Thanks to Dani Kiminki and John Stauffer for the selection of open clusters for this work and for finding targets based on initial data.
 Thanks to Richard Gray and Chris Corbally for their help in stellar classification and guidance with the Hectospec observations.
 Funding for the NIRCam team is provided by NASA Goddard Spaceflight Center. This research has made use of the WEBDA database, operated at the Department of Theoretical Physics and Astrophysics of the Masaryk University.
 Observations reported here were obtained at the MMT Observatory, a joint facility of the University of Arizona and the Smithsonian Institution.
